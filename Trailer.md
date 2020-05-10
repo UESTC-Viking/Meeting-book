@@ -42,3 +42,15 @@ Exlau - 陈禹宏
 
 ---
 
+会议时间：2020年5月10日21:00:00
+
+会议分享人：Exlau（陈禹宏）、F4sthand（王滨）
+
+内容预告：
+
+- Exlau - php弱类型比较 | php弱类型比较 folder
+- F4sthand - welpwn实战操作 | 2020.2.10-F4sthand-Welpwn folder
+
+附件：2020-05-09.zip
+
+---
