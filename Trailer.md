@@ -54,3 +54,17 @@ Exlau - 陈禹宏
 附件：2020-05-09.zip
 
 ---
+
+会议时间：2020年5月17日21:00:00
+
+会议分享人：Helix（吴俊）、EL（伍桐雨）、黑鹰（林郑熹）
+
+内容预告：
+
+- Helix - Padding Oracle Attack | Padding Oracle Attack folder
+- EL - 壳及脱壳的一些入门办法 | 壳及脱壳的一些入门办法-EL.zip
+- 黑鹰 - PE文件介绍 & WPS漏洞分析 |  黑鹰5.17分享 folder
+
+附件：2020-05-17.zip
+
+---
