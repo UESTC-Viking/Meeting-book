@@ -68,3 +68,17 @@ Exlau - 陈禹宏
 附件：2020-05-17.zip
 
 ---
+
+会议：2020年5月24日21:00:00
+
+会议分享人：郭天一（Ttt0）、T1m3e（王增翔）
+
+内容预告：
+
+- Ttt0 - 用angr反ollvm混淆的控制流平坦化 | folder
+
+- T1m3e - sharkyctf 两道题目讲解 | sharky_ctf floder
+
+附件：2020-05-24.zip
+
+> 吴昌博（ZER0-Nu1L）请假缺席，下期分享。
