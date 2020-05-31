@@ -7,7 +7,7 @@ ZER0-Nu1L - 吴昌博
 黑鹰 - 林郑熹
 Juice - 何正文
 zesiar0 - 曾家华
-Ridddler - 申林烯
+Ridddler - 申林熇
 EL - 伍桐雨
 Exlau - 陈禹宏
 ---
@@ -82,3 +82,20 @@ Exlau - 陈禹宏
 附件：2020-05-24.zip
 
 > 吴昌博（ZER0-Nu1L）请假缺席，下期分享。
+
+---
+
+会议：2020年5月31日21:00:00
+
+会议分享人：F4sthand（王滨）、ZER0-Nu1L（吴昌博）、Ridddler（申林熇）
+
+内容预告：
+
+- F4sthand - 战队新标准和规章的讲解 | Viking战队石墨文档
+- ZER0-Nu1L - ECC 离散对数问题及 SageMath 教程 | ECC&Sage folder
+- Ridddler - Python 图片转字符画 | md 文件
+
+附件：2020-05-31.zip
+
+---
+

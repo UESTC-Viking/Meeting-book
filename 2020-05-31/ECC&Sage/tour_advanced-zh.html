@@ -1,0 +1,668 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>关于高等数学的更多话题 &mdash; Sage Tutorial v4.3</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '4.3',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="Sage Tutorial v4.3" href="index.html" />
+    <link rel="icon" href="_static/sageicon.png" type="image/x-icon" />
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+  
+    
+      <a href="../index.html"><img src="_static/sagelogo.png" style="vertical-align: middle" title="Sage Logo"></a>
+    
+  
+  
+        <li><a href="index.html">Sage Tutorial v4.3</a> &raquo;</li>
+ 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="id1">
+<h1>关于高等数学的更多话题<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>代数几何<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>在Sage中，你可以定义任意的代数变量，但是有时一些非凡的功能在
+<img class="math" src="_images/math/156c0e43da2df99cae1c91cfcff9bfa48e8709c1.png" alt="\QQ"/> 或有限域上受到限制。例如，我们计算两条仿射平面曲线的并，
+再将两条曲线作为并的不可约简分图恢复出来。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">sage: </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">AffineSpace</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span> <span class="n">QQ</span><span class="p">,</span> <span class="s">&#39;xy&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">gens</span><span class="p">()</span>
+<span class="gp">sage: </span><span class="n">C2</span> <span class="o">=</span> <span class="n">Curve</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mf">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">^</span><span class="mf">2</span> <span class="o">-</span> <span class="mf">1</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">C3</span> <span class="o">=</span> <span class="n">Curve</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mf">3</span> <span class="o">+</span> <span class="n">y</span><span class="o">^</span><span class="mf">3</span> <span class="o">-</span> <span class="mf">1</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">D</span> <span class="o">=</span> <span class="n">C2</span> <span class="o">+</span> <span class="n">C3</span>
+<span class="gp">sage: </span><span class="n">D</span>
+<span class="go">Affine Curve over Rational Field defined by</span>
+<span class="go">   x^5 + x^3*y^2 + x^2*y^3 + y^5 - x^3 - y^3 - x^2 - y^2 + 1</span>
+<span class="gp">sage: </span><span class="n">D</span><span class="o">.</span><span class="n">irreducible_components</span><span class="p">()</span>
+<span class="go">[</span>
+<span class="go">Closed subscheme of Affine Space of dimension 2 over Rational Field defined by:</span>
+<span class="go">  x^2 + y^2 - 1,</span>
+<span class="go">Closed subscheme of Affine Space of dimension 2 over Rational Field defined by:</span>
+<span class="go">  x^3 + y^3 - 1</span>
+<span class="go">]</span>
+</pre></div>
+</div>
+<p>我们也可以通过计算两条曲线交的不可约分图来找出它们所有的交点。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">sage: </span><span class="n">V</span> <span class="o">=</span> <span class="n">C2</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">C3</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">V</span><span class="o">.</span><span class="n">irreducible_components</span><span class="p">()</span>
+<span class="go">[</span>
+<span class="go">Closed subscheme of Affine Space of dimension 2 over Rational Field defined by:</span>
+<span class="go">  y - 1</span>
+<span class="go">  x,</span>
+<span class="go">Closed subscheme of Affine Space of dimension 2 over Rational Field defined by:</span>
+<span class="go">  y</span>
+<span class="go">  x - 1,</span>
+<span class="go">Closed subscheme of Affine Space of dimension 2 over Rational Field defined by:</span>
+<span class="go">  x + y + 2</span>
+<span class="go">  2*y^2 + 4*y + 3</span>
+<span class="go">]</span>
+</pre></div>
+</div>
+<p>这样即 <img class="math" src="_images/math/25a306093bbd9e0699c65dba033c9483cd379dc4.png" alt="(1,0)"/> 和 <img class="math" src="_images/math/be11a56a55425d6c6b69f70f5fa98eab95e8ad18.png" alt="(0,1)"/> 在每一条曲线上（显然），
+这些点的 <img class="math" src="_images/math/092e364e1d9d19ad5fffb0b46ef4cc7f2da02c1c.png" alt="y"/> 坐标满足 <img class="math" src="_images/math/9add4e98a957e4bd58a8c1e0c5016c7669743684.png" alt="2y^2+4y+3=0"/>.</p>
+<p>Sage可以计算投影3空间中三次挠线的环面理想。</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">sage: </span><span class="n">R</span><span class="o">.&lt;</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">PolynomialRing</span><span class="p">(</span><span class="n">QQ</span><span class="p">,</span> <span class="mf">4</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">I</span> <span class="o">=</span> <span class="n">ideal</span><span class="p">(</span><span class="n">b</span><span class="o">^</span><span class="mf">2</span><span class="o">-</span><span class="n">a</span><span class="o">*</span><span class="n">c</span><span class="p">,</span> <span class="n">c</span><span class="o">^</span><span class="mf">2</span><span class="o">-</span><span class="n">b</span><span class="o">*</span><span class="n">d</span><span class="p">,</span> <span class="n">a</span><span class="o">*</span><span class="n">d</span><span class="o">-</span><span class="n">b</span><span class="o">*</span><span class="n">c</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">F</span> <span class="o">=</span> <span class="n">I</span><span class="o">.</span><span class="n">groebner_fan</span><span class="p">();</span> <span class="n">F</span>
+<span class="go">Groebner fan of the ideal:</span>
+<span class="go">Ideal (b^2 - a*c, c^2 - b*d, -b*c + a*d) of Multivariate Polynomial Ring</span>
+<span class="go">in a, b, c, d over Rational Field</span>
+<span class="gp">sage: </span><span class="n">F</span><span class="o">.</span><span class="n">reduced_groebner_bases</span> <span class="p">()</span>
+<span class="go">[[-c^2 + b*d, -b*c + a*d, -b^2 + a*c],</span>
+<span class="go"> [c^2 - b*d, -b*c + a*d, -b^2 + a*c],</span>
+<span class="go"> [c^2 - b*d, b*c - a*d, -b^2 + a*c, -b^3 + a^2*d],</span>
+<span class="go"> [c^2 - b*d, b*c - a*d, b^3 - a^2*d, -b^2 + a*c],</span>
+<span class="go"> [c^2 - b*d, b*c - a*d, b^2 - a*c],</span>
+<span class="go"> [-c^2 + b*d, b^2 - a*c, -b*c + a*d],</span>
+<span class="go"> [-c^2 + b*d, b*c - a*d, b^2 - a*c, -c^3 + a*d^2],</span>
+<span class="go"> [c^3 - a*d^2, -c^2 + b*d, b*c - a*d, b^2 - a*c]]</span>
+<span class="gp">sage: </span><span class="n">F</span><span class="o">.</span><span class="n">polyhedralfan</span><span class="p">()</span>
+<span class="go">Polyhedral fan in 4 dimensions of dimension 4</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>椭圆曲线<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>Elliptic curve functionality includes most of the elliptic curve
+functionality of PARI, access to the data in Cremona&#8217;s online
+tables (this requires an optional database package), the
+functionality of mwrank, i.e., 2-descents with computation of the
+full Mordell-Weil group, the SEA algorithm, computation of all
+isogenies, much new code for curves over <img class="math" src="_images/math/156c0e43da2df99cae1c91cfcff9bfa48e8709c1.png" alt="\QQ"/>, and some of Denis
+Simon&#8217;s algebraic descent software.
+椭圆曲线函数包括PARI中绝大多数椭圆曲线函数，
+访问Cremona的在线数据表的数据（需要安装可选的数据库包），
+mwrank函数，即2，,
+SEA算法，</p>
+<p>命令 <tt class="docutils literal"><span class="pre">EllipticCurve</span></tt> 可用多种形式建立椭圆曲线：</p>
+<ul>
+<li><p class="first">EllipticCurve([<img class="math" src="_images/math/1ab39d761413804680d26d972381f028001562f5.png" alt="a_1"/>, <img class="math" src="_images/math/5e97a8af68fbc8e357d3ee0eba452022b06c1875.png" alt="a_2"/>, <img class="math" src="_images/math/572b65ebc3f438b176b4ca4a890799f2f72564af.png" alt="a_3"/>, <img class="math" src="_images/math/5e28850813a5321d2a8ae3c0510457a7337975ed.png" alt="a_4"/>, <img class="math" src="_images/math/34ace040475607683853fcfd4960a8f7fa6678c7.png" alt="a_6"/>]):
+返回</p>
+<div class="math">
+<p><img src="_images/math/a92e6b4980603c459f897b2cef469044c8005389.png" alt="y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6," /></p>
+</div><p>where the <img class="math" src="_images/math/412787c048e28774dc63fc27db42dc52ca858de7.png" alt="a_i"/>&#8216;s are coerced into the parent of
+<img class="math" src="_images/math/1ab39d761413804680d26d972381f028001562f5.png" alt="a_1"/>. If all the <img class="math" src="_images/math/412787c048e28774dc63fc27db42dc52ca858de7.png" alt="a_i"/> have parent <img class="math" src="_images/math/73a2f1c6167409a35e72eabec74a8561652f99b4.png" alt="\ZZ"/>, they are
+coerced into <img class="math" src="_images/math/156c0e43da2df99cae1c91cfcff9bfa48e8709c1.png" alt="\QQ"/>.</p>
+</li>
+<li><p class="first">EllipticCurve([<img class="math" src="_images/math/5e28850813a5321d2a8ae3c0510457a7337975ed.png" alt="a_4"/>, <img class="math" src="_images/math/34ace040475607683853fcfd4960a8f7fa6678c7.png" alt="a_6"/>]): Same as above, but
+<img class="math" src="_images/math/d4eb43ebf1ae24062bcb59152a584a6338c81f2e.png" alt="a_1=a_2=a_3=0"/>.</p>
+</li>
+<li><p class="first">EllipticCurve(label): Returns the elliptic curve over from the
+Cremona database with the given (new!) Cremona label. The label is
+a string, such as <tt class="docutils literal"><span class="pre">&quot;11a&quot;</span></tt> or <tt class="docutils literal"><span class="pre">&quot;37b2&quot;</span></tt>. The letter must be lower
+case (to distinguish it from the old labeling).</p>
+</li>
+<li><p class="first">EllipticCurve(j): Returns an elliptic curve with
+<img class="math" src="_images/math/8122aa89ea6e80784c6513d22787ad86e36ad0cc.png" alt="j"/>-invariant <img class="math" src="_images/math/8122aa89ea6e80784c6513d22787ad86e36ad0cc.png" alt="j"/>.</p>
+</li>
+<li><p class="first">EllipticCurve(R,
+[<img class="math" src="_images/math/1ab39d761413804680d26d972381f028001562f5.png" alt="a_1"/>, <img class="math" src="_images/math/5e97a8af68fbc8e357d3ee0eba452022b06c1875.png" alt="a_2"/>, <img class="math" src="_images/math/572b65ebc3f438b176b4ca4a890799f2f72564af.png" alt="a_3"/>, <img class="math" src="_images/math/5e28850813a5321d2a8ae3c0510457a7337975ed.png" alt="a_4"/>, <img class="math" src="_images/math/34ace040475607683853fcfd4960a8f7fa6678c7.png" alt="a_6"/>]):
+Create the elliptic curve over a ring <img class="math" src="_images/math/eff43e84f8a3bcf7b6965f0a3248bc4d3a9d0cd4.png" alt="R"/> with given
+<img class="math" src="_images/math/412787c048e28774dc63fc27db42dc52ca858de7.png" alt="a_i"/>&#8216;s as above.</p>
+</li>
+</ul>
+<p>We illustrate each of these constructors:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">sage: </span><span class="n">EllipticCurve</span><span class="p">([</span><span class="mf">0</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="mf">1</span><span class="p">,</span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="mf">0</span><span class="p">])</span>
+<span class="go">Elliptic Curve defined by y^2 + y = x^3 - x over Rational Field</span>
+
+<span class="gp">sage: </span><span class="n">EllipticCurve</span><span class="p">([</span><span class="n">GF</span><span class="p">(</span><span class="mf">5</span><span class="p">)(</span><span class="mf">0</span><span class="p">),</span><span class="mf">0</span><span class="p">,</span><span class="mf">1</span><span class="p">,</span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="mf">0</span><span class="p">])</span>
+<span class="go">Elliptic Curve defined by y^2 + y = x^3 + 4*x over Finite Field of size 5</span>
+
+<span class="gp">sage: </span><span class="n">EllipticCurve</span><span class="p">([</span><span class="mf">1</span><span class="p">,</span><span class="mf">2</span><span class="p">])</span>
+<span class="go">Elliptic Curve defined by y^2  = x^3 + x + 2 over Rational Field</span>
+
+<span class="gp">sage: </span><span class="n">EllipticCurve</span><span class="p">(</span><span class="s">&#39;37a&#39;</span><span class="p">)</span>
+<span class="go">Elliptic Curve defined by y^2 + y = x^3 - x over Rational Field</span>
+
+<span class="gp">sage: </span><span class="n">EllipticCurve_from_j</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span>
+<span class="go">Elliptic Curve defined by y^2 + x*y = x^3 + 36*x + 3455 over Rational Field</span>
+
+<span class="gp">sage: </span><span class="n">EllipticCurve</span><span class="p">(</span><span class="n">GF</span><span class="p">(</span><span class="mf">5</span><span class="p">),</span> <span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="mf">1</span><span class="p">,</span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="mf">0</span><span class="p">])</span>
+<span class="go">Elliptic Curve defined by y^2 + y = x^3 + 4*x over Finite Field of size 5</span>
+</pre></div>
+</div>
+<p>The pair <img class="math" src="_images/math/f9603ca3089464e548fc6f1366bc474e7efef8d9.png" alt="(0,0)"/> is a point on the elliptic curve
+<img class="math" src="_images/math/fa2fa899f0afb05d6837885523503a2d4df434f9.png" alt="E"/> defined by <img class="math" src="_images/math/d32be520cf5ee3f97427e74a93eb9f2771196df4.png" alt="y^2 +
+y = x^3 - x"/>. To create this
+point in Sage type <tt class="docutils literal"><span class="pre">E([0,0])</span></tt>. Sage can add points on such an
+elliptic curve (recall elliptic curves support an additive group
+structure where the point at infinity is the zero element and three
+co-linear points on the curve add to zero):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">sage: </span><span class="n">E</span> <span class="o">=</span> <span class="n">EllipticCurve</span><span class="p">([</span><span class="mf">0</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="mf">1</span><span class="p">,</span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="mf">0</span><span class="p">])</span>
+<span class="gp">sage: </span><span class="n">E</span>
+<span class="go">Elliptic Curve defined by y^2 + y = x^3 - x over Rational Field</span>
+<span class="gp">sage: </span><span class="n">P</span> <span class="o">=</span> <span class="n">E</span><span class="p">([</span><span class="mf">0</span><span class="p">,</span><span class="mf">0</span><span class="p">])</span>
+<span class="gp">sage: </span><span class="n">P</span> <span class="o">+</span> <span class="n">P</span>
+<span class="go">(1 : 0 : 1)</span>
+<span class="gp">sage: </span><span class="mf">10</span><span class="o">*</span><span class="n">P</span>
+<span class="go">(161/16 : -2065/64 : 1)</span>
+<span class="gp">sage: </span><span class="mf">20</span><span class="o">*</span><span class="n">P</span>
+<span class="go">(683916417/264517696 : -18784454671297/4302115807744 : 1)</span>
+<span class="gp">sage: </span><span class="n">E</span><span class="o">.</span><span class="n">conductor</span><span class="p">()</span>
+<span class="go">37</span>
+</pre></div>
+</div>
+<p>The elliptic curves over the complex numbers are parameterized by
+the <img class="math" src="_images/math/8122aa89ea6e80784c6513d22787ad86e36ad0cc.png" alt="j"/>-invariant. Sage computes <img class="math" src="_images/math/8122aa89ea6e80784c6513d22787ad86e36ad0cc.png" alt="j"/>-invariant as
+follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">sage: </span><span class="n">E</span> <span class="o">=</span> <span class="n">EllipticCurve</span><span class="p">([</span><span class="mf">0</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="o">-</span><span class="mf">4</span><span class="p">,</span><span class="mf">2</span><span class="p">]);</span> <span class="n">E</span>
+<span class="go">Elliptic Curve defined by y^2 = x^3 - 4*x + 2 over Rational Field</span>
+<span class="gp">sage: </span><span class="n">E</span><span class="o">.</span><span class="n">j_invariant</span><span class="p">()</span>
+<span class="go">110592/37</span>
+</pre></div>
+</div>
+<p>If we make a curve with the same <img class="math" src="_images/math/8122aa89ea6e80784c6513d22787ad86e36ad0cc.png" alt="j"/>-invariant as that of
+<img class="math" src="_images/math/fa2fa899f0afb05d6837885523503a2d4df434f9.png" alt="E"/>, it need not be isomorphic to <img class="math" src="_images/math/fa2fa899f0afb05d6837885523503a2d4df434f9.png" alt="E"/>. In the
+following example, the curves are not isomorphic because their
+conductors are different.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">sage: </span><span class="n">F</span> <span class="o">=</span> <span class="n">EllipticCurve_from_j</span><span class="p">(</span><span class="mf">110592</span><span class="o">/</span><span class="mf">37</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">F</span><span class="o">.</span><span class="n">conductor</span><span class="p">()</span>
+<span class="go">37</span>
+</pre></div>
+</div>
+<p>However, the twist of <img class="math" src="_images/math/a055f405829e64a3b70253ab67cb45ed6ed5bb29.png" alt="F"/> by 2 gives an isomorphic curve.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">sage: </span><span class="n">G</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">quadratic_twist</span><span class="p">(</span><span class="mf">2</span><span class="p">);</span> <span class="n">G</span>
+<span class="go">Elliptic Curve defined by y^2 = x^3 - 4*x + 2 over Rational Field</span>
+<span class="gp">sage: </span><span class="n">G</span><span class="o">.</span><span class="n">conductor</span><span class="p">()</span>
+<span class="go">2368</span>
+<span class="gp">sage: </span><span class="n">G</span><span class="o">.</span><span class="n">j_invariant</span><span class="p">()</span>
+<span class="go">110592/37</span>
+</pre></div>
+</div>
+<p>We can compute the coefficients <img class="math" src="_images/math/6f1a2b6b7c193f9ba2b2134a59f1da5addcfbc98.png" alt="a_n"/> of the
+<img class="math" src="_images/math/859ccf4cd60c7bc6b8fa1afc9a42dc811a826d6f.png" alt="L"/>-series or modular form
+<img class="math" src="_images/math/fd027e1375a22e5b430360eaba97f80d8936e9ee.png" alt="\sum_{n=0}^\infty
+a_nq^n"/> attached to the elliptic curve.
+This computation uses the PARI C-library:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">sage: </span><span class="n">E</span> <span class="o">=</span> <span class="n">EllipticCurve</span><span class="p">([</span><span class="mf">0</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="mf">1</span><span class="p">,</span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="mf">0</span><span class="p">])</span>
+<span class="gp">sage: </span><span class="k">print</span> <span class="n">E</span><span class="o">.</span><span class="n">anlist</span><span class="p">(</span><span class="mf">30</span><span class="p">)</span>
+<span class="go">[0, 1, -2, -3, 2, -2, 6, -1, 0, 6, 4, -5, -6, -2, 2, 6, -4, 0, -12, 0, -4,</span>
+<span class="go"> 3, 10, 2, 0, -1, 4, -9, -2, 6, -12]</span>
+<span class="gp">sage: </span><span class="n">v</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">anlist</span><span class="p">(</span><span class="mf">10000</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It only takes a second to compute all <img class="math" src="_images/math/6f1a2b6b7c193f9ba2b2134a59f1da5addcfbc98.png" alt="a_n"/> for
+<img class="math" src="_images/math/914acc4da38770f31d8fbf48e946487c4554977e.png" alt="n\leq 10^5"/>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">sage: </span><span class="o">%</span><span class="n">time</span> <span class="n">v</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">anlist</span><span class="p">(</span><span class="mf">100000</span><span class="p">)</span>
+<span class="go">CPU times: user 0.98 s, sys: 0.06 s, total: 1.04 s</span>
+<span class="go">Wall time: 1.06</span>
+</pre></div>
+</div>
+<p>Elliptic curves can be constructed using their Cremona labels. This
+pre-loads the elliptic curve with information about its rank,
+Tamagawa numbers, regulator, etc.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">sage: </span><span class="n">E</span> <span class="o">=</span> <span class="n">EllipticCurve</span><span class="p">(</span><span class="s">&quot;37b2&quot;</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">E</span>
+<span class="go">Elliptic Curve defined by y^2 + y = x^3 + x^2 - 1873*x - 31833 over Rational</span>
+<span class="go">Field</span>
+<span class="gp">sage: </span><span class="n">E</span> <span class="o">=</span> <span class="n">EllipticCurve</span><span class="p">(</span><span class="s">&quot;389a&quot;</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">E</span>
+<span class="go">Elliptic Curve defined by y^2 + y = x^3 + x^2 - 2*x  over Rational Field</span>
+<span class="gp">sage: </span><span class="n">E</span><span class="o">.</span><span class="n">rank</span><span class="p">()</span>
+<span class="go">2</span>
+<span class="gp">sage: </span><span class="n">E</span> <span class="o">=</span> <span class="n">EllipticCurve</span><span class="p">(</span><span class="s">&quot;5077a&quot;</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">E</span><span class="o">.</span><span class="n">rank</span><span class="p">()</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+<p>We can also access the Cremona database directly.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">sage: </span><span class="n">db</span> <span class="o">=</span> <span class="n">sage</span><span class="o">.</span><span class="n">databases</span><span class="o">.</span><span class="n">cremona</span><span class="o">.</span><span class="n">CremonaDatabase</span><span class="p">()</span>
+<span class="gp">sage: </span><span class="n">db</span><span class="o">.</span><span class="n">curves</span><span class="p">(</span><span class="mf">37</span><span class="p">)</span>
+<span class="go">{&#39;a1&#39;: [[0, 0, 1, -1, 0], 1, 1], &#39;b1&#39;: [[0, 1, 1, -23, -50], 0, 3]}</span>
+<span class="gp">sage: </span><span class="n">db</span><span class="o">.</span><span class="n">allcurves</span><span class="p">(</span><span class="mf">37</span><span class="p">)</span>
+<span class="go">{&#39;a1&#39;: [[0, 0, 1, -1, 0], 1, 1],</span>
+<span class="go"> &#39;b1&#39;: [[0, 1, 1, -23, -50], 0, 3],</span>
+<span class="go"> &#39;b2&#39;: [[0, 1, 1, -1873, -31833], 0, 1],</span>
+<span class="go"> &#39;b3&#39;: [[0, 1, 1, -3, 1], 0, 3]}</span>
+</pre></div>
+</div>
+<p>The objects returned from the database are not of type
+<tt class="docutils literal"><span class="pre">EllipticCurve</span></tt>. They are elements of a database and have a couple
+of fields, and that&#8217;s it. There is a small version of Cremona&#8217;s
+database, which is distributed by default with Sage, and contains
+limited information about elliptic curves of conductor
+<img class="math" src="_images/math/65514db1e5900e093aa886663873e2c84e07dc59.png" alt="\leq 10000"/>. There is also a large optional version, which
+contains extensive data about all curves of conductor up to
+<img class="math" src="_images/math/347b21143eaddaec30afeb3ba5204b6463eee8cc.png" alt="120000"/> (as of October 2005). There is also a huge (2GB)
+optional database package for Sage that contains the hundreds of
+millions of elliptic curves in the Stein-Watkins database.</p>
+</div>
+<div class="section" id="dirichlet-characters">
+<h2>Dirichlet Characters<a class="headerlink" href="#dirichlet-characters" title="Permalink to this headline">¶</a></h2>
+<p>A <em>Dirichlet character</em> is the extension of a homomorphism
+<img class="math" src="_images/math/80cb836c4bc64b841c779104e637579050c86872.png" alt="(\ZZ/N\ZZ)^* \to R^*"/>, for some ring <img class="math" src="_images/math/eff43e84f8a3bcf7b6965f0a3248bc4d3a9d0cd4.png" alt="R"/>, to the map
+<img class="math" src="_images/math/6c391c337502ef1e5c38027c4d6ebeca2958219a.png" alt="\ZZ \to R"/> obtained by sending those integers <img class="math" src="_images/math/26eeb5258ca5099acf8fe96b2a1049c48c89a5e6.png" alt="x"/>
+with <img class="math" src="_images/math/b62df72d10772a17c77185c694888f6485fd7a77.png" alt="\gcd(N,x)&gt;1"/> to 0.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">sage: </span><span class="n">G</span> <span class="o">=</span> <span class="n">DirichletGroup</span><span class="p">(</span><span class="mf">21</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="go">[[1, 1], [-1, 1], [1, zeta6], [-1, zeta6], [1, zeta6 - 1], [-1, zeta6 - 1],</span>
+<span class="go"> [1, -1], [-1, -1], [1, -zeta6], [-1, -zeta6], [1, -zeta6 + 1],</span>
+<span class="go"> [-1, -zeta6 + 1]]</span>
+<span class="gp">sage: </span><span class="n">G</span><span class="o">.</span><span class="n">gens</span><span class="p">()</span>
+<span class="go">([-1, 1], [1, zeta6])</span>
+<span class="gp">sage: </span><span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="go">12</span>
+</pre></div>
+</div>
+<p>Having created the group, we next create an element and compute
+with it.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">sage: </span><span class="n">chi</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="mf">1</span><span class="p">;</span> <span class="n">chi</span>
+<span class="go">[1, zeta6]</span>
+<span class="gp">sage: </span><span class="n">chi</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<span class="go">[0, 1, zeta6 - 1, 0, -zeta6, -zeta6 + 1, 0, 0, 1, 0, zeta6, -zeta6, 0, -1,</span>
+<span class="go"> 0, 0, zeta6 - 1, zeta6, 0, -zeta6 + 1, -1]</span>
+<span class="gp">sage: </span><span class="n">chi</span><span class="o">.</span><span class="n">conductor</span><span class="p">()</span>
+<span class="go">7</span>
+<span class="gp">sage: </span><span class="n">chi</span><span class="o">.</span><span class="n">modulus</span><span class="p">()</span>
+<span class="go">21</span>
+<span class="gp">sage: </span><span class="n">chi</span><span class="o">.</span><span class="n">order</span><span class="p">()</span>
+<span class="go">6</span>
+<span class="gp">sage: </span><span class="n">chi</span><span class="p">(</span><span class="mf">19</span><span class="p">)</span>
+<span class="go">-zeta6 + 1</span>
+<span class="gp">sage: </span><span class="n">chi</span><span class="p">(</span><span class="mf">40</span><span class="p">)</span>
+<span class="go">-zeta6 + 1</span>
+</pre></div>
+</div>
+<p>It is also possible to compute the action of the Galois group
+<img class="math" src="_images/math/8a14cc46957e17ec583cf5e059c456acb6fa913f.png" alt="\text{Gal}(\QQ(\zeta_N)/\QQ)"/> on these characters, as well
+as the direct product decomposition corresponding to the
+factorization of the modulus.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">sage: </span><span class="n">G</span><span class="o">.</span><span class="n">galois_orbits</span><span class="p">()</span>
+<span class="go">[</span>
+<span class="go">[[1, 1]],</span>
+<span class="go">[[1, zeta6], [1, -zeta6 + 1]],</span>
+<span class="go">[[1, zeta6 - 1], [1, -zeta6]],</span>
+<span class="go">[[1, -1]],</span>
+<span class="go">[[-1, 1]],</span>
+<span class="go">[[-1, zeta6], [-1, -zeta6 + 1]],</span>
+<span class="go">[[-1, zeta6 - 1], [-1, -zeta6]],</span>
+<span class="go">[[-1, -1]]</span>
+<span class="go">]</span>
+
+<span class="gp">sage: </span><span class="n">G</span><span class="o">.</span><span class="n">decomposition</span><span class="p">()</span>
+<span class="go">[</span>
+<span class="go">Group of Dirichlet characters of modulus 3 over Cyclotomic Field of order</span>
+<span class="go">6 and degree 2,</span>
+<span class="go">Group of Dirichlet characters of modulus 7 over Cyclotomic Field of order</span>
+<span class="go">6 and degree 2</span>
+<span class="go">]</span>
+</pre></div>
+</div>
+<p>Next, we construct the group of Dirichlet characters mod 20, but
+with values in <img class="math" src="_images/math/ee3de5721a73174fa06783a6b72436ba091a8b74.png" alt="\QQ(i)"/>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">sage: </span><span class="n">G</span> <span class="o">=</span> <span class="n">DirichletGroup</span><span class="p">(</span><span class="mf">20</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">G</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+<span class="go">[[1, 1], [-1, 1], [1, zeta4], [-1, zeta4], [1, -1], [-1, -1], [1, -zeta4],</span>
+<span class="go"> [-1, -zeta4]]</span>
+</pre></div>
+</div>
+<p>We next compute several invariants of <tt class="docutils literal"><span class="pre">G</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">sage: </span><span class="n">G</span><span class="o">.</span><span class="n">gens</span><span class="p">()</span>
+<span class="go">([-1, 1], [1, zeta4])</span>
+<span class="gp">sage: </span><span class="n">G</span><span class="o">.</span><span class="n">unit_gens</span><span class="p">()</span>
+<span class="go">[11, 17]</span>
+<span class="gp">sage: </span><span class="n">G</span><span class="o">.</span><span class="n">zeta</span><span class="p">()</span>
+<span class="go">zeta4</span>
+<span class="gp">sage: </span><span class="n">G</span><span class="o">.</span><span class="n">zeta_order</span><span class="p">()</span>
+<span class="go">4</span>
+</pre></div>
+</div>
+<p>In this example we create a Dirichlet character with values in a
+number field. We explicitly specify the choice of root of unity by
+the third argument to <tt class="docutils literal"><span class="pre">DirichletGroup</span></tt> below.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">sage: </span><span class="n">x</span> <span class="o">=</span> <span class="n">polygen</span><span class="p">(</span><span class="n">QQ</span><span class="p">,</span> <span class="s">&#39;x&#39;</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">K</span> <span class="o">=</span> <span class="n">NumberField</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mf">4</span> <span class="o">+</span> <span class="mf">1</span><span class="p">,</span> <span class="s">&#39;a&#39;</span><span class="p">);</span> <span class="n">a</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="mf">0</span>
+<span class="gp">sage: </span><span class="n">b</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">gen</span><span class="p">();</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span>
+<span class="go">True</span>
+<span class="gp">sage: </span><span class="n">K</span>
+<span class="go">Number Field in a with defining polynomial x^4 + 1</span>
+<span class="gp">sage: </span><span class="n">G</span> <span class="o">=</span> <span class="n">DirichletGroup</span><span class="p">(</span><span class="mf">5</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span> <span class="n">G</span>
+<span class="go">Group of Dirichlet characters of modulus 5 over Number Field in a with</span>
+<span class="go">defining polynomial x^4 + 1</span>
+<span class="gp">sage: </span><span class="n">G</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+<span class="go">[[1], [a^2], [-1], [-a^2]]</span>
+</pre></div>
+</div>
+<p>Here <tt class="docutils literal"><span class="pre">NumberField(x^4</span> <span class="pre">+</span> <span class="pre">1,</span> <span class="pre">'a')</span></tt> tells Sage to use the symbol &#8220;a&#8221; in
+printing what <tt class="docutils literal"><span class="pre">K</span></tt> is (a Number Field in a with defining polynomial
+<img class="math" src="_images/math/36a9aeb7ee8364b9dd556b36e54c27d9940897ac.png" alt="x^4 + 1"/>). The name &#8220;a&#8221; is undeclared at this point. Once
+<tt class="docutils literal"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">K.0</span></tt> (or equivalently <tt class="docutils literal"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">K.gen()</span></tt>) is evaluated, the symbol
+&#8220;a&#8221; represents a root of the generating polynomial
+<img class="math" src="_images/math/cea24d9df06f65f425979c5868eafbe403a97dac.png" alt="x^4+1"/>.</p>
+</div>
+<div class="section" id="modular-forms">
+<h2>Modular Forms<a class="headerlink" href="#modular-forms" title="Permalink to this headline">¶</a></h2>
+<p>Sage can do some computations related to modular forms, including
+dimensions, computing spaces of modular symbols, Hecke operators,
+and decompositions.</p>
+<p>There are several functions available for computing dimensions of
+spaces of modular forms. For example,</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">sage: </span><span class="n">dimension_cusp_forms</span><span class="p">(</span><span class="n">Gamma0</span><span class="p">(</span><span class="mf">11</span><span class="p">),</span><span class="mf">2</span><span class="p">)</span>
+<span class="go">1</span>
+<span class="gp">sage: </span><span class="n">dimension_cusp_forms</span><span class="p">(</span><span class="n">Gamma0</span><span class="p">(</span><span class="mf">1</span><span class="p">),</span><span class="mf">12</span><span class="p">)</span>
+<span class="go">1</span>
+<span class="gp">sage: </span><span class="n">dimension_cusp_forms</span><span class="p">(</span><span class="n">Gamma1</span><span class="p">(</span><span class="mf">389</span><span class="p">),</span><span class="mf">2</span><span class="p">)</span>
+<span class="go">6112</span>
+</pre></div>
+</div>
+<p>Next we illustrate computation of Hecke operators on a space of
+modular symbols of level <img class="math" src="_images/math/dce34f4dfb2406144304ad0d6106c5382ddd1446.png" alt="1"/> and weight <img class="math" src="_images/math/edf074831eb5bc9e61d6d6e09f525a86e3068f6a.png" alt="12"/>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">sage: </span><span class="n">M</span> <span class="o">=</span> <span class="n">ModularSymbols</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="mf">12</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">M</span><span class="o">.</span><span class="n">basis</span><span class="p">()</span>
+<span class="go">([X^8*Y^2,(0,0)], [X^9*Y,(0,0)], [X^10,(0,0)])</span>
+<span class="gp">sage: </span><span class="n">t2</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">T</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">t2</span>
+<span class="go">Hecke operator T_2 on Modular Symbols space of dimension 3 for Gamma_0(1)</span>
+<span class="go">of weight 12 with sign 0 over Rational Field</span>
+<span class="gp">sage: </span><span class="n">t2</span><span class="o">.</span><span class="n">matrix</span><span class="p">()</span>
+<span class="go">[ -24    0    0]</span>
+<span class="go">[   0  -24    0]</span>
+<span class="go">[4860    0 2049]</span>
+<span class="gp">sage: </span><span class="n">f</span> <span class="o">=</span> <span class="n">t2</span><span class="o">.</span><span class="n">charpoly</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">);</span> <span class="n">f</span>
+<span class="go">x^3 - 2001*x^2 - 97776*x - 1180224</span>
+<span class="gp">sage: </span><span class="n">factor</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="go">(x - 2049) * (x + 24)^2</span>
+<span class="gp">sage: </span><span class="n">M</span><span class="o">.</span><span class="n">T</span><span class="p">(</span><span class="mf">11</span><span class="p">)</span><span class="o">.</span><span class="n">charpoly</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">factor</span><span class="p">()</span>
+<span class="go">(x - 285311670612) * (x - 534612)^2</span>
+</pre></div>
+</div>
+<p>We can also create spaces for <img class="math" src="_images/math/0ce4343a7316d048508371ec15ac0cc5c641e53c.png" alt="\Gamma_0(N)"/> and
+<img class="math" src="_images/math/e1ce758e7944584095efc8e60f73a69edd624a20.png" alt="\Gamma_1(N)"/>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">sage: </span><span class="n">ModularSymbols</span><span class="p">(</span><span class="mf">11</span><span class="p">,</span><span class="mf">2</span><span class="p">)</span>
+<span class="go">Modular Symbols space of dimension 3 for Gamma_0(11) of weight 2 with sign</span>
+<span class="go"> 0 over Rational Field</span>
+<span class="gp">sage: </span><span class="n">ModularSymbols</span><span class="p">(</span><span class="n">Gamma1</span><span class="p">(</span><span class="mf">11</span><span class="p">),</span><span class="mf">2</span><span class="p">)</span>
+<span class="go">Modular Symbols space of dimension 11 for Gamma_1(11) of weight 2 with</span>
+<span class="go">sign 0 and over Rational Field</span>
+</pre></div>
+</div>
+<p>Let&#8217;s compute some characteristic polynomials and
+<img class="math" src="_images/math/0615acc3725de21025457e7d6f7694dab8e2f758.png" alt="q"/>-expansions.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">sage: </span><span class="n">M</span> <span class="o">=</span> <span class="n">ModularSymbols</span><span class="p">(</span><span class="n">Gamma1</span><span class="p">(</span><span class="mf">11</span><span class="p">),</span><span class="mf">2</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">M</span><span class="o">.</span><span class="n">T</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span><span class="o">.</span><span class="n">charpoly</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">)</span>
+<span class="go">x^11 - 8*x^10 + 20*x^9 + 10*x^8 - 145*x^7 + 229*x^6 + 58*x^5 - 360*x^4</span>
+<span class="go">     + 70*x^3 - 515*x^2 + 1804*x - 1452</span>
+<span class="gp">sage: </span><span class="n">M</span><span class="o">.</span><span class="n">T</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span><span class="o">.</span><span class="n">charpoly</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">factor</span><span class="p">()</span>
+<span class="go">(x - 3) * (x + 2)^2 * (x^4 - 7*x^3 + 19*x^2 - 23*x + 11)</span>
+<span class="go">        * (x^4 - 2*x^3 + 4*x^2 + 2*x + 11)</span>
+<span class="gp">sage: </span><span class="n">S</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">cuspidal_submodule</span><span class="p">()</span>
+<span class="gp">sage: </span><span class="n">S</span><span class="o">.</span><span class="n">T</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span><span class="o">.</span><span class="n">matrix</span><span class="p">()</span>
+<span class="go">[-2  0]</span>
+<span class="go">[ 0 -2]</span>
+<span class="gp">sage: </span><span class="n">S</span><span class="o">.</span><span class="n">q_expansion_basis</span><span class="p">(</span><span class="mf">10</span><span class="p">)</span>
+<span class="go">[</span>
+<span class="go">    q - 2*q^2 - q^3 + 2*q^4 + q^5 + 2*q^6 - 2*q^7 - 2*q^9 + O(q^10)</span>
+<span class="go">]</span>
+</pre></div>
+</div>
+<p>We can even compute spaces of modular symbols with character.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">sage: </span><span class="n">G</span> <span class="o">=</span> <span class="n">DirichletGroup</span><span class="p">(</span><span class="mf">13</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">e</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="mf">0</span><span class="o">^</span><span class="mf">2</span>
+<span class="gp">sage: </span><span class="n">M</span> <span class="o">=</span> <span class="n">ModularSymbols</span><span class="p">(</span><span class="n">e</span><span class="p">,</span><span class="mf">2</span><span class="p">);</span> <span class="n">M</span>
+<span class="go">Modular Symbols space of dimension 4 and level 13, weight 2, character</span>
+<span class="go">[zeta6], sign 0, over Cyclotomic Field of order 6 and degree 2</span>
+<span class="gp">sage: </span><span class="n">M</span><span class="o">.</span><span class="n">T</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span><span class="o">.</span><span class="n">charpoly</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">factor</span><span class="p">()</span>
+<span class="go">(x - 2*zeta6 - 1) * (x - zeta6 - 2) * (x + zeta6 + 1)^2</span>
+<span class="gp">sage: </span><span class="n">S</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">cuspidal_submodule</span><span class="p">();</span> <span class="n">S</span>
+<span class="go">Modular Symbols subspace of dimension 2 of Modular Symbols space of</span>
+<span class="go">dimension 4 and level 13, weight 2, character [zeta6], sign 0, over</span>
+<span class="go">Cyclotomic Field of order 6 and degree 2</span>
+<span class="gp">sage: </span><span class="n">S</span><span class="o">.</span><span class="n">T</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span><span class="o">.</span><span class="n">charpoly</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">factor</span><span class="p">()</span>
+<span class="go">(x + zeta6 + 1)^2</span>
+<span class="gp">sage: </span><span class="n">S</span><span class="o">.</span><span class="n">q_expansion_basis</span><span class="p">(</span><span class="mf">10</span><span class="p">)</span>
+<span class="go">[</span>
+<span class="go">q + (-zeta6 - 1)*q^2 + (2*zeta6 - 2)*q^3 + zeta6*q^4 + (-2*zeta6 + 1)*q^5</span>
+<span class="go">  + (-2*zeta6 + 4)*q^6 + (2*zeta6 - 1)*q^8 - zeta6*q^9 + O(q^10)</span>
+<span class="go">]</span>
+</pre></div>
+</div>
+<p>Here is another example of how Sage can compute the action of Hecke
+operators on a space of modular forms.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">sage: </span><span class="n">T</span> <span class="o">=</span> <span class="n">ModularForms</span><span class="p">(</span><span class="n">Gamma0</span><span class="p">(</span><span class="mf">11</span><span class="p">),</span><span class="mf">2</span><span class="p">)</span>
+<span class="gp">sage: </span><span class="n">T</span>
+<span class="go">Modular Forms space of dimension 2 for Congruence Subgroup Gamma0(11) of</span>
+<span class="go">weight 2 over Rational Field</span>
+<span class="gp">sage: </span><span class="n">T</span><span class="o">.</span><span class="n">degree</span><span class="p">()</span>
+<span class="go">2</span>
+<span class="gp">sage: </span><span class="n">T</span><span class="o">.</span><span class="n">level</span><span class="p">()</span>
+<span class="go">11</span>
+<span class="gp">sage: </span><span class="n">T</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
+<span class="go">Congruence Subgroup Gamma0(11)</span>
+<span class="gp">sage: </span><span class="n">T</span><span class="o">.</span><span class="n">dimension</span><span class="p">()</span>
+<span class="go">2</span>
+<span class="gp">sage: </span><span class="n">T</span><span class="o">.</span><span class="n">cuspidal_subspace</span><span class="p">()</span>
+<span class="go">Cuspidal subspace of dimension 1 of Modular Forms space of dimension 2 for</span>
+<span class="go">Congruence Subgroup Gamma0(11) of weight 2 over Rational Field</span>
+<span class="gp">sage: </span><span class="n">T</span><span class="o">.</span><span class="n">eisenstein_subspace</span><span class="p">()</span>
+<span class="go">Eisenstein subspace of dimension 1 of Modular Forms space of dimension 2</span>
+<span class="go">for Congruence Subgroup Gamma0(11) of weight 2 over Rational Field</span>
+<span class="gp">sage: </span><span class="n">M</span> <span class="o">=</span> <span class="n">ModularSymbols</span><span class="p">(</span><span class="mf">11</span><span class="p">);</span> <span class="n">M</span>
+<span class="go">Modular Symbols space of dimension 3 for Gamma_0(11) of weight 2 with sign</span>
+<span class="go">0 over Rational Field</span>
+<span class="gp">sage: </span><span class="n">M</span><span class="o">.</span><span class="n">weight</span><span class="p">()</span>
+<span class="go">2</span>
+<span class="gp">sage: </span><span class="n">M</span><span class="o">.</span><span class="n">basis</span><span class="p">()</span>
+<span class="go">((1,0), (1,8), (1,9))</span>
+<span class="gp">sage: </span><span class="n">M</span><span class="o">.</span><span class="n">sign</span><span class="p">()</span>
+<span class="go">0</span>
+</pre></div>
+</div>
+<p>Let <img class="math" src="_images/math/3e491952b676db6942353d75fc8bd8e4e97f7016.png" alt="T_p"/> denote the usual Hecke operators (<img class="math" src="_images/math/36f73fc1312ee0349b3f3a0f3bd9eb5504339011.png" alt="p"/>
+prime). How do the Hecke operators <img class="math" src="_images/math/40db9b6f10ff583906d78a06a76e08e04381bc1a.png" alt="T_2"/>, <img class="math" src="_images/math/d0d8e9c5c70be5e8b812a08ce2566d0db946c608.png" alt="T_3"/>,
+<img class="math" src="_images/math/35d4698fff01484f830b3a88bd694e16f24bbfd2.png" alt="T_5"/> act on the space of modular symbols?</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">sage: </span><span class="n">M</span><span class="o">.</span><span class="n">T</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span><span class="o">.</span><span class="n">matrix</span><span class="p">()</span>
+<span class="go">[ 3  0 -1]</span>
+<span class="go">[ 0 -2  0]</span>
+<span class="go">[ 0  0 -2]</span>
+<span class="gp">sage: </span><span class="n">M</span><span class="o">.</span><span class="n">T</span><span class="p">(</span><span class="mf">3</span><span class="p">)</span><span class="o">.</span><span class="n">matrix</span><span class="p">()</span>
+<span class="go">[ 4  0 -1]</span>
+<span class="go">[ 0 -1  0]</span>
+<span class="go">[ 0  0 -1]</span>
+<span class="gp">sage: </span><span class="n">M</span><span class="o">.</span><span class="n">T</span><span class="p">(</span><span class="mf">5</span><span class="p">)</span><span class="o">.</span><span class="n">matrix</span><span class="p">()</span>
+<span class="go">[ 6  0 -1]</span>
+<span class="go">[ 0  1  0]</span>
+<span class="go">[ 0  0  1]</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">关于高等数学的更多话题</a><ul>
+<li><a class="reference external" href="#id2">代数几何</a></li>
+<li><a class="reference external" href="#id3">椭圆曲线</a></li>
+<li><a class="reference external" href="#dirichlet-characters">Dirichlet Characters</a></li>
+<li><a class="reference external" href="#modular-forms">Modular Forms</a></li>
+</ul>
+</li>
+</ul>
+
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/tour_advanced-zh.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+  
+    
+      <a href="../index.html"><img src="_static/sagelogo.png" style="vertical-align: middle" title="Sage Logo"></a>
+    
+  
+  
+        <li><a href="index.html">Sage Tutorial v4.3</a> &raquo;</li>
+ 
+      </ul>
+    </div>
+    
+    <div class="footer">
+      &copy; Copyright 2005--2009, The Sage Development Team.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+    </div>
+    <script type="text/javascript">
+/*global jQuery, window */
+/* Sphinx sidebar toggle.  Putting this code at the end of the body
+ * enables the toggle for the live, static, and offline docs.  Note:
+ * sage.misc.html.math_parse() eats jQuery's dollar-sign shortcut. */
+var jq = jQuery;  
+jq(document).ready(function () {
+    var bar, bod, bg, fg, key, tog, wid_old, wid_new, resize, get_state, set_state;
+    bod = jq('div.bodywrapper');
+    bar = jq('div.sphinxsidebar');
+    tog = jq('<div class="sphinxsidebartoggle"></div>');
+    
+    /* Delayed resize helper.  Not perfect but good enough. */
+    resize = function () {
+        setTimeout(function () {
+            tog.height(bod.height());
+        }, 100);
+    };
+    jq(window).resize(function () {
+        resize();
+    });
+    
+    /* Setup and add the toggle. See Sphinx v0.5.1 default.css. */
+    fg = jq('div.sphinxsidebar p a').css('color') || 'rgb(152, 219, 204)';
+    bg = jq('div.document').css('background-color') || 'rgb(28, 78, 99)';
+    wid_old = '230px';
+    wid_new = '5px';
+    tog.css('background-color', bg)
+        .css('border-width', '0px')
+        .css('border-right', wid_new + ' ridge ' + bg)
+        .css('cursor', 'pointer')
+        .css('position', 'absolute')
+        .css('left', '-' + wid_new)
+        .css('top', '0px')
+        .css('width', wid_new);
+    bod.css('position', 'relative');
+    bod.prepend(tog);
+    resize();
+    
+    /* Cookie helpers. */
+    key = 'sphinxsidebar=';
+    set_state = function (s) {
+        var date = new Date();
+        /* Expiry in 7 days. */
+        date.setTime(date.getTime() + (7 * 24 * 3600 * 1000));
+        document.cookie = key + encodeURIComponent(s) + '; expires=' +
+            date.toUTCString() + '; path=/';
+    };
+    get_state = function () {
+        var i, c, crumbs = document.cookie.split(';');
+        for (i = 0; i < crumbs.length; i += 1) {
+            c = crumbs[i].replace(/^\s+/, '');
+            if (c.indexOf(key) === 0) {
+                return decodeURIComponent(c.substring(key.length, c.length));
+            }
+        }
+        return null;
+    };
+    
+    /* Event handlers. */
+    tog.mouseover(function (ev) {
+        tog.css('border-right-color', fg);
+    }).mouseout(function (ev) {
+        tog.css('border-right-color', bg);
+    }).click(function (ev) {
+        if (bod.hasClass('wide')) {
+            bod.removeClass('wide');
+            bod.css('margin-left', wid_old);
+            bar.css('width', wid_old);
+            bar.show();
+            set_state('visible');
+        } else {
+            set_state('hidden');
+            bar.hide();
+            bar.css('width', '0px');
+            bod.css('margin-left', wid_new);
+            bod.addClass('wide');
+        }
+        resize();
+    });
+    
+    /* Hide the normally visible sidebar? */
+    if (get_state() === 'hidden') {
+        tog.trigger('click');
+    } else {
+        set_state('visible');
+    }
+});
+    </script>
+  </body>
+</html>
