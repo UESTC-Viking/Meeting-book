@@ -141,3 +141,19 @@ Exlau - 陈禹宏
 
 ---
 
+会议时间：2020年6月25日21:00:00
+
+会议分享人：Exlau（陈禹宏）、Helix（吴俊）
+
+内容预告：
+
+- Exlau - Web 中的 URL编码 | URL编码 Folder
+- Helix - RCTF2020 Web 两道题目讲解 | RCTF2020web Folder
+
+附件：2020-06-25.zip
+
+> EL（伍桐雨）分享请假
+>
+> 黑鹰（林郑熹）会议请假
+
+---
