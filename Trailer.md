@@ -181,3 +181,22 @@ Exlau - 陈禹宏
 附件：2020-07-02.zip
 
 ---
+
+![image-20200705185427778](Trailer/image-20200705185427778.png)
+
+---
+
+会议时间：2020年07月05日21:00:00
+
+会议分享人：ZER0-Nu1L（吴昌博）、黑鹰（林郑熹）、Li0nT1（梁田）、zesiar0（曾家华）
+
+内容预告：
+
+- ZER0-Nu1L - 缓冲区溢出攻击分析 | 缓冲区溢出攻击分析 folder
+- 黑鹰 - IOS 逆向 | 黑鹰7.2分享 folder
+- Li0nT1 - Navicat for MySQL使用 | Navicat for MySQL使用.md
+- zesiar0 - PHP反序列化尾部字符逃逸 | PHP反序列化尾部字符逃逸学习.md
+
+附件：2020-07-05.zip
+
+---
