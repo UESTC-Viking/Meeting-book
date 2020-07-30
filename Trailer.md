@@ -234,9 +234,18 @@ doris - 朱奕燃
 
 ---
 
+会议时间：2020年07月30日21:00:00
 
+会议分享人：doris（朱奕燃）、Ttt0（郭天一）、zesiar0（曾家华）
 
+内容预告：
 
+- doris - SEH-反调试 | SEH-反调试.md
+- Ttt0 - FSViewer注册机 | FSViewer注册机 folder
+- zesiar0 - SSTI模板注入
 
-- 郭天一
+附件：2020-07-30.zip
 
+> 吴俊 请假
+
+---
