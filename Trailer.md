@@ -249,3 +249,18 @@ doris - 朱奕燃
 > 吴俊 请假
 
 ---
+
+会议时间：2020年08月06日21:00:00
+
+会议分享人：Exlau（陈禹宏）、F4sthand（王滨）、T1m3e（王增翔）、EL（伍桐雨）
+
+内容预告：
+
+- Exlau - 简易python爬取jpg | 简易python爬取jpg Folder
+- F4sthand - 蛋白质设计 | 蛋白质设计 Folder
+- T1m3e - 安卓逆向 | CFF1.apk
+- EL - 恶意弹窗及winAPI | 恶意弹窗及winAPI folder
+
+附件：2020-08-06.zip
+
+---
