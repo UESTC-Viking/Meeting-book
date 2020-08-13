@@ -264,3 +264,32 @@ doris - 朱奕燃
 附件：2020-08-06.zip
 
 ---
+
+会议时间：2020年08月09日21:00:00
+
+会议分享人：ZER0-Nu1L（吴昌博）、Juice（何正文）、Li0nT1（梁田）、zesiar0（曾家华）内容预告：
+
+- ZER0-Nu1L - 一道招新题？ | Classical folder
+- Juice - 菜刀相关和base64 | 菜刀相关和base64.zip （火绒好像会被 md 当做它恶意文件）
+- Li0nT1 - 有关 Poem_Codes 的一道题 | Poem_Codes.md
+- zesiar0 - .user.ini文件构成的后门 | .user.ini文件构成的后门.md
+
+附件：2020-08-09.zip
+
+> 黑鹰（林郑熹）请假。
+>
+
+---
+
+会议时间：2020年07月30日21:00:00
+
+会议分享人：Ttt0（郭天一）、doris（朱奕燃）、
+
+内容预告：
+
+- Ttt0 - 逆向分析010editor
+- zesiar0 - SSTI模板注入
+
+附件：2020-07-30.zip
+
+> 吴俊 请假
