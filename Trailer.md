@@ -353,3 +353,34 @@ doris - 朱奕燃
 
 ---
 
+会议时间：2020年10月18日20:00:00
+
+会议分享人：ZER0-Nu1L（吴昌博）、zesiar0（曾家华）、doris（朱奕燃）、EL（伍桐雨）
+
+内容预告：
+
+- ZER0-Nu1L - P4(Programming Protocol-Independent Packet Processors) |  P4 folder
+- zesiar0 - 无字母数字webshell |  2020-10-18-无字母数字webshell提高篇.md
+- doris - Benaloh cryptosystem | Benaloh cryptosystem.md
+- EL - Unkown | 神秘分享，敬请期待。
+- ......
+
+附件：2020-10-18.zip
+
+---
+
+会议时间：2020年11月08日20:00:00
+
+会议分享人：zesiar0（曾家华）、Exlau（陈禹宏）、ZER0-Nu1L（吴昌博）、doris（朱奕燃）
+
+内容预告：
+
+- zesiar0 - http请求走私 | https://paper.seebug.org/1048
+- Exlau - JSFXXK | jsfxxk.md
+- ZER0-Nu1L - Encode & conding in Crypto | 现场演示
+- doris - 线性回归 | 线性回归-doris.md
+
+附件：2020-11-08.zip
+
+---
+
