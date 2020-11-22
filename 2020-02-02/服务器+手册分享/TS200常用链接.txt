@@ -1,0 +1,15 @@
+support官网TS200：https://support.huawei.com/enterprise/zh/taishan-servers/ts200-2280-pid-250697162
+
+开局指导书：https://support.huawei.com/enterprise/zh/doc/EDOC1100092178?idPath=7919749%7C9856522%7C9856629%7C250697162
+
+TS200用户指南：https://support.huawei.com/enterprise/zh/doc/EDOC1100088652?idPath=7919749%7C9856522%7C9856629%7C250697162
+最新版BMC用户指南：https://support.huawei.com/enterprise/zh/doc/EDOC1100048792?idPath=7919749%7C9856522%7C9856629%7C250697162
+BIOS参数参考指南：https://support.huawei.com/enterprise/zh/doc/EDOC1100088653?idPath=7919749%7C9856522%7C9856629%7C250697162
+板载GE口用户指南：https://support.huawei.com/enterprise/zh/doc/EDOC1100118648?idPath=7919749%7C9856522%7C9856629%7C250697162
+
+固件升级指导书：https://support.huawei.com/enterprise/zh/doc/EDOC1100048781/91101ea8
+欧拉SP8安装指南：https://support.huawei.com/enterprise/zh/doc/EDOC1100101109?idPath=7919749%7C9856522%7C9856629%7C250697162
+兼容性查询：http://support.huawei.com/onlinetoolweb/ftca/index?serise=9
+
+redfish接口说明：https://support.huawei.com/enterprise/zh/doc/EDOC1000126991?idPath=7919749%7C9856522%7C9856629%7C250697162
+通信矩阵：https://support.huawei.com/enterprise/zh/doc/EDOC1100088659?idPath=7919749%7C9856522%7C9856629%7C250697162###

@@ -1,0 +1,9221 @@
+%PDF-1.2
+%‚„œ”
+2 0 obj
+<<
+/Length 4777
+>>
+stream
+BT
+/F2 1 Tf
+14 0 0 14 163 656 Tm
+0 g
+/GS1 gs
+0.008 Tc
+0.085 Tw
+(Cryptanalysis of Short RSA Secret Exponents)Tj
+/F4 1 Tf
+12 0 0 12 263 612 Tm
+-0.012 Tc
+0 Tw
+(Michael J. Wiener)Tj
+/F8 1 Tf
+10 0 0 10 296 590 Tm
+-0.028 Tc
+(BNR)Tj
+-4.2 -1.3 TD
+0.006 Tc
+0.057 Tw
+(P.O. Box 3511 Station C)Tj
+-2 -1.3 TD
+-0.002 Tc
+0 Tw
+(Ottawa, Ontario, Canada, K1Y 4H7)Tj
+4.2 -2.1 TD
+0.003 Tc
+0.035 Tw
+(1989 August 3)Tj
+/F2 1 Tf
+-15 -3.9 TD
+0.006 Tc
+(Abstract.)Tj
+/F8 1 Tf
+4.025 0 TD
+0.002 Tc
+0.019 Tw
+[(   A cryptanalytic attack on the use of short RSA secret exponents is described.)]TJ
+-4.025 -1.1 TD
+0.013 Tc
+0.125 Tw
+(This attack makes use of an algorithm based on continued fractions which finds the)Tj
+T*
+0.017 Tc
+0.167 Tw
+(numerator and denominator of a fraction in polynomial time when a close enough)Tj
+T*
+0.001 Tc
+0.007 Tw
+[(estimate of the fraction is known.  The public exponent )]TJ
+/F4 1 Tf
+22.467 0 TD
+(e)Tj
+/F8 1 Tf
+0.444 0 TD
+0.006 Tw
+[( and the modulus )]TJ
+/F4 1 Tf
+7.146 0 TD
+0 Tc
+(pq)Tj
+/F8 1 Tf
+1 0 TD
+0.001 Tc
+[( can be used)]TJ
+-31.056 -1.1 TD
+0.005 Tc
+0.049 Tw
+(to create an estimate of a fraction which involves the secret exponent )Tj
+/F4 1 Tf
+28.829 0 TD
+(d)Tj
+/F8 1 Tf
+0.517 0 TD
+0.048 Tw
+[(.  The algorithm)]TJ
+-29.346 -1.1 TD
+0.015 Tc
+0.154 Tw
+(based on continued fractions uses this estimate to discover sufficiently short secret)Tj
+T*
+0.005 Tc
+0.046 Tw
+[(exponents.  For a typical case where )]TJ
+/F4 1 Tf
+15.267 0 TD
+(e)Tj
+/F8 1 Tf
+0.459 0 TD
+0.001 Tc
+0.016 Tw
+[( < )]TJ
+/F4 1 Tf
+1.099 0 TD
+0.017 Tc
+(pq)Tj
+/F8 1 Tf
+1.034 0 TD
+0.001 Tc
+(, )Tj
+/F4 1 Tf
+0.517 0 TD
+0.024 Tc
+(GCD)Tj
+/F8 1 Tf
+2.182 0 TD
+(\()Tj
+/F4 1 Tf
+0.443 0 TD
+(p)Tj
+/F8 1 Tf
+0.532 0 TD
+0.006 Tc
+(-1, )Tj
+/F4 1 Tf
+1.417 0 TD
+(q)Tj
+/F8 1 Tf
+0.532 0 TD
+0.007 Tc
+0.073 Tw
+(-1\) is small, and )Tj
+/F4 1 Tf
+7.117 0 TD
+(p)Tj
+/F8 1 Tf
+0.532 0 TD
+0.005 Tc
+0.049 Tw
+[( and )]TJ
+/F4 1 Tf
+2.067 0 TD
+(q)Tj
+/F8 1 Tf
+0.532 0 TD
+0.01 Tc
+0.096 Tw
+[( have)]TJ
+-33.728 -1.1 TD
+0.001 Tc
+0.008 Tw
+(approximately the same number of bits, this attack will discover secret exponents with up)Tj
+T*
+0.004 Tc
+0.045 Tw
+[(to approximately one-quarter as many bits as the modulus.  Ways to combat this attack,)]TJ
+T*
+0.003 Tc
+0.027 Tw
+[(ways to improve it, and two open problems are described.  This attack poses no threat to)]TJ
+T*
+0.03 Tw
+(the normal case of RSA where the secret exponent is approximately the same size as the)Tj
+T*
+0.006 Tc
+0.057 Tw
+[(modulus.  This is because this attack uses information provided by the public exponent)]TJ
+T*
+0.05 Tw
+(and, in the normal case, the public exponent can be chosen almost independently of the)Tj
+T*
+0.001 Tc
+(modulus.)Tj
+/F2 1 Tf
+0 -2.6 TD
+0.005 Tc
+(Key Words.)Tj
+/F8 1 Tf
+5.211 0 TD
+0.003 Tc
+0.033 Tw
+[(   RSA, cryptanalysis, continued fraction, short exponent.)]TJ
+/F2 1 Tf
+12 0 0 12 90 293 Tm
+0.024 Tw
+(1. Introduction)Tj
+/F8 1 Tf
+0 -2.333 TD
+-0.005 Tc
+0 Tw
+(From the set of all key pairs for the RSA public-key cryptosystem [5], some key pairs have)Tj
+0 -1 TD
+0.002 Tc
+0.024 Tw
+[(properties which can be exploited by various cryptanalytic attacks.  Some attacks exploit)]TJ
+T*
+0.004 Tc
+0.039 Tw
+(weaknesses in the modulus, and others exploit weaknesses in the public exponent or the)Tj
+T*
+0.001 Tc
+0.009 Tw
+[(secret exponent.  The weaknesses discussed here are those which allow an attack on RSA)]TJ
+T*
+-0.009 Tc
+0 Tw
+(to be completed in a length of time which is polynomial in the length of the modulus.)Tj
+0 -2.417 TD
+0.001 Tc
+0.013 Tw
+(Attacks on the RSA modulus are aimed at discovering the two prime factors \()Tj
+/F4 1 Tf
+31.417 0 TD
+(p)Tj
+/F8 1 Tf
+0.526 0 TD
+0.004 Tc
+0.04 Tw
+[( and )]TJ
+/F4 1 Tf
+2.044 0 TD
+(q)Tj
+/F8 1 Tf
+0.526 0 TD
+0.006 Tc
+0.056 Tw
+(\) of)Tj
+-34.512 -1 TD
+-0.003 Tc
+0 Tw
+(the modulus.  One such attack can be used to factor the modulus when the prime factors of)Tj
+0 -1.083 TD
+-0.007 Tc
+(either )Tj
+/F4 1 Tf
+2.477 0 TD
+(p)Tj
+/F8 1 Tf
+0.49 0 TD
+(-1 or )Tj
+/F4 1 Tf
+2.123 0 TD
+(q)Tj
+/F8 1 Tf
+0.49 0 TD
+-0.008 Tc
+(-1 are all small [3].  The modulus can also be factored when the prime factors)Tj
+-5.58 -1.083 TD
+0.011 Tc
+0.104 Tw
+(of either )Tj
+/F4 1 Tf
+3.925 0 TD
+(p)Tj
+/F8 1 Tf
+0.544 0 TD
+0.008 Tc
+0.08 Tw
+(+1 or )Tj
+/F4 1 Tf
+2.606 0 TD
+(q)Tj
+/F8 1 Tf
+0.544 0 TD
+0.012 Tc
+0.115 Tw
+[(+1 are all small [6].  There is a simple algorithm for factoring the)]TJ
+-7.618 -1 TD
+-0.007 Tc
+0 Tw
+(modulus when the difference between the primes is only polynomially times larger than the)Tj
+T*
+-0.008 Tc
+(square root of either prime.  This algorithm is based upon the following identity:)Tj
+ET
+endstream
+endobj
+3 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F2 4 0 R
+/F4 5 0 R
+/F8 6 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+10 0 obj
+<<
+/Length 8125
+>>
+stream
+BT
+/F8 1 Tf
+12 0 0 12 303 39 Tm
+0 g
+/GS1 gs
+(2)Tj
+24 0 0 24 226 693 Tm
+(\()Tj
+ET
+1 i 
+235 698 21 -1 re
+f
+BT
+12 0 0 12 242 687 Tm
+(2)Tj
+/F4 1 Tf
+-0.583 1.333 TD
+(p)Tj
+/F8 1 Tf
+0.583 0 TD
+(+)Tj
+/F4 1 Tf
+0.667 0 TD
+(q)Tj
+/F8 1 Tf
+24 0 0 24 257 693 Tm
+(\))Tj
+9 0 0 9 264 707 Tm
+(2)Tj
+12 0 0 12 268.5 695 Tm
+0.002 Tc
+0.001 Tw
+(   -   )Tj
+/F4 1 Tf
+1.851 0 TD
+0.005 Tc
+(pq)Tj
+/F8 1 Tf
+1.01 0 TD
+0.002 Tc
+(     =     )Tj
+24 0 0 24 339 693 Tm
+(\()Tj
+ET
+348 698 18 -1 re
+f
+BT
+12 0 0 12 354 687 Tm
+(2)Tj
+/F4 1 Tf
+-0.5 1.333 TD
+(p)Tj
+/F8 1 Tf
+0.583 0 TD
+(-)Tj
+/F4 1 Tf
+0.417 0 TD
+(q)Tj
+/F8 1 Tf
+24 0 0 24 367 693 Tm
+(\))Tj
+9 0 0 9 374 707 Tm
+(2)Tj
+12 0 0 12 379 688 Tm
+( )Tj
+0.292 0.417 TD
+(.)Tj
+-24.375 -3.667 TD
+-0.008 Tc
+0 Tw
+(The modulus can be factored by finding \()Tj
+/F4 1 Tf
+16.333 0 TD
+(p)Tj
+/F8 1 Tf
+0.5 0 TD
+(+)Tj
+/F4 1 Tf
+0.564 0 TD
+(q)Tj
+/F8 1 Tf
+0.5 0 TD
+-0.003 Tc
+(\)/2 and \()Tj
+/F4 1 Tf
+3.436 0 TD
+(p)Tj
+/F8 1 Tf
+0.508 0 TD
+(-)Tj
+/F4 1 Tf
+0.338 0 TD
+(q)Tj
+/F8 1 Tf
+0.508 0 TD
+0.001 Tc
+0.014 Tw
+[(\)/2.  \(\()]TJ
+/F4 1 Tf
+2.647 0 TD
+(p)Tj
+/F8 1 Tf
+0.507 0 TD
+(+)Tj
+/F4 1 Tf
+0.572 0 TD
+(q)Tj
+/F8 1 Tf
+0.507 0 TD
+0.005 Tc
+(\)/2\))Tj
+9 0 0 9 430.607 653 Tm
+(2)Tj
+12 0 0 12 435.17 649 Tm
+0.002 Tc
+0.015 Tw
+[( can be found in a)]TJ
+-28.764 -1 TD
+0 Tc
+0.005 Tw
+(linear search through the perfect squares starting from the modulus.  The correct square is)Tj
+T*
+-0.007 Tc
+0 Tw
+(found when the difference between the square and the modulus is itself a perfect square.)Tj
+0 -2.333 TD
+-0.002 Tc
+(There are various attacks on RSA which require, among other conditions, either the public)Tj
+0 -1 TD
+-0.001 Tc
+(or secret exponent to be short.  In some cases it may be desirable to use a shorter public or)Tj
+T*
+0.001 Tc
+0.005 Tw
+(secret exponent because this reduces the encryption or decryption execution time.  This is)Tj
+T*
+0.011 Tc
+0.109 Tw
+(because, for a fixed modulus size, the RSA encryption or decryption time is roughly)Tj
+T*
+0.004 Tc
+0.035 Tw
+[(proportional to the number of bits in the exponent.  One situation where the use of short)]TJ
+T*
+0.006 Tc
+0.057 Tw
+(exponents is particularly advantageous is when there is a large difference in computing)Tj
+T*
+0.002 Tc
+0.022 Tw
+[(power between two communicating devices.  An example of this is when RSA is used in)]TJ
+T*
+0.006 Tc
+0.061 Tw
+[(communications between a smart card and a larger computer.  In this case, it would be)]TJ
+T*
+0 Tc
+0 Tw
+(desirable for the smart card to have a short secret exponent, and for the larger computer to)Tj
+T*
+0.002 Tc
+0.017 Tw
+(have a short public exponent in order to reduce the processing required in the smart card.)Tj
+T*
+-0.002 Tc
+0 Tw
+(However, one must be wary of short exponent attacks on RSA.)Tj
+0 -2.333 TD
+0.008 Tc
+0.078 Tw
+(Short public exponents can be exploited when the same message is broadcast to many)Tj
+0 -1.083 TD
+0 Tc
+0.001 Tw
+(parties [1].  To illustrate this attack, suppose that a message )Tj
+/F4 1 Tf
+24.093 0 TD
+(m)Tj
+/F8 1 Tf
+0.722 0 TD
+( is broadcast to three parties)Tj
+-24.815 -1.083 TD
+0.008 Tc
+0.078 Tw
+(whose public exponents are )Tj
+/F4 1 Tf
+11.857 0 TD
+(e)Tj
+/F8 1 Tf
+9 0 0 9 237.858 421 Tm
+(1)Tj
+12 0 0 12 242.566 423 Tm
+0.002 Tc
+0.022 Tw
+[( = )]TJ
+/F4 1 Tf
+1.114 0 TD
+(e)Tj
+/F8 1 Tf
+9 0 0 9 261.505 421 Tm
+(2)Tj
+12 0 0 12 266.213 423 Tm
+[( = )]TJ
+/F4 1 Tf
+1.114 0 TD
+(e)Tj
+/F8 1 Tf
+9 0 0 9 285.151 421 Tm
+(3)Tj
+12 0 0 12 289.86 423 Tm
+0.005 Tc
+0.053 Tw
+[( = 3 and whose moduli are )]TJ
+/F4 1 Tf
+11.373 0 TD
+(n)Tj
+/F8 1 Tf
+9 0 0 9 432.611 421 Tm
+(1)Tj
+12 0 0 12 437.319 423 Tm
+0.002 Tc
+(, )Tj
+/F4 1 Tf
+0.523 0 TD
+(n)Tj
+/F8 1 Tf
+9 0 0 9 449.876 421 Tm
+(2)Tj
+12 0 0 12 454.585 423 Tm
+0.004 Tc
+0.039 Tw
+(, and )Tj
+/F4 1 Tf
+2.296 0 TD
+(n)Tj
+/F8 1 Tf
+9 0 0 9 488.415 421 Tm
+(3)Tj
+12 0 0 12 493.124 423 Tm
+0.043 Tw
+[(.  The)]TJ
+-33.594 -1 TD
+0.002 Tc
+0.025 Tw
+(encrypted messages are)Tj
+/F4 1 Tf
+9.543 -2.5 TD
+(m)Tj
+/F8 1 Tf
+9 0 0 9 213.277 385 Tm
+(3)Tj
+12 0 0 12 217.777 381 Tm
+0.001 Tc
+0.01 Tw
+[( mod )]TJ
+/F4 1 Tf
+2.303 0 TD
+(n)Tj
+/F8 1 Tf
+9 0 0 9 251.476 379 Tm
+(1)Tj
+12 0 0 12 255.976 381 Tm
+0.003 Tw
+(,   )Tj
+/F4 1 Tf
+1.011 0 TD
+(m)Tj
+/F8 1 Tf
+9 0 0 9 276.865 385 Tm
+(3)Tj
+12 0 0 12 281.365 381 Tm
+0.01 Tw
+[( mod )]TJ
+/F4 1 Tf
+2.303 0 TD
+(n)Tj
+/F8 1 Tf
+9 0 0 9 315.064 379 Tm
+(2)Tj
+12 0 0 12 319.564 381 Tm
+0.002 Tc
+0.004 Tw
+(,  and   )Tj
+/F4 1 Tf
+2.976 0 TD
+(m)Tj
+/F8 1 Tf
+9 0 0 9 364.032 385 Tm
+(3)Tj
+12 0 0 12 368.532 381 Tm
+0.001 Tc
+0.01 Tw
+[( mod )]TJ
+/F4 1 Tf
+2.303 0 TD
+(n)Tj
+/F8 1 Tf
+9 0 0 9 402.231 379 Tm
+(3)Tj
+12 0 0 12 406.73 381 Tm
+(.)Tj
+-26.394 -2.5 TD
+0.005 Tc
+0.047 Tw
+(Using the Chinese Remainder Theorem, one can find )Tj
+/F4 1 Tf
+22.141 0 TD
+(m)Tj
+/F8 1 Tf
+9 0 0 9 364.601 355 Tm
+(3)Tj
+12 0 0 12 369.23 351 Tm
+0.003 Tc
+0.026 Tw
+[( mod )]TJ
+/F4 1 Tf
+2.343 0 TD
+(n)Tj
+/F8 1 Tf
+9 0 0 9 403.518 349 Tm
+(1)Tj
+/F4 1 Tf
+12 0 0 12 408.147 351 Tm
+(n)Tj
+/F8 1 Tf
+9 0 0 9 414.318 349 Tm
+(2)Tj
+/F4 1 Tf
+12 0 0 12 418.947 351 Tm
+(n)Tj
+/F8 1 Tf
+9 0 0 9 425.119 349 Tm
+(3)Tj
+12 0 0 12 429.747 351 Tm
+0.02 Tw
+[(.  But, )]TJ
+/F4 1 Tf
+2.772 0 TD
+(m)Tj
+/F8 1 Tf
+9 0 0 9 471.922 355 Tm
+(3)Tj
+12 0 0 12 476.551 351 Tm
+0.001 Tc
+0.014 Tw
+[( < )]TJ
+/F4 1 Tf
+1.095 0 TD
+(n)Tj
+/F8 1 Tf
+9 0 0 9 495.857 349 Tm
+(1)Tj
+/F4 1 Tf
+12 0 0 12 500.486 351 Tm
+(n)Tj
+/F8 1 Tf
+9 0 0 9 506.657 349 Tm
+(2)Tj
+/F4 1 Tf
+12 0 0 12 511.286 351 Tm
+(n)Tj
+/F8 1 Tf
+9 0 0 9 517.457 349 Tm
+(3)Tj
+12 0 0 12 90 337 Tm
+0.004 Tc
+0.042 Tw
+(because  )Tj
+/F4 1 Tf
+3.787 0 TD
+(m)Tj
+/F8 1 Tf
+0.746 0 TD
+0.002 Tc
+0.015 Tw
+[( < )]TJ
+/F4 1 Tf
+1.099 0 TD
+(n)Tj
+/F8 1 Tf
+9 0 0 9 163.783 335 Tm
+(1)Tj
+12 0 0 12 168.432 337 Tm
+0.001 Tc
+(, )Tj
+/F4 1 Tf
+0.517 0 TD
+(n)Tj
+/F8 1 Tf
+9 0 0 9 180.832 335 Tm
+(2)Tj
+12 0 0 12 185.481 337 Tm
+(, )Tj
+/F4 1 Tf
+0.517 0 TD
+(n)Tj
+/F8 1 Tf
+9 0 0 9 197.88 335 Tm
+(3)Tj
+12 0 0 12 202.529 337 Tm
+0.004 Tc
+0.039 Tw
+[(.  Therefore, )]TJ
+/F4 1 Tf
+5.365 0 TD
+(m)Tj
+/F8 1 Tf
+9 0 0 9 275.858 341 Tm
+(3)Tj
+12 0 0 12 280.506 337 Tm
+0.005 Tc
+0.045 Tw
+[( is not affected by being reduced modulo )]TJ
+/F4 1 Tf
+17.162 0 TD
+(n)Tj
+/F8 1 Tf
+9 0 0 9 492.645 335 Tm
+(1)Tj
+/F4 1 Tf
+12 0 0 12 497.294 337 Tm
+(n)Tj
+/F8 1 Tf
+9 0 0 9 503.493 335 Tm
+(2)Tj
+/F4 1 Tf
+12 0 0 12 508.142 337 Tm
+(n)Tj
+/F8 1 Tf
+9 0 0 9 514.341 335 Tm
+(3)Tj
+12 0 0 12 518.99 337 Tm
+(,)Tj
+-35.749 -1.167 TD
+-0.006 Tc
+0 Tw
+(and the message can be recovered by taking the cube root of )Tj
+/F4 1 Tf
+24.013 0 TD
+(m)Tj
+/F8 1 Tf
+9 0 0 9 386.694 327 Tm
+(3)Tj
+12 0 0 12 391.126 323 Tm
+(.)Tj
+-25.094 -2.333 TD
+0.003 Tc
+0.027 Tw
+[(In this paper, an attack on short secret exponents is described.  This attack is based upon)]TJ
+0 -1 TD
+-0.006 Tc
+0 Tw
+(continued fractions.)Tj
+/F2 1 Tf
+0 -3.583 TD
+0.003 Tc
+0.027 Tw
+(2. Continued Fractions Background)Tj
+/F8 1 Tf
+0 -2.333 TD
+-0.009 Tc
+0 Tw
+(Continued fractions can be used to find the numerator and denominator of a fraction when a)Tj
+0 -1 TD
+0.002 Tc
+0.025 Tw
+[(close enough estimate of the fraction is known.  This will be related to RSA in Section 4)]TJ
+T*
+0 Tc
+0.005 Tw
+(where the public exponent and modulus will be used to construct an estimate of a fraction)Tj
+T*
+-0.007 Tc
+0 Tw
+(involving the secret exponent.)Tj
+0 -2.333 TD
+0.005 Tc
+0.048 Tw
+(The algorithm for using continued fractions to find the numerator and denominator of a)Tj
+0 -1.083 TD
+-0.007 Tc
+0 Tw
+(fraction given an estimate will be referred to here as the )Tj
+/F4 1 Tf
+22.175 0 TD
+(continued fraction algorithm)Tj
+/F8 1 Tf
+11.351 0 TD
+(.  This)Tj
+-33.527 -1 TD
+0.011 Tc
+0.112 Tw
+[(algorithm will be described in Section 3.  A background in continued fractions for a)]TJ
+T*
+0.017 Tc
+0.174 Tw
+(discussion of the continued fraction algorithm is presented in this section. Further)Tj
+T*
+-0.004 Tc
+0 Tw
+(discussion of continued fractions can be found in [2].)Tj
+ET
+endstream
+endobj
+11 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F2 4 0 R
+/F4 5 0 R
+/F8 6 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+13 0 obj
+<<
+/Length 11982
+>>
+stream
+BT
+/F8 1 Tf
+12 0 0 12 303 39 Tm
+0 g
+/GS1 gs
+(3)Tj
+-17.75 56 TD
+-0.008 Tc
+0 Tw
+(A continued fraction is an expression of the form)Tj
+ET
+q
+1 i 
+90 613 153 79 re
+W n
+90 670 154 -1 re
+f
+Q
+BT
+/F4 1 Tf
+12 0 0 12 91 648 Tm
+(q)Tj
+/F8 1 Tf
+9 0 0 9 97.15 645 Tm
+(1)Tj
+12 0 0 12 101.763 648 Tm
+0.01 Tc
+[(  +)9(  )]TJ
+ET
+q
+1 i 
+90 613 153 79 re
+W n
+121 651 123 -1 re
+f
+Q
+BT
+/F4 1 Tf
+12 0 0 12 122 629 Tm
+(q)Tj
+/F8 1 Tf
+9 0 0 9 128.15 626 Tm
+(2)Tj
+12 0 0 12 132.763 629 Tm
+[(  +)9(  )]TJ
+ET
+q
+1 i 
+90 613 153 79 re
+W n
+152 632 92 -1 re
+f
+Q
+BT
+12 0 0 12 153 621 Tm
+0 Tc
+(                              )Tj
+/F4 1 Tf
+0.083 1.583 TD
+(a)Tj
+/F8 1 Tf
+9 0 0 9 159 637 Tm
+(3)Tj
+12 0 0 12 163.5 640 Tm
+0.002 Tc
+(                          )Tj
+/F4 1 Tf
+-3.458 1.583 TD
+(a)Tj
+/F8 1 Tf
+9 0 0 9 127 656 Tm
+(2)Tj
+12 0 0 12 131.5 659 Tm
+0.001 Tc
+(                                     )Tj
+/F4 1 Tf
+-3.375 1.583 TD
+(a)Tj
+/F8 1 Tf
+9 0 0 9 96 675 Tm
+(1)Tj
+12 0 0 12 256 613 Tm
+0.002 Tc
+0.018 Tw
+[(=   )]TJ
+/F4 1 Tf
+1.375 0 TD
+(a)Tj
+/F8 1 Tf
+9 0 0 9 278.781 611 Tm
+(1)Tj
+12 0 0 12 283.49 613 Tm
+0.014 Tc
+(/\()Tj
+/F4 1 Tf
+0.639 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 297.442 611 Tm
+(1)Tj
+12 0 0 12 302.151 613 Tm
+0.002 Tc
+0.022 Tw
+[( + )]TJ
+/F4 1 Tf
+1.114 0 TD
+(a)Tj
+/F8 1 Tf
+9 0 0 9 321.793 611 Tm
+(2)Tj
+12 0 0 12 326.502 613 Tm
+0.014 Tc
+(/\()Tj
+/F4 1 Tf
+0.639 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 340.454 611 Tm
+(2)Tj
+12 0 0 12 345.162 613 Tm
+0.002 Tc
+[( + )]TJ
+/F4 1 Tf
+1.114 0 TD
+(a)Tj
+/F8 1 Tf
+9 0 0 9 364.805 611 Tm
+(3)Tj
+12 0 0 12 369.513 613 Tm
+0.004 Tc
+0.04 Tw
+(/\( ... /\()Tj
+/F4 1 Tf
+2.587 0 TD
+(q)Tj
+9 0 0 9 406.831 611 Tm
+(m)Tj
+/F8 1 Tf
+0.756 0 TD
+0.019 Tc
+(-1)Tj
+12 0 0 12 421.476 613 Tm
+0.002 Tc
+0.022 Tw
+[( + )]TJ
+/F4 1 Tf
+1.114 0 TD
+(a)Tj
+9 0 0 9 441.118 611 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 447.918 613 Tm
+(/)Tj
+/F4 1 Tf
+0.291 0 TD
+(q)Tj
+9 0 0 9 457.688 611 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 464.488 613 Tm
+0.004 Tc
+0.046 Tw
+[(\) ... \)\)\).)-659(\(1\))]TJ
+-25.624 -1.167 TD
+0.125 Tc
+(...)Tj
+ET
+q
+1 i 
+188 536 55 58 re
+W n
+188 575 56 -1 re
+f
+Q
+BT
+/F4 1 Tf
+12 0 0 12 189 553 Tm
+(q)Tj
+9 0 0 9 195.192 550 Tm
+(m)Tj
+/F8 1 Tf
+0.745 0 TD
+0.013 Tc
+(-1)Tj
+12 0 0 12 209.635 553 Tm
+0 Tw
+[(  +)12(  )]TJ
+ET
+q
+1 i 
+188 536 55 58 re
+W n
+229 556 15 -1 re
+f
+Q
+BT
+/F4 1 Tf
+12 0 0 12 230 545 Tm
+(q)Tj
+9 0 0 9 236.241 542 Tm
+(m)Tj
+12 0 0 12 230 564 Tm
+(a)Tj
+9 0 0 9 235 561 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 214 580 Tm
+( )Tj
+-10.333 -5.833 TD
+0.01 Tc
+0.095 Tw
+(We are interested in continued fractions which have all the )Tj
+/F4 1 Tf
+25.307 0 TD
+(a)Tj
+9 0 0 9 400.069 508 Tm
+(i)Tj
+/F8 1 Tf
+12 0 0 12 402.732 510 Tm
+0.006 Tc
+0.064 Tw
+[('s in \(1\) equal to 1.  For)]TJ
+-26.061 -1 TD
+-0.009 Tc
+0 Tw
+(convenience, let us define)Tj
+/F6 1 Tf
+10 0 0 10 121 470 Tm
+(\341)Tj
+/F8 1 Tf
+12 0 0 12 124.454 469 Tm
+( )Tj
+/F4 1 Tf
+0.263 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 133.903 467 Tm
+(0)Tj
+12 0 0 12 138.627 469 Tm
+0.002 Tc
+(, )Tj
+/F4 1 Tf
+0.525 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 151.226 467 Tm
+(1)Tj
+12 0 0 12 155.95 469 Tm
+0.033 Tw
+(, ..., )Tj
+/F4 1 Tf
+1.838 0 TD
+(q)Tj
+9 0 0 9 184.299 467 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 191.121 469 Tm
+( )Tj
+/F6 1 Tf
+10 0 0 10 194.271 470 Tm
+(\361)Tj
+/F8 1 Tf
+12 0 0 12 197.725 469 Tm
+0.016 Tc
+0 Tw
+[(    =)15(    )]TJ
+/F4 1 Tf
+2.692 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 236.323 467 Tm
+(0)Tj
+12 0 0 12 241.047 469 Tm
+0.003 Tc
+0.028 Tw
+[(  +  1/\()]TJ
+/F4 1 Tf
+2.808 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 281.044 467 Tm
+(1)Tj
+12 0 0 12 285.768 469 Tm
+0.004 Tc
+0.042 Tw
+[( + 1/\()]TJ
+/F4 1 Tf
+2.283 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 319.469 467 Tm
+(2)Tj
+12 0 0 12 324.193 469 Tm
+0.038 Tw
+[( + 1/\( ... /\()]TJ
+/F4 1 Tf
+4.238 0 TD
+(q)Tj
+9 0 0 9 381.345 467 Tm
+(m)Tj
+/F8 1 Tf
+0.758 0 TD
+0.021 Tc
+(-1)Tj
+12 0 0 12 396.038 469 Tm
+0.004 Tc
+0.036 Tw
+[( + 1/)]TJ
+/F4 1 Tf
+1.934 0 TD
+(q)Tj
+9 0 0 9 425.544 467 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 432.366 469 Tm
+0.05 Tw
+[(\) ... \)\)\).)-3326(\(2\))]TJ
+-28.531 -3.583 TD
+0.001 Tc
+0.011 Tw
+(For example,  )Tj
+/F6 1 Tf
+10 0 0 10 159.891 427 Tm
+(\341)Tj
+/F8 1 Tf
+12 0 0 12 163.181 426 Tm
+0.005 Tw
+( 0, 2, 1, 3 )Tj
+/F6 1 Tf
+10 0 0 10 211.566 427 Tm
+(\361)Tj
+/F8 1 Tf
+12 0 0 12 214.856 426 Tm
+0.004 Tw
+(   =   0  +  1/\(2 + 1/\(1 + 1/3\)\)   =   )Tj
+ET
+q
+1 i 
+378 411 13 38 re
+W n
+378 430 14 -1 re
+f
+Q
+BT
+12 0 0 12 379 419 Tm
+0 Tc
+(11)Tj
+0.25 1.333 TD
+(4)Tj
+0.75 -0.75 TD
+(.)Tj
+/F6 1 Tf
+10 0 0 10 90 386 Tm
+(\341)Tj
+/F8 1 Tf
+12 0 0 12 93.437 385 Tm
+0.003 Tc
+0.029 Tw
+[( 0, 2, 1, 3 )]TJ
+/F6 1 Tf
+10 0 0 10 143.595 386 Tm
+(\361)Tj
+/F8 1 Tf
+12 0 0 12 147.032 385 Tm
+0.004 Tc
+0.043 Tw
+[( is called the )]TJ
+/F4 1 Tf
+5.514 0 TD
+0.011 Tc
+0.109 Tw
+(continued fraction expansion)Tj
+/F8 1 Tf
+12.19 0 TD
+0.006 Tc
+0.064 Tw
+[( of 4/11.  The continued fraction)]TJ
+-22.457 -1.083 TD
+-0.007 Tc
+0 Tw
+(expansion of a positive rational number )Tj
+/F4 1 Tf
+15.823 0 TD
+(f)Tj
+/F8 1 Tf
+0.273 0 TD
+( is formed by subtracting away the integer part of )Tj
+/F4 1 Tf
+19.64 0 TD
+(f)Tj
+/F8 1 Tf
+-35.737 -1 TD
+0.009 Tc
+0.093 Tw
+(and repeatedly inverting the remainder and subtracting away the integer part until the)Tj
+0 -1.083 TD
+-0.001 Tc
+0 Tw
+(remainder is zero.  Let )Tj
+/F4 1 Tf
+9.248 0 TD
+(q)Tj
+9 0 0 9 206.971 345 Tm
+(i)Tj
+/F8 1 Tf
+0.278 0 TD
+( )Tj
+12 0 0 12 211.723 347 Tm
+(be the integer quotient and )Tj
+/F4 1 Tf
+10.883 0 TD
+(r)Tj
+9 0 0 9 346.987 345 Tm
+(i)Tj
+/F8 1 Tf
+0.278 0 TD
+( )Tj
+12 0 0 12 351.739 347 Tm
+(be the remainder at step )Tj
+/F4 1 Tf
+9.774 0 TD
+(i)Tj
+/F8 1 Tf
+0.278 0 TD
+(, and let )Tj
+/F4 1 Tf
+3.433 0 TD
+(m)Tj
+/F8 1 Tf
+-35.297 -1 TD
+-0.003 Tc
+(be the number of inversion steps.)Tj
+/F4 1 Tf
+7.5 -2.667 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 186.2 301 Tm
+(0)Tj
+12 0 0 12 190.85 303 Tm
+0.013 Tc
+[(  =)12(  )]TJ
+/F6 1 Tf
+1.616 -0.083 TD
+(\353)Tj
+/F4 1 Tf
+0.563 0.083 TD
+(f)Tj
+/F6 1 Tf
+0.417 -0.083 TD
+(\373)Tj
+/F8 1 Tf
+0.416 0.083 TD
+0.003 Tc
+0.025 Tw
+[(,   )]TJ
+/F4 1 Tf
+2.417 0 TD
+(r)Tj
+/F8 1 Tf
+9 0 0 9 260.859 301 Tm
+(0)Tj
+12 0 0 12 265.543 303 Tm
+0.016 Tc
+0 Tw
+[(  =)15(  )]TJ
+/F4 1 Tf
+1.628 0 TD
+(f)Tj
+/F8 1 Tf
+0.289 0 TD
+0.002 Tc
+0.014 Tw
+[( - )]TJ
+/F4 1 Tf
+0.867 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 305.201 301 Tm
+(0)Tj
+12 0 0 12 309.885 303 Tm
+-0.014 Tc
+[(,)-1690(and)]TJ
+/F4 1 Tf
+-10.824 -2.5 TD
+(q)Tj
+9 0 0 9 186.086 271 Tm
+(i)Tj
+/F8 1 Tf
+12 0 0 12 188.588 273 Tm
+0.004 Tc
+0.002 Tw
+(  =  )Tj
+/F6 1 Tf
+24 0 0 24 207.627 266 Tm
+(\353)Tj
+ET
+q
+1 i 
+217 257 16 39 re
+W n
+217 277 17 -1 re
+f
+Q
+BT
+/F4 1 Tf
+12 0 0 12 218 266 Tm
+(r)Tj
+9 0 0 9 222 263 Tm
+(i)Tj
+/F8 1 Tf
+0.306 0 TD
+0.084 Tc
+(-1)Tj
+12 0 0 12 222 282 Tm
+(1)Tj
+/F6 1 Tf
+24 0 0 24 233 266 Tm
+(\373)Tj
+/F8 1 Tf
+12 0 0 12 242.811 273 Tm
+(,)Tj
+/F4 1 Tf
+1.099 0 TD
+(r)Tj
+9 0 0 9 260.86 271 Tm
+(i)Tj
+/F8 1 Tf
+12 0 0 12 263.465 273 Tm
+0.016 Tc
+0 Tw
+[(  =)14(  )]TJ
+ET
+q
+1 i 
+283 257 16 39 re
+W n
+283 277 17 -1 re
+f
+Q
+BT
+/F4 1 Tf
+12 0 0 12 284 266 Tm
+(r)Tj
+9 0 0 9 288 263 Tm
+(i)Tj
+/F8 1 Tf
+0.306 0 TD
+0.084 Tc
+(-1)Tj
+12 0 0 12 288 282 Tm
+(1)Tj
+0.917 -0.75 TD
+0.001 Tc
+0.008 Tw
+[( - )]TJ
+/F4 1 Tf
+0.853 0 TD
+(q)Tj
+9 0 0 9 315.372 271 Tm
+(i)Tj
+/F8 1 Tf
+12 0 0 12 317.933 273 Tm
+0.008 Tc
+0.998 Tw
+[( for )]TJ
+/F4 1 Tf
+2.781 0 TD
+(i)Tj
+/F8 1 Tf
+0.3 0 TD
+0.005 Tc
+0.052 Tw
+[( = 1, 2, ..., )]TJ
+/F4 1 Tf
+4.649 0 TD
+(m)Tj
+/F8 1 Tf
+8.11 0 TD
+0 Tc
+(\(3\))Tj
+-34.833 -3.5 TD
+0.007 Tc
+(Because )Tj
+/F4 1 Tf
+3.715 0 TD
+(r)Tj
+9 0 0 9 139.427 229 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 146.166 231 Tm
+0.003 Tc
+0.029 Tw
+[( = 0, we have  )]TJ
+/F4 1 Tf
+6.087 0 TD
+(f)Tj
+/F8 1 Tf
+0.288 0 TD
+0.014 Tc
+0 Tw
+[(  =)13(  )]TJ
+/F6 1 Tf
+10 0 0 10 242.129 232 Tm
+(\341)Tj
+/F8 1 Tf
+12 0 0 12 245.541 231 Tm
+( )Tj
+/F4 1 Tf
+0.259 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 254.876 229 Tm
+(0)Tj
+12 0 0 12 259.542 231 Tm
+0.002 Tc
+(, )Tj
+/F4 1 Tf
+0.519 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 271.99 229 Tm
+(1)Tj
+12 0 0 12 276.657 231 Tm
+0.025 Tw
+(, ..., )Tj
+/F4 1 Tf
+1.815 0 TD
+(q)Tj
+9 0 0 9 304.663 229 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 311.401 231 Tm
+( )Tj
+/F6 1 Tf
+10 0 0 10 314.513 232 Tm
+(\361)Tj
+/F8 1 Tf
+12 0 0 12 317.924 231 Tm
+(.)Tj
+-18.994 -2.333 TD
+0.001 Tc
+0.013 Tw
+(There are two observations which can be made at this point which will be useful later on.)Tj
+0 -1.083 TD
+0.012 Tc
+0.123 Tw
+(The first is that )Tj
+/F4 1 Tf
+7.045 0 TD
+(q)Tj
+9 0 0 9 181.209 188 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 188.437 190 Tm
+( )Tj
+/F6 1 Tf
+0.37 0 TD
+(\263)Tj
+/F8 1 Tf
+0.56 0 TD
+0.109 Tw
+[( 2.  This is true because )]TJ
+/F4 1 Tf
+10.711 0 TD
+(q)Tj
+9 0 0 9 334.803 188 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 342.03 190 Tm
+0.112 Tw
+[( = 1 implies that )]TJ
+/F4 1 Tf
+7.519 0 TD
+(r)Tj
+9 0 0 9 437.449 188 Tm
+(m)Tj
+/F8 1 Tf
+0.803 0 TD
+0.047 Tc
+(-1)Tj
+12 0 0 12 453.015 190 Tm
+0.011 Tc
+[( = 1 which is)]TJ
+-30.251 -1.083 TD
+-0.002 Tc
+0 Tw
+(impossible.  The second is that for any )Tj
+/F4 1 Tf
+15.594 0 TD
+(x)Tj
+/F8 1 Tf
+0.444 0 TD
+( > 0,)Tj
+/F6 1 Tf
+10 0 0 10 130 149 Tm
+(\341)Tj
+/F8 1 Tf
+12 0 0 12 133.602 148 Tm
+( )Tj
+/F4 1 Tf
+0.274 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 143.455 146 Tm
+(0)Tj
+12 0 0 12 148.381 148 Tm
+0.004 Tc
+(, )Tj
+/F4 1 Tf
+0.547 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 161.519 146 Tm
+(1)Tj
+12 0 0 12 166.445 148 Tm
+0.006 Tc
+0.062 Tw
+(, ..., )Tj
+/F4 1 Tf
+1.916 0 TD
+(q)Tj
+9 0 0 9 196.007 146 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 203.121 148 Tm
+( )Tj
+/F6 1 Tf
+10 0 0 10 206.405 149 Tm
+(\361)Tj
+/F8 1 Tf
+12 0 0 12 220 148 Tm
+(<)Tj
+/F6 1 Tf
+10 0 0 10 238 149 Tm
+(\341)Tj
+/F8 1 Tf
+12 0 0 12 241.551 148 Tm
+( )Tj
+/F4 1 Tf
+0.27 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 251.267 146 Tm
+(0)Tj
+12 0 0 12 256.125 148 Tm
+0.003 Tc
+(, )Tj
+/F4 1 Tf
+0.54 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 269.08 146 Tm
+(1)Tj
+12 0 0 12 273.938 148 Tm
+0.005 Tc
+0.052 Tw
+(, ..., )Tj
+/F4 1 Tf
+1.889 0 TD
+(q)Tj
+9 0 0 9 303.086 146 Tm
+(m)Tj
+/F8 1 Tf
+0.779 0 TD
+0.033 Tc
+(-1)Tj
+12 0 0 12 318.194 148 Tm
+0.003 Tc
+(, )Tj
+/F4 1 Tf
+0.54 0 TD
+(q)Tj
+9 0 0 9 331.148 146 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 338.163 148 Tm
+(+)Tj
+/F4 1 Tf
+0.609 0 TD
+(x)Tj
+/F8 1 Tf
+0.479 0 TD
+( )Tj
+/F6 1 Tf
+10 0 0 10 354.461 149 Tm
+(\361)Tj
+/F8 1 Tf
+12 0 0 12 378 148 Tm
+0 Tc
+(if )Tj
+/F4 1 Tf
+0.866 0 TD
+(m)Tj
+/F8 1 Tf
+0.726 0 TD
+0.001 Tc
+0.007 Tw
+[( is even,)]TJ
+/F6 1 Tf
+10 0 0 10 130 134 Tm
+(\341)Tj
+/F8 1 Tf
+12 0 0 12 133.602 133 Tm
+( )Tj
+/F4 1 Tf
+0.274 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 143.455 131 Tm
+(0)Tj
+12 0 0 12 148.381 133 Tm
+0.004 Tc
+(, )Tj
+/F4 1 Tf
+0.547 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 161.519 131 Tm
+(1)Tj
+12 0 0 12 166.445 133 Tm
+0.006 Tc
+0.062 Tw
+(, ..., )Tj
+/F4 1 Tf
+1.916 0 TD
+(q)Tj
+9 0 0 9 196.007 131 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 203.121 133 Tm
+( )Tj
+/F6 1 Tf
+10 0 0 10 206.405 134 Tm
+(\361)Tj
+/F8 1 Tf
+12 0 0 12 220 133 Tm
+(>)Tj
+/F6 1 Tf
+10 0 0 10 238 134 Tm
+(\341)Tj
+/F8 1 Tf
+12 0 0 12 241.551 133 Tm
+( )Tj
+/F4 1 Tf
+0.27 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 251.267 131 Tm
+(0)Tj
+12 0 0 12 256.125 133 Tm
+0.003 Tc
+(, )Tj
+/F4 1 Tf
+0.54 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 269.08 131 Tm
+(1)Tj
+12 0 0 12 273.938 133 Tm
+0.005 Tc
+0.052 Tw
+(, ..., )Tj
+/F4 1 Tf
+1.889 0 TD
+(q)Tj
+9 0 0 9 303.086 131 Tm
+(m)Tj
+/F8 1 Tf
+0.779 0 TD
+0.033 Tc
+(-1)Tj
+12 0 0 12 318.194 133 Tm
+0.003 Tc
+(, )Tj
+/F4 1 Tf
+0.54 0 TD
+(q)Tj
+9 0 0 9 331.148 131 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 338.163 133 Tm
+(+)Tj
+/F4 1 Tf
+0.609 0 TD
+(x)Tj
+/F8 1 Tf
+0.479 0 TD
+( )Tj
+/F6 1 Tf
+10 0 0 10 354.461 134 Tm
+(\361)Tj
+/F8 1 Tf
+12 0 0 12 378 133 Tm
+0.001 Tc
+(if )Tj
+/F4 1 Tf
+0.877 0 TD
+(m)Tj
+/F8 1 Tf
+0.736 0 TD
+0.021 Tw
+[( is odd.)-6248(\(4\))]TJ
+-25.613 -2.333 TD
+-0.007 Tc
+0 Tw
+(This can be seen by looking at the number of levels of fraction nesting in \(2\).)Tj
+ET
+endstream
+endobj
+14 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F4 5 0 R
+/F6 15 0 R
+/F8 6 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+17 0 obj
+<<
+/Length 10443
+>>
+stream
+BT
+/F8 1 Tf
+12 0 0 12 303 39 Tm
+0 g
+/GS1 gs
+(4)Tj
+-17.75 55.917 TD
+-0.004 Tc
+0 Tw
+(We will now consider how one would go about reconstructing )Tj
+/F4 1 Tf
+24.904 0 TD
+(f)Tj
+/F8 1 Tf
+0.278 0 TD
+( from its continued fraction)Tj
+-25.182 -1.083 TD
+-0.001 Tc
+(expansion.  Using equation \(2\),  )Tj
+/F4 1 Tf
+13.005 0 TD
+(f)Tj
+/F8 1 Tf
+0.278 0 TD
+( can be reconstructed by starting from )Tj
+/F4 1 Tf
+15.355 0 TD
+(q)Tj
+9 0 0 9 439.665 695 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 446.163 697 Tm
+-0.002 Tc
+( and adding and)Tj
+-29.68 -1.083 TD
+0.002 Tc
+0.017 Tw
+(inverting at each step back to )Tj
+/F4 1 Tf
+12.101 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 241.298 682 Tm
+(0)Tj
+12 0 0 12 245.858 684 Tm
+0.015 Tw
+[(.  However, it is useful to be able to reconstruct )]TJ
+/F4 1 Tf
+19.447 0 TD
+(f)Tj
+/F8 1 Tf
+0.278 0 TD
+0.024 Tw
+[( starting)]TJ
+-32.713 -1.083 TD
+0.011 Tc
+(from )Tj
+/F4 1 Tf
+2.351 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 124.646 669 Tm
+(0)Tj
+12 0 0 12 129.468 671 Tm
+0.005 Tc
+0.045 Tw
+[(.  Let )]TJ
+/F4 1 Tf
+2.5 0 TD
+(n)Tj
+9 0 0 9 165.9 669 Tm
+(i)Tj
+/F8 1 Tf
+12 0 0 12 168.581 671 Tm
+0.055 Tw
+[( and )]TJ
+/F4 1 Tf
+2.083 0 TD
+(d)Tj
+9 0 0 9 200.012 669 Tm
+(i)Tj
+/F8 1 Tf
+12 0 0 12 202.692 671 Tm
+0.003 Tc
+(, )Tj
+/F4 1 Tf
+0.536 0 TD
+(i)Tj
+/F8 1 Tf
+0.298 0 TD
+0.005 Tc
+0.048 Tw
+[( = 0, 1, ..., )]TJ
+/F4 1 Tf
+4.623 0 TD
+(m)Tj
+/F8 1 Tf
+0.774 0 TD
+0.012 Tc
+0.119 Tw
+[( be a sequence of numerators and denominators)]TJ
+-15.622 -1 TD
+-0.006 Tc
+0 Tw
+(defined as follows:)Tj
+ET
+q
+1 i 
+144 597 10 42 re
+W n
+144 617 11 -1 re
+f
+Q
+BT
+/F4 1 Tf
+12 0 0 12 145 606 Tm
+(d)Tj
+9 0 0 9 151.353 603 Tm
+(i)Tj
+12 0 0 12 145 625 Tm
+(n)Tj
+9 0 0 9 151.353 622 Tm
+(i)Tj
+/F8 1 Tf
+12 0 0 12 154 613 Tm
+0.022 Tc
+[(   =)20(   )]TJ
+/F6 1 Tf
+10 0 0 10 180.366 614 Tm
+(\341)Tj
+/F8 1 Tf
+12 0 0 12 183.867 613 Tm
+( )Tj
+/F4 1 Tf
+0.266 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 193.447 611 Tm
+(0)Tj
+12 0 0 12 198.236 613 Tm
+0.003 Tc
+(, )Tj
+/F4 1 Tf
+0.532 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 211.008 611 Tm
+(1)Tj
+12 0 0 12 215.797 613 Tm
+0.004 Tc
+0.042 Tw
+(, ..., )Tj
+/F4 1 Tf
+1.863 0 TD
+(q)Tj
+9 0 0 9 244.535 611 Tm
+(i)Tj
+/F8 1 Tf
+12 0 0 12 247.198 613 Tm
+( )Tj
+/F6 1 Tf
+10 0 0 10 250.391 614 Tm
+(\361)Tj
+/F8 1 Tf
+12 0 0 12 253.893 613 Tm
+0.019 Tc
+0 Tw
+[(,)17(     )]TJ
+/F4 1 Tf
+1.597 0 TD
+0.068 Tc
+(GCD)Tj
+/F8 1 Tf
+2.329 0 TD
+(\()Tj
+/F4 1 Tf
+0.348 0 TD
+(n)Tj
+9 0 0 9 311.448 611 Tm
+(i)Tj
+/F8 1 Tf
+12 0 0 12 314.063 613 Tm
+0.002 Tc
+(, )Tj
+/F4 1 Tf
+0.523 0 TD
+(d)Tj
+9 0 0 9 326.606 611 Tm
+(i)Tj
+/F8 1 Tf
+12 0 0 12 329.221 613 Tm
+0.006 Tc
+0.033 Tw
+[(\) = 1)-2076(for )]TJ
+/F4 1 Tf
+5.587 0 TD
+(i)Tj
+/F8 1 Tf
+0.299 0 TD
+0.05 Tw
+[( = 0, 1, ..., )]TJ
+/F4 1 Tf
+4.636 0 TD
+0.073 Tc
+(m.)Tj
+/F8 1 Tf
+4.377 0 TD
+0 Tc
+(\(5\))Tj
+-34.833 -3.417 TD
+-0.007 Tc
+0 Tw
+(It can be shown that)Tj
+/F4 1 Tf
+4.5 -2.417 TD
+(n)Tj
+/F8 1 Tf
+9 0 0 9 150.286 541 Tm
+(0)Tj
+12 0 0 12 166 543 Tm
+(=)Tj
+/F4 1 Tf
+1.5 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 190.667 541 Tm
+(0)Tj
+12 0 0 12 195.667 543 Tm
+(,)Tj
+/F4 1 Tf
+5.444 0 TD
+(d)Tj
+/F8 1 Tf
+9 0 0 9 267.286 541 Tm
+(0)Tj
+12 0 0 12 283 543 Tm
+0.936 Tc
+[(=1)853(,)]TJ
+/F4 1 Tf
+-11.583 -1.25 TD
+(n)Tj
+/F8 1 Tf
+9 0 0 9 150.286 526 Tm
+(1)Tj
+12 0 0 12 166 528 Tm
+(=)Tj
+/F4 1 Tf
+1.5 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 190.313 526 Tm
+(0)Tj
+/F4 1 Tf
+12 0 0 12 195.048 528 Tm
+(q)Tj
+/F8 1 Tf
+9 0 0 9 201.362 526 Tm
+(1)Tj
+12 0 0 12 206.096 528 Tm
+0.004 Tc
+0.039 Tw
+[( + 1,)]TJ
+/F4 1 Tf
+4.575 0 TD
+(d)Tj
+/F8 1 Tf
+9 0 0 9 267.286 526 Tm
+(1)Tj
+12 0 0 12 283 528 Tm
+(=)Tj
+/F4 1 Tf
+1.5 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 307.667 526 Tm
+(1)Tj
+12 0 0 12 312.667 528 Tm
+(,)Tj
+/F4 1 Tf
+-14.056 -1.25 TD
+(n)Tj
+9 0 0 9 150.353 511 Tm
+(i)Tj
+/F8 1 Tf
+12 0 0 12 166 513 Tm
+(=)Tj
+/F4 1 Tf
+1.5 0 TD
+(q)Tj
+9 0 0 9 190.399 511 Tm
+(i)Tj
+12 0 0 12 193.067 513 Tm
+(n)Tj
+9 0 0 9 199.467 511 Tm
+(i)Tj
+/F8 1 Tf
+0.296 0 TD
+0.028 Tc
+(-1)Tj
+12 0 0 12 210.129 513 Tm
+0.003 Tc
+0.031 Tw
+[( + )]TJ
+/F4 1 Tf
+1.135 0 TD
+(n)Tj
+9 0 0 9 230.146 511 Tm
+(i)Tj
+/F8 1 Tf
+0.296 0 TD
+0.028 Tc
+(-2)Tj
+12 0 0 12 240.809 513 Tm
+(,)Tj
+/F4 1 Tf
+1.683 0 TD
+(d)Tj
+9 0 0 9 267.353 511 Tm
+(i)Tj
+/F8 1 Tf
+12 0 0 12 283 513 Tm
+(=)Tj
+/F4 1 Tf
+1.5 0 TD
+(q)Tj
+9 0 0 9 307.309 511 Tm
+(i)Tj
+12 0 0 12 309.94 513 Tm
+(d)Tj
+9 0 0 9 316.25 511 Tm
+(i)Tj
+/F8 1 Tf
+0.292 0 TD
+0.021 Tc
+(-1)Tj
+12 0 0 12 326.763 513 Tm
+0.002 Tc
+0.024 Tw
+[( + )]TJ
+/F4 1 Tf
+1.119 0 TD
+(d)Tj
+9 0 0 9 346.5 511 Tm
+(i)Tj
+/F8 1 Tf
+0.292 0 TD
+0.043 Tc
+(-2)Tj
+12 0 0 12 378 513 Tm
+0.008 Tc
+(for )Tj
+/F4 1 Tf
+1.522 0 TD
+(i)Tj
+/F8 1 Tf
+0.299 0 TD
+0.005 Tc
+0.05 Tw
+[( = 2, 3, ..., )]TJ
+/F4 1 Tf
+4.636 0 TD
+0.073 Tc
+(m.)Tj
+/F8 1 Tf
+4.377 0 TD
+0 Tc
+(\(6\))Tj
+-34.833 -3.833 TD
+-0.003 Tc
+0 Tw
+(In this way, the fraction   )Tj
+/F4 1 Tf
+10.179 0 TD
+(f)Tj
+/F8 1 Tf
+0.278 0 TD
+-0.004 Tc
+(  =  )Tj
+ET
+q
+1 i 
+234 451 14 42 re
+W n
+234 471 15 -1 re
+f
+Q
+BT
+/F4 1 Tf
+12 0 0 12 235 460 Tm
+(d)Tj
+9 0 0 9 241.241 457 Tm
+(m)Tj
+12 0 0 12 235 479 Tm
+(n)Tj
+9 0 0 9 241.241 476 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 248 467 Tm
+-0.006 Tc
+(   can be reconstructed.)Tj
+-13.167 -3.417 TD
+(There is a relationship between the numerators and denominators which will be useful later)Tj
+0 -1 TD
+-0.002 Tc
+(on.  It can be shown that)Tj
+/F4 1 Tf
+7.083 -2.5 TD
+(n)Tj
+9 0 0 9 181.193 382 Tm
+(i)Tj
+12 0 0 12 183.776 384 Tm
+(d)Tj
+9 0 0 9 189.97 382 Tm
+(i)Tj
+/F8 1 Tf
+0.287 0 TD
+0.013 Tc
+(-1)Tj
+12 0 0 12 200.291 384 Tm
+0.01 Tc
+[(  -)9(  )]TJ
+/F4 1 Tf
+1.376 0 TD
+(n)Tj
+9 0 0 9 222.993 382 Tm
+(i)Tj
+/F8 1 Tf
+0.287 0 TD
+0.013 Tc
+(-1)Tj
+/F4 1 Tf
+12 0 0 12 233.314 384 Tm
+(d)Tj
+9 0 0 9 239.508 382 Tm
+(i)Tj
+/F8 1 Tf
+12 0 0 12 242.09 384 Tm
+0.002 Tc
+0.016 Tw
+[(   =   - \(-1\))]TJ
+/F4 1 Tf
+9 0 0 9 293.443 388 Tm
+(i)Tj
+/F8 1 Tf
+12 0 0 12 333 384 Tm
+0.008 Tc
+(for )Tj
+/F4 1 Tf
+1.522 0 TD
+(i)Tj
+/F8 1 Tf
+0.299 0 TD
+0.005 Tc
+0.05 Tw
+[( = 1, 2, ..., )]TJ
+/F4 1 Tf
+4.636 0 TD
+0.073 Tc
+(m.)Tj
+/F8 1 Tf
+8.127 0 TD
+0 Tc
+(\(7\))Tj
+-34.833 -2.333 TD
+0.006 Tc
+0.06 Tw
+(Sufficient background in continued fractions has been presented for a discussion of the)Tj
+0 -1 TD
+-0.01 Tc
+0 Tw
+(continued fraction algorithm.)Tj
+/F2 1 Tf
+0 -3.583 TD
+0.001 Tc
+0.01 Tw
+(3. Continued Fraction Algorithm)Tj
+/F8 1 Tf
+0 -2.417 TD
+-0.023 Tc
+(Let )Tj
+/F4 1 Tf
+1.489 0 TD
+0.066 Tc
+(f')Tj
+/F8 1 Tf
+0.553 0 TD
+-0.01 Tc
+0 Tw
+( be an underestimate of )Tj
+/F4 1 Tf
+9.336 0 TD
+(f)Tj
+/F8 1 Tf
+0.271 0 TD
+(:)Tj
+/F4 1 Tf
+0.352 -2.417 TD
+0.055 Tc
+(f')Tj
+/F8 1 Tf
+0.547 0 TD
+0.003 Tc
+0.002 Tw
+(  =  )Tj
+/F4 1 Tf
+1.585 0 TD
+(f)Tj
+/F8 1 Tf
+0.367 0 TD
+0 Tc
+(\(1 - )Tj
+/F6 1 Tf
+10 0 2.126 10 284.051 243 Tm
+(d)Tj
+/F8 1 Tf
+12 0 0 12 290 243 Tm
+0.001 Tc
+0.009 Tw
+[(\)   for some  )]TJ
+/F6 1 Tf
+10 0 2.126 10 352.138 243 Tm
+(d)Tj
+/F8 1 Tf
+12 0 0 12 357.143 243 Tm
+( )Tj
+/F6 1 Tf
+0.261 0 TD
+(\263)Tj
+/F8 1 Tf
+0.55 0 TD
+0 Tc
+0.011 Tw
+[( 0.)-10748(\(8\))]TJ
+-23.073 -2.417 TD
+0.006 Tc
+(Let )Tj
+/F4 1 Tf
+1.669 0 TD
+(q)Tj
+9 0 0 9 116.361 212 Tm
+(i)Tj
+/F8 1 Tf
+12 0 0 12 118.998 214 Tm
+0.002 Tc
+(, )Tj
+/F4 1 Tf
+0.527 0 TD
+(r)Tj
+9 0 0 9 130.249 212 Tm
+(i)Tj
+/F8 1 Tf
+12 0 0 12 132.887 214 Tm
+0.004 Tc
+0.043 Tw
+[( and )]TJ
+/F4 1 Tf
+2.05 0 TD
+(q)Tj
+9 0 0 9 163.817 212 Tm
+(i)Tj
+/F8 1 Tf
+12 0 0 12 166.455 214 Tm
+0.003 Tc
+(', )Tj
+/F4 1 Tf
+0.717 0 TD
+(r)Tj
+9 0 0 9 179.982 212 Tm
+(i)Tj
+/F8 1 Tf
+12 0 0 12 182.62 214 Tm
+0.004 Tc
+0.044 Tw
+(' be the )Tj
+/F4 1 Tf
+3.265 0 TD
+(i)Tj
+/F8 1 Tf
+0.293 0 TD
+0.008 Tc
+0.084 Tw
+(th quotients and remainders of )Tj
+/F4 1 Tf
+13.092 0 TD
+(f)Tj
+/F8 1 Tf
+0.293 0 TD
+0.004 Tc
+0.043 Tw
+[( and )]TJ
+/F4 1 Tf
+2.05 0 TD
+0.093 Tc
+(f')Tj
+/F8 1 Tf
+0.601 0 TD
+0.009 Tc
+0.086 Tw
+[( respectively.  If )]TJ
+/F6 1 Tf
+10 0 2.126 10 504.88 214 Tm
+(d)Tj
+/F8 1 Tf
+12 0 0 12 510.194 214 Tm
+0.006 Tc
+0.058 Tw
+[( is)]TJ
+-35.016 -1.083 TD
+0.003 Tc
+0.025 Tw
+(small enough, then the numerator and denominator of )Tj
+/F4 1 Tf
+22.078 0 TD
+(f)Tj
+/F8 1 Tf
+0.282 0 TD
+0.022 Tw
+[( can be found using the following)]TJ
+-22.361 -1 TD
+-0.018 Tc
+(algorithm:)Tj
+2.25 -2.417 TD
+-0.01 Tc
+0 Tw
+(Repeat the following until )Tj
+/F4 1 Tf
+10.462 0 TD
+(f)Tj
+/F8 1 Tf
+0.271 0 TD
+( is found:)Tj
+-9.233 -1.25 TD
+-0.007 Tc
+[(-)-424(Generate the next quotient \()]TJ
+/F4 1 Tf
+11.723 0 TD
+(q)Tj
+9 0 0 9 281.578 143 Tm
+(i)Tj
+/F8 1 Tf
+12 0 0 12 284.079 145 Tm
+('\) of the continued fraction expansion of )Tj
+/F4 1 Tf
+15.981 0 TD
+0.068 Tc
+(f')Tj
+/F8 1 Tf
+0.615 0 TD
+(.)Tj
+-29.019 -1.167 TD
+-0.009 Tc
+[(-)-426(Use \(6\) to construct the fraction equal to)]TJ
+/F6 1 Tf
+10 0 0 10 171 117 Tm
+(\341)Tj
+/F8 1 Tf
+12 0 0 12 174.773 116 Tm
+( )Tj
+/F4 1 Tf
+0.287 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 185.095 114 Tm
+(0)Tj
+12 0 0 12 190.256 116 Tm
+0.008 Tc
+(', )Tj
+/F4 1 Tf
+0.78 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 206.496 114 Tm
+(1)Tj
+12 0 0 12 211.657 116 Tm
+0.01 Tc
+0.101 Tw
+(', ..., )Tj
+/F4 1 Tf
+2.213 0 TD
+(q)Tj
+9 0 0 9 245.098 114 Tm
+0.045 Tc
+(i-)Tj
+/F8 1 Tf
+0.701 0 TD
+(1)Tj
+12 0 0 12 256.565 116 Tm
+0.008 Tc
+(', )Tj
+/F4 1 Tf
+0.78 0 TD
+(q)Tj
+9 0 0 9 272.805 114 Tm
+(i)Tj
+/F8 1 Tf
+12 0 0 12 275.674 116 Tm
+0.016 Tc
+('+1 )Tj
+/F6 1 Tf
+10 0 0 10 296.236 117 Tm
+(\361)Tj
+/F8 1 Tf
+12 0 0 12 310 116 Tm
+-0.002 Tc
+(if )Tj
+/F4 1 Tf
+0.856 0 TD
+(i)Tj
+/F8 1 Tf
+0.278 0 TD
+0 Tw
+( is even,)Tj
+/F6 1 Tf
+10 0 0 10 171 102 Tm
+(\341)Tj
+/F8 1 Tf
+12 0 0 12 174.827 101 Tm
+( )Tj
+/F4 1 Tf
+0.291 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 185.298 99 Tm
+(0)Tj
+12 0 0 12 190.533 101 Tm
+0.009 Tc
+(', )Tj
+/F4 1 Tf
+0.791 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 207.008 99 Tm
+(1)Tj
+12 0 0 12 212.243 101 Tm
+0.011 Tc
+0.113 Tw
+(', ..., )Tj
+/F4 1 Tf
+2.245 0 TD
+(q)Tj
+9 0 0 9 246.167 99 Tm
+0.05 Tc
+(i-)Tj
+/F8 1 Tf
+0.711 0 TD
+(1)Tj
+12 0 0 12 257.798 101 Tm
+0.009 Tc
+(', )Tj
+/F4 1 Tf
+0.791 0 TD
+(q)Tj
+9 0 0 9 274.273 99 Tm
+(i)Tj
+/F8 1 Tf
+12 0 0 12 277.184 101 Tm
+0.006 Tc
+(' )Tj
+/F6 1 Tf
+10 0 0 10 283.186 102 Tm
+(\361)Tj
+/F8 1 Tf
+12 0 0 12 310 101 Tm
+0.001 Tc
+(if )Tj
+/F4 1 Tf
+0.867 0 TD
+(i)Tj
+/F8 1 Tf
+0.278 0 TD
+0.007 Tw
+[( is odd.)]TJ
+-15.728 -1.25 TD
+-0.008 Tc
+0 Tw
+[(-)-425(Check whether the constructed fraction is equal to )]TJ
+/F4 1 Tf
+20.655 0 TD
+(f)Tj
+/F8 1 Tf
+0.272 0 TD
+(.)Tj
+ET
+endstream
+endobj
+18 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F2 4 0 R
+/F4 5 0 R
+/F6 15 0 R
+/F8 6 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+20 0 obj
+<<
+/Length 11073
+>>
+stream
+BT
+/F8 1 Tf
+12 0 0 12 303 39 Tm
+0 g
+/GS1 gs
+(5)Tj
+-17.75 54.75 TD
+0.004 Tc
+0.042 Tw
+(The reason for adding one to even quotient values is that the guess of )Tj
+/F4 1 Tf
+28.82 0 TD
+(f)Tj
+/F8 1 Tf
+0.287 0 TD
+0.005 Tc
+0.045 Tw
+[( should be larger)]TJ
+-29.106 -1.083 TD
+-0.014 Tc
+(then )Tj
+/F4 1 Tf
+1.9 0 TD
+0.072 Tc
+(f')Tj
+/F8 1 Tf
+0.574 0 TD
+0.006 Tc
+0.061 Tw
+(, because )Tj
+/F4 1 Tf
+4.098 0 TD
+(f)Tj
+/F8 1 Tf
+0.291 0 TD
+( )Tj
+/F6 1 Tf
+0.273 0 TD
+(\263)Tj
+/F8 1 Tf
+0.551 0 TD
+( )Tj
+/F4 1 Tf
+0.273 0 TD
+0.095 Tc
+(f')Tj
+/F8 1 Tf
+0.61 0 TD
+0.011 Tc
+0.11 Tw
+(, and it can be seen from \(4\) that  )Tj
+/F6 1 Tf
+10 0 0 10 372.413 684 Tm
+(\341)Tj
+/F8 1 Tf
+12 0 0 12 376.068 683 Tm
+( )Tj
+/F4 1 Tf
+0.278 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 386.065 681 Tm
+(0)Tj
+12 0 0 12 391.064 683 Tm
+0.006 Tc
+(', )Tj
+/F4 1 Tf
+0.756 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 406.796 681 Tm
+(1)Tj
+12 0 0 12 411.795 683 Tm
+0.008 Tc
+0.076 Tw
+(', ..., )Tj
+/F4 1 Tf
+2.144 0 TD
+(q)Tj
+9 0 0 9 444.192 681 Tm
+0.034 Tc
+(i-)Tj
+/F8 1 Tf
+0.679 0 TD
+(1)Tj
+12 0 0 12 455.299 683 Tm
+0.006 Tc
+(', )Tj
+/F4 1 Tf
+0.756 0 TD
+(q)Tj
+9 0 0 9 471.031 681 Tm
+(i)Tj
+/F8 1 Tf
+12 0 0 12 473.81 683 Tm
+0.004 Tc
+(' )Tj
+/F6 1 Tf
+10 0 0 10 479.543 684 Tm
+(\361)Tj
+/F8 1 Tf
+12 0 0 12 483.198 683 Tm
+0.009 Tc
+0.085 Tw
+[(  is less)]TJ
+-32.767 -1.083 TD
+-0.014 Tc
+(than )Tj
+/F4 1 Tf
+1.9 0 TD
+0.072 Tc
+(f')Tj
+/F8 1 Tf
+0.58 0 TD
+0.003 Tc
+0.034 Tw
+[( = )]TJ
+/F6 1 Tf
+10 0 0 10 133.444 671 Tm
+(\341)Tj
+/F8 1 Tf
+12 0 0 12 136.972 670 Tm
+( )Tj
+/F4 1 Tf
+0.268 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 146.622 668 Tm
+(0)Tj
+12 0 0 12 151.447 670 Tm
+0.004 Tc
+(', )Tj
+/F4 1 Tf
+0.729 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 166.629 668 Tm
+(1)Tj
+12 0 0 12 171.454 670 Tm
+0.005 Tc
+0.05 Tw
+(', ..., )Tj
+/F4 1 Tf
+2.07 0 TD
+(q)Tj
+9 0 0 9 202.723 668 Tm
+0.022 Tc
+(i-)Tj
+/F8 1 Tf
+0.655 0 TD
+(1)Tj
+12 0 0 12 213.442 670 Tm
+0.004 Tc
+(', )Tj
+/F4 1 Tf
+0.729 0 TD
+(q)Tj
+9 0 0 9 228.624 668 Tm
+(i)Tj
+/F8 1 Tf
+12 0 0 12 231.307 670 Tm
+0.027 Tc
+('+)Tj
+/F4 1 Tf
+0.798 0 TD
+(r)Tj
+9 0 0 9 245.885 668 Tm
+(i)Tj
+/F8 1 Tf
+12 0 0 12 248.568 670 Tm
+0.003 Tc
+(' )Tj
+/F6 1 Tf
+10 0 0 10 254.101 671 Tm
+(\361)Tj
+/F8 1 Tf
+12 0 0 12 257.629 670 Tm
+0.009 Tc
+0.092 Tw
+[(.  Note that a test must exist to determine whether a)]TJ
+-13.969 -1.083 TD
+-0.001 Tc
+0 Tw
+(guess of )Tj
+/F4 1 Tf
+3.545 0 TD
+(f)Tj
+/F8 1 Tf
+0.278 0 TD
+( is correct.)Tj
+-3.823 -2.333 TD
+-0.012 Tc
+(The continued fraction algorithm will succeed if)Tj
+/F6 1 Tf
+10 0 0 10 121 595 Tm
+(\341)Tj
+/F8 1 Tf
+12 0 0 12 124.56 594 Tm
+( )Tj
+/F4 1 Tf
+0.271 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 134.298 592 Tm
+(0)Tj
+12 0 0 12 139.167 594 Tm
+0.003 Tc
+(, )Tj
+/F4 1 Tf
+0.541 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 152.152 592 Tm
+(1)Tj
+12 0 0 12 157.021 594 Tm
+0.005 Tc
+0.054 Tw
+(, ..., )Tj
+/F4 1 Tf
+1.894 0 TD
+(q)Tj
+9 0 0 9 186.238 592 Tm
+(m)Tj
+/F8 1 Tf
+0.781 0 TD
+0.034 Tc
+(-1)Tj
+12 0 0 12 201.38 594 Tm
+0.003 Tc
+(, )Tj
+/F4 1 Tf
+0.541 0 TD
+(q)Tj
+9 0 0 9 214.365 592 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 221.395 594 Tm
+0.007 Tc
+(-1 )Tj
+/F6 1 Tf
+10 0 0 10 235.457 595 Tm
+(\361)Tj
+/F8 1 Tf
+12 0 0 12 252 594 Tm
+(<)Tj
+/F4 1 Tf
+1.5 0 TD
+0.055 Tc
+(f')Tj
+/F6 1 Tf
+1.5 0 TD
+(\243)Tj
+10 0 0 10 306 595 Tm
+(\341)Tj
+/F8 1 Tf
+12 0 0 12 309.602 594 Tm
+( )Tj
+/F4 1 Tf
+0.274 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 319.455 592 Tm
+(0)Tj
+12 0 0 12 324.381 594 Tm
+0.004 Tc
+(, )Tj
+/F4 1 Tf
+0.547 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 337.519 592 Tm
+(1)Tj
+12 0 0 12 342.445 594 Tm
+0.006 Tc
+0.062 Tw
+(, ..., )Tj
+/F4 1 Tf
+1.916 0 TD
+(q)Tj
+9 0 0 9 372.007 592 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 379.121 594 Tm
+( )Tj
+/F6 1 Tf
+10 0 0 10 382.405 595 Tm
+(\361)Tj
+/F8 1 Tf
+12 0 0 12 405 594 Tm
+0 Tc
+(if )Tj
+/F4 1 Tf
+0.866 0 TD
+(m)Tj
+/F8 1 Tf
+0.726 0 TD
+0.001 Tc
+0.007 Tw
+[( is even,)]TJ
+/F6 1 Tf
+10 0 0 10 121 580 Tm
+(\341)Tj
+/F8 1 Tf
+12 0 0 12 124.56 579 Tm
+( )Tj
+/F4 1 Tf
+0.27 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 134.297 577 Tm
+(0)Tj
+12 0 0 12 139.166 579 Tm
+0.003 Tc
+(, )Tj
+/F4 1 Tf
+0.541 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 152.151 577 Tm
+(1)Tj
+12 0 0 12 157.02 579 Tm
+0.005 Tc
+0.053 Tw
+(, ..., )Tj
+/F4 1 Tf
+1.894 0 TD
+(q)Tj
+9 0 0 9 186.235 577 Tm
+(m)Tj
+/F8 1 Tf
+0.781 0 TD
+0.034 Tc
+(-1)Tj
+12 0 0 12 201.376 579 Tm
+0.003 Tc
+(, )Tj
+/F4 1 Tf
+0.541 0 TD
+(q)Tj
+9 0 0 9 214.361 577 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 221.39 579 Tm
+0.008 Tc
+(+1 )Tj
+/F6 1 Tf
+10 0 0 10 238.45 580 Tm
+(\361)Tj
+/F8 1 Tf
+12 0 0 12 252 579 Tm
+(<)Tj
+/F4 1 Tf
+1.5 0 TD
+0.055 Tc
+(f')Tj
+/F6 1 Tf
+1.5 0 TD
+(\243)Tj
+10 0 0 10 306 580 Tm
+(\341)Tj
+/F8 1 Tf
+12 0 0 12 309.602 579 Tm
+( )Tj
+/F4 1 Tf
+0.274 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 319.455 577 Tm
+(0)Tj
+12 0 0 12 324.381 579 Tm
+0.004 Tc
+(, )Tj
+/F4 1 Tf
+0.547 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 337.519 577 Tm
+(1)Tj
+12 0 0 12 342.445 579 Tm
+0.006 Tc
+0.062 Tw
+(, ..., )Tj
+/F4 1 Tf
+1.916 0 TD
+(q)Tj
+9 0 0 9 372.007 577 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 379.121 579 Tm
+( )Tj
+/F6 1 Tf
+10 0 0 10 382.405 580 Tm
+(\361)Tj
+/F8 1 Tf
+12 0 0 12 405 579 Tm
+0.001 Tc
+(if )Tj
+/F4 1 Tf
+0.877 0 TD
+(m)Tj
+/F8 1 Tf
+0.736 0 TD
+0.021 Tw
+[( is odd.)-3998(\(9\))]TJ
+-27.863 -2.833 TD
+-0.006 Tc
+0 Tw
+(We will now consider the implications of \(9\) on the size of )Tj
+/F6 1 Tf
+10 0 2.126 10 371.957 545 Tm
+(d)Tj
+/F8 1 Tf
+12 0 0 12 376.828 545 Tm
+(.  Solving \(8\) for )Tj
+/F6 1 Tf
+10 0 2.126 10 459.002 545 Tm
+(d)Tj
+/F8 1 Tf
+12 0 0 12 463.873 545 Tm
+( yields)Tj
+/F6 1 Tf
+10 0 2.126 10 270 502 Tm
+(d)Tj
+/F8 1 Tf
+12 0 0 12 274.94 502 Tm
+0.001 Tc
+0.001 Tw
+(   =   1  -  )Tj
+ET
+1 i 
+322 506 11 -1 re
+f
+BT
+/F4 1 Tf
+12 0 0 12 325 495 Tm
+(f)Tj
+ET
+q
+322 487 13 38 re
+W n
+BT
+12 0 0 12 323 511 Tm
+(f)Tj
+ET
+Q
+BT
+5 0 0 5 327 511 Tm
+( )Tj
+12 0 0 12 328.31 511 Tm
+0.093 Tc
+(' )Tj
+/F8 1 Tf
+0.557 -0.75 TD
+0 Tc
+0.083 Tw
+[( .)-13333(\(10\))]TJ
+-20.417 -3.417 TD
+0.001 Tc
+0.006 Tw
+(Separate analyses will be done for the following cases:  )Tj
+/F4 1 Tf
+22.547 0 TD
+(m)Tj
+/F8 1 Tf
+0.722 0 TD
+0.002 Tw
+( = 0,  )Tj
+/F4 1 Tf
+2.325 0 TD
+(m)Tj
+/F8 1 Tf
+0.722 0 TD
+( = 1,  )Tj
+/F4 1 Tf
+2.325 0 TD
+(m)Tj
+/F8 1 Tf
+0.722 0 TD
+0.004 Tw
+( even and )Tj
+/F4 1 Tf
+4.102 0 TD
+(m)Tj
+/F8 1 Tf
+0.722 0 TD
+( )Tj
+/F6 1 Tf
+0.254 0 TD
+(\263)Tj
+/F8 1 Tf
+0.549 0 TD
+0.003 Tw
+( 2,)Tj
+-34.99 -1.083 TD
+0.011 Tw
+(and  )Tj
+/F4 1 Tf
+1.971 0 TD
+(m)Tj
+/F8 1 Tf
+0.732 0 TD
+0.013 Tw
+[( odd and )]TJ
+/F4 1 Tf
+3.744 0 TD
+(m)Tj
+/F8 1 Tf
+0.732 0 TD
+( )Tj
+/F6 1 Tf
+0.261 0 TD
+(\263)Tj
+/F8 1 Tf
+0.55 0 TD
+0.01 Tw
+[( 3.)]TJ
+ET
+0 G
+0 J 0 j 0.6 w 10 M []0 d
+117 403.8 m
+155.606 403.8 l
+S
+BT
+12 0 0 12 117 405 Tm
+0 Tc
+0 Tw
+(Case 1: )Tj
+ET
+155.618 403.8 m
+164.281 403.8 l
+S
+BT
+/F4 1 Tf
+12 0 0 12 155.618 405 Tm
+(m)Tj
+ET
+164.283 403.8 m
+183.051 403.8 l
+S
+BT
+/F8 1 Tf
+12 0 0 12 164.283 405 Tm
+( = 0)Tj
+-3.94 -2.417 TD
+-0.004 Tc
+(Using \(9\) to substitute for )Tj
+/F4 1 Tf
+10.479 0 TD
+0.077 Tc
+(f')Tj
+/F8 1 Tf
+0.569 0 TD
+-0.003 Tc
+( in \(10\) yields)Tj
+/F6 1 Tf
+10 0 2.126 10 261 345 Tm
+(d)Tj
+/F8 1 Tf
+12 0 0 12 265.94 345 Tm
+0.002 Tc
+0.001 Tw
+(   <   1  -  )Tj
+/F6 1 Tf
+10 0 0 10 313.076 346 Tm
+(\341)Tj
+/F8 1 Tf
+12 0 0 12 316.365 345 Tm
+( )Tj
+/F4 1 Tf
+0.25 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 325.366 343 Tm
+0.001 Tc
+(0 )Tj
+12 0 0 12 332.171 345 Tm
+(-)Tj
+6 0 0 6 336.167 345 Tm
+( )Tj
+12 0 0 12 337.667 345 Tm
+(1 )Tj
+/F6 1 Tf
+10 0 0 10 346.74 346 Tm
+0 Tc
+(\361 )Tj
+/F8 1 Tf
+14 0 0 14 352.529 344 Tm
+(/)Tj
+12 0 0 12 356.421 345 Tm
+( )Tj
+/F6 1 Tf
+10 0 0 10 359.421 346 Tm
+(\341)Tj
+/F8 1 Tf
+12 0 0 12 362.711 345 Tm
+( )Tj
+/F4 1 Tf
+0.25 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 371.712 343 Tm
+(0)Tj
+12 0 0 12 376.212 345 Tm
+( )Tj
+/F6 1 Tf
+10 0 0 10 379.212 346 Tm
+0.001 Tc
+0.005 Tw
+(\361 .)Tj
+/F8 1 Tf
+12 0 0 12 502 346 Tm
+0 Tc
+(\(11\))Tj
+-32.083 -2.417 TD
+0.001 Tw
+(Using \(2\), this reduces to  )Tj
+/F6 1 Tf
+10 0 2.126 10 244.056 317 Tm
+(d)Tj
+/F8 1 Tf
+12 0 0 12 248.995 317 Tm
+0 Tw
+( < 1/)Tj
+/F4 1 Tf
+1.842 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 277.101 315 Tm
+(0)Tj
+12 0 0 12 281.601 317 Tm
+0.001 Tw
+(  which can be rewritten as \(recall that )Tj
+/F4 1 Tf
+15.532 0 TD
+(n)Tj
+/F8 1 Tf
+9 0 0 9 473.984 315 Tm
+(0)Tj
+12 0 0 12 478.484 317 Tm
+0 Tw
+( = )Tj
+/F4 1 Tf
+1.064 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 497.253 315 Tm
+(0)Tj
+12 0 0 12 501.752 317 Tm
+( and)Tj
+/F4 1 Tf
+-32.063 -1.083 TD
+(d)Tj
+/F8 1 Tf
+9 0 0 9 123.133 302 Tm
+(0)Tj
+12 0 0 12 127.733 304 Tm
+0.002 Tc
+0.017 Tw
+[( = 1\))]TJ
+/F6 1 Tf
+10 0 2.126 10 288 275 Tm
+(d)Tj
+/F8 1 Tf
+12 0 0 12 292.94 275 Tm
+0.001 Tw
+(   <   )Tj
+ET
+q
+318 259 23 39 re
+W n
+318 279 24 -1 re
+f
+Q
+BT
+/F4 1 Tf
+12 0 0 12 319 268 Tm
+(n)Tj
+/F8 1 Tf
+9 0 0 9 325.286 265 Tm
+(0)Tj
+/F4 1 Tf
+12 0 0 12 330 268 Tm
+(d)Tj
+/F8 1 Tf
+9 0 0 9 336.287 265 Tm
+(0)Tj
+12 0 0 12 327 284 Tm
+(1)Tj
+1.167 -0.75 TD
+0 Tc
+0.083 Tw
+[( .)-12833(\(12\))]TJ
+ET
+117 217.8 m
+155.606 217.8 l
+S
+BT
+12 0 0 12 117 219 Tm
+0 Tw
+(Case 2: )Tj
+ET
+155.618 217.8 m
+164.281 217.8 l
+S
+BT
+/F4 1 Tf
+12 0 0 12 155.618 219 Tm
+(m)Tj
+ET
+164.283 217.8 m
+183.051 217.8 l
+S
+BT
+/F8 1 Tf
+12 0 0 12 164.283 219 Tm
+( = 1)Tj
+-3.94 -2.417 TD
+-0.004 Tc
+(Using \(9\) to substitute for )Tj
+/F4 1 Tf
+10.479 0 TD
+0.077 Tc
+(f')Tj
+/F8 1 Tf
+0.569 0 TD
+-0.003 Tc
+( in \(10\) yields)Tj
+/F6 1 Tf
+10 0 2.126 10 238 159 Tm
+(d)Tj
+/F8 1 Tf
+12 0 0 12 243.065 159 Tm
+0.01 Tc
+[(   <)9(   1)9(  -)9(  )]TJ
+/F6 1 Tf
+10 0 0 10 291.002 160 Tm
+(\341)Tj
+/F8 1 Tf
+12 0 0 12 294.374 159 Tm
+( )Tj
+/F4 1 Tf
+0.256 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 303.602 157 Tm
+(0)Tj
+12 0 0 12 308.216 159 Tm
+0.001 Tc
+(, )Tj
+/F4 1 Tf
+0.513 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 320.519 157 Tm
+(1)Tj
+12 0 0 12 325.133 159 Tm
+0.003 Tc
+(+1 )Tj
+/F6 1 Tf
+10 0 0 10 341.301 160 Tm
+0.001 Tc
+(\361 )Tj
+/F8 1 Tf
+14 0 0 14 347.237 158 Tm
+(/)Tj
+12 0 0 12 351.227 159 Tm
+( )Tj
+/F6 1 Tf
+10 0 0 10 354.303 160 Tm
+(\341)Tj
+/F8 1 Tf
+12 0 0 12 357.676 159 Tm
+( )Tj
+/F4 1 Tf
+0.256 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 366.903 157 Tm
+(0)Tj
+12 0 0 12 371.517 159 Tm
+(, )Tj
+/F4 1 Tf
+0.513 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 383.821 157 Tm
+(1)Tj
+12 0 0 12 388.435 159 Tm
+( )Tj
+/F6 1 Tf
+10 0 0 10 391.511 160 Tm
+0.002 Tc
+0.017 Tw
+(\361 .)Tj
+/F8 1 Tf
+12 0 0 12 502 160 Tm
+0 Tc
+(\(13\))Tj
+-32.083 -2.333 TD
+0 Tw
+(Using \(2\), this reduces to)Tj
+/F6 1 Tf
+10 0 2.126 10 256 103 Tm
+(d)Tj
+/F8 1 Tf
+12 0 0 12 260.94 103 Tm
+0.002 Tc
+0.001 Tw
+(   <   )Tj
+ET
+q
+286 87 88 39 re
+W n
+286 107 89 -1 re
+f
+Q
+BT
+12 0 0 12 287 96 Tm
+(\()Tj
+/F4 1 Tf
+0.341 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 297.232 93 Tm
+(0)Tj
+/F4 1 Tf
+12 0 0 12 301.836 96 Tm
+(q)Tj
+/F8 1 Tf
+9 0 0 9 307.978 93 Tm
+(1)Tj
+12 0 0 12 312.583 96 Tm
+0.02 Tw
+[( + 1\)\()]TJ
+/F4 1 Tf
+2.282 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 346.112 93 Tm
+(1)Tj
+12 0 0 12 350.716 96 Tm
+0.018 Tw
+[( + 1\))]TJ
+-1.976 1.333 TD
+(1)Tj
+3.917 -0.75 TD
+0 Tc
+0.083 Tw
+[( .)-10083(\(14\))]TJ
+ET
+endstream
+endobj
+21 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F4 5 0 R
+/F6 15 0 R
+/F8 6 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+23 0 obj
+<<
+/Length 9902
+>>
+stream
+BT
+/F8 1 Tf
+12 0 0 12 303 39 Tm
+0 g
+/GS1 gs
+(6)Tj
+-15.5 55.917 TD
+0.007 Tc
+0.072 Tw
+(It was shown earlier that )Tj
+/F4 1 Tf
+10.625 0 TD
+(q)Tj
+9 0 0 9 250.819 708 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 257.666 710 Tm
+( )Tj
+/F6 1 Tf
+0.314 0 TD
+(\263)Tj
+/F8 1 Tf
+0.555 0 TD
+0.006 Tc
+0.058 Tw
+[( 2.  This implies that for this case,  \(3/2\))]TJ
+/F4 1 Tf
+16.836 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 476.443 708 Tm
+(1)Tj
+12 0 0 12 481.185 710 Tm
+( )Tj
+/F6 1 Tf
+0.277 0 TD
+(\263)Tj
+/F8 1 Tf
+0.551 0 TD
+( )Tj
+/F4 1 Tf
+0.277 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 500.772 708 Tm
+(1)Tj
+12 0 0 12 505.514 710 Tm
+0.035 Tc
+(+1.)Tj
+-32.376 -1.083 TD
+-0.006 Tc
+0 Tw
+(Combining this with \(14\) and the expression for )Tj
+/F4 1 Tf
+19.212 0 TD
+(n)Tj
+/F8 1 Tf
+9 0 0 9 353.458 695 Tm
+(1)Tj
+12 0 0 12 357.891 697 Tm
+( and )Tj
+/F4 1 Tf
+1.915 0 TD
+(d)Tj
+/F8 1 Tf
+9 0 0 9 386.787 695 Tm
+(1)Tj
+12 0 0 12 391.221 697 Tm
+( in \(6\) yields the fact that)Tj
+/F6 1 Tf
+10 0 2.126 10 279 654 Tm
+(d)Tj
+/F8 1 Tf
+12 0 0 12 283.94 654 Tm
+0.002 Tc
+0.001 Tw
+(   <   )Tj
+ET
+q
+1 i 
+309 629 31 48 re
+W n
+309 658 32 -1 re
+f
+Q
+1 i 
+310 645 7 -1 re
+f
+BT
+9 0 0 9 311 635 Tm
+(2)Tj
+0 1.444 TD
+(3)Tj
+5 0 0 5 317 642 Tm
+( )Tj
+/F4 1 Tf
+12 0 0 12 318.25 642 Tm
+(n)Tj
+/F8 1 Tf
+9 0 0 9 324.453 639 Tm
+(1)Tj
+/F4 1 Tf
+12 0 0 12 329.104 642 Tm
+(d)Tj
+/F8 1 Tf
+9 0 0 9 335.307 639 Tm
+(1)Tj
+12 0 0 12 322 663 Tm
+(1)Tj
+15 -0.75 TD
+0 Tc
+(\(15\))Tj
+-32.083 -4.167 TD
+-0.009 Tc
+0 Tw
+(is sufficient to guarantee the success of the continued fraction algorithm.)Tj
+ET
+0 G
+0 J 0 j 0.6 w 10 M []0 d
+117 559.8 m
+155.486 559.8 l
+S
+BT
+12 0 0 12 117 561 Tm
+-0.002 Tc
+(Case 3: )Tj
+ET
+155.498 559.8 m
+164.161 559.8 l
+S
+BT
+/F4 1 Tf
+12 0 0 12 155.498 561 Tm
+(m)Tj
+ET
+164.163 559.8 m
+212.924 559.8 l
+S
+BT
+/F8 1 Tf
+12 0 0 12 164.163 561 Tm
+( even and )Tj
+ET
+212.93 559.8 m
+221.593 559.8 l
+S
+BT
+/F4 1 Tf
+12 0 0 12 212.93 561 Tm
+(m)Tj
+ET
+221.594 559.8 m
+240.097 559.8 l
+S
+BT
+/F8 1 Tf
+12 0 0 12 221.594 561 Tm
+( )Tj
+/F6 1 Tf
+0.248 0 TD
+(\263)Tj
+/F8 1 Tf
+0.547 0 TD
+( 2)Tj
+-9.511 -2.417 TD
+-0.004 Tc
+(Using \(9\) to substitute for )Tj
+/F4 1 Tf
+10.479 0 TD
+0.077 Tc
+(f')Tj
+/F8 1 Tf
+0.569 0 TD
+-0.003 Tc
+( in \(10\) yields)Tj
+/F6 1 Tf
+10 0 2.126 10 184 501 Tm
+(d)Tj
+/F8 1 Tf
+12 0 0 12 189.274 501 Tm
+0.026 Tc
+[(   <)24(   1)24(  -)24(  )]TJ
+/F6 1 Tf
+10 0 0 10 239.205 502 Tm
+(\341)Tj
+/F8 1 Tf
+12 0 0 12 242.716 501 Tm
+( )Tj
+/F4 1 Tf
+0.267 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 252.324 499 Tm
+(0)Tj
+12 0 0 12 257.128 501 Tm
+0.003 Tc
+(, )Tj
+/F4 1 Tf
+0.534 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 269.939 499 Tm
+(1)Tj
+12 0 0 12 274.743 501 Tm
+0.004 Tc
+0.044 Tw
+(, ..., )Tj
+/F4 1 Tf
+1.869 0 TD
+(q)Tj
+9 0 0 9 303.573 499 Tm
+(m)Tj
+/F8 1 Tf
+0.771 0 TD
+0.028 Tc
+(-1)Tj
+12 0 0 12 318.512 501 Tm
+0.003 Tc
+(, )Tj
+/F4 1 Tf
+0.534 0 TD
+(q)Tj
+9 0 0 9 331.324 499 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 338.261 501 Tm
+0.006 Tc
+(-1 )Tj
+/F6 1 Tf
+10 0 0 10 352.137 502 Tm
+0.003 Tc
+(\361 )Tj
+/F8 1 Tf
+14 0 0 14 358.318 500 Tm
+(/)Tj
+12 0 0 12 362.473 501 Tm
+( )Tj
+/F6 1 Tf
+10 0 0 10 365.676 502 Tm
+(\341)Tj
+/F8 1 Tf
+12 0 0 12 369.187 501 Tm
+( )Tj
+/F4 1 Tf
+0.267 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 378.795 499 Tm
+(0)Tj
+12 0 0 12 383.599 501 Tm
+(, )Tj
+/F4 1 Tf
+0.534 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 396.41 499 Tm
+(1)Tj
+12 0 0 12 401.214 501 Tm
+0.004 Tc
+(, ..., )Tj
+/F4 1 Tf
+1.869 0 TD
+(q)Tj
+9 0 0 9 430.044 499 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 436.981 501 Tm
+( )Tj
+/F6 1 Tf
+10 0 0 10 440.183 502 Tm
+0.005 Tc
+0.046 Tw
+(\361 .)Tj
+/F8 1 Tf
+12 0 0 12 502 502 Tm
+0 Tc
+(\(16\))Tj
+-32.083 -2.333 TD
+0.001 Tc
+0.013 Tw
+(Using \(6\), we have)Tj
+/F6 1 Tf
+10 0 0 10 175 443 Tm
+(\341)Tj
+/F8 1 Tf
+12 0 0 12 178.56 442 Tm
+( )Tj
+/F4 1 Tf
+0.271 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 188.298 440 Tm
+(0)Tj
+12 0 0 12 193.167 442 Tm
+0.003 Tc
+(, )Tj
+/F4 1 Tf
+0.541 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 206.152 440 Tm
+(1)Tj
+12 0 0 12 211.021 442 Tm
+0.005 Tc
+0.054 Tw
+(, ..., )Tj
+/F4 1 Tf
+1.894 0 TD
+(q)Tj
+9 0 0 9 240.238 440 Tm
+(m)Tj
+/F8 1 Tf
+0.781 0 TD
+0.034 Tc
+(-1)Tj
+12 0 0 12 255.38 442 Tm
+0.003 Tc
+(, )Tj
+/F4 1 Tf
+0.541 0 TD
+(q)Tj
+9 0 0 9 268.365 440 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 275.395 442 Tm
+0.007 Tc
+(-1 )Tj
+/F6 1 Tf
+10 0 0 10 289.457 443 Tm
+(\361)Tj
+/F8 1 Tf
+12 0 0 12 306 442 Tm
+(=)Tj
+ET
+q
+324 426 99 42 re
+W n
+324 446 100 -1 re
+f
+Q
+BT
+12 0 0 12 325 435 Tm
+(\()Tj
+/F4 1 Tf
+0.343 0 TD
+(q)Tj
+9 0 0 9 335.288 432 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 341.974 435 Tm
+0.002 Tc
+0.019 Tw
+[( - 1\))]TJ
+/F4 1 Tf
+1.715 0 TD
+(d)Tj
+9 0 0 9 368.724 432 Tm
+(m)Tj
+/F8 1 Tf
+0.743 0 TD
+0.012 Tc
+(-1)Tj
+12 0 0 12 383.125 435 Tm
+0 Tw
+[(  +)10(  )]TJ
+/F4 1 Tf
+1.609 0 TD
+(d)Tj
+9 0 0 9 408.614 432 Tm
+(m)Tj
+/F8 1 Tf
+0.743 0 TD
+0.024 Tc
+(-2)Tj
+12 0 0 12 325 454 Tm
+(\()Tj
+/F4 1 Tf
+0.343 0 TD
+(q)Tj
+9 0 0 9 335.288 451 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 341.974 454 Tm
+0.002 Tc
+0.019 Tw
+[( - 1\))]TJ
+/F4 1 Tf
+1.715 0 TD
+(n)Tj
+9 0 0 9 368.724 451 Tm
+(m)Tj
+/F8 1 Tf
+0.743 0 TD
+0.012 Tc
+(-1)Tj
+12 0 0 12 383.125 454 Tm
+0 Tw
+[(  +)10(  )]TJ
+/F4 1 Tf
+1.609 0 TD
+(n)Tj
+9 0 0 9 408.614 451 Tm
+(m)Tj
+/F8 1 Tf
+0.743 0 TD
+0.024 Tc
+(-2)Tj
+12 0 0 12 423 442 Tm
+-0.014 Tc
+1.264 Tw
+[( and)]TJ
+/F6 1 Tf
+10 0 0 10 175 398 Tm
+(\341)Tj
+/F8 1 Tf
+12 0 0 12 178.602 397 Tm
+( )Tj
+/F4 1 Tf
+0.274 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 188.455 395 Tm
+(0)Tj
+12 0 0 12 193.381 397 Tm
+0.004 Tc
+(, )Tj
+/F4 1 Tf
+0.547 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 206.519 395 Tm
+(1)Tj
+12 0 0 12 211.445 397 Tm
+0.006 Tc
+0.062 Tw
+(, ..., )Tj
+/F4 1 Tf
+1.916 0 TD
+(q)Tj
+9 0 0 9 241.007 395 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 248.121 397 Tm
+( )Tj
+/F6 1 Tf
+10 0 0 10 251.405 398 Tm
+(\361)Tj
+/F8 1 Tf
+12 0 0 12 306 397 Tm
+(=)Tj
+ET
+q
+324 381 75 42 re
+W n
+324 401 76 -1 re
+f
+Q
+BT
+/F4 1 Tf
+12 0 0 12 325 390 Tm
+(q)Tj
+9 0 0 9 331.232 387 Tm
+(m)Tj
+12 0 0 12 337.981 390 Tm
+(d)Tj
+9 0 0 9 344.213 387 Tm
+(m)Tj
+/F8 1 Tf
+0.75 0 TD
+0.016 Tc
+(-1)Tj
+/F4 1 Tf
+12 0 0 12 358.749 390 Tm
+0.01 Tc
+0 Tw
+(  )Tj
+/F8 1 Tf
+0.519 0 TD
+(+)Tj
+/F4 1 Tf
+0.586 0 TD
+0.018 Tc
+(  d)Tj
+9 0 0 9 384.473 387 Tm
+(m)Tj
+/F8 1 Tf
+0.75 0 TD
+0.032 Tc
+(-2)Tj
+/F4 1 Tf
+12 0 0 12 325 409 Tm
+(q)Tj
+9 0 0 9 331.232 406 Tm
+(m)Tj
+12 0 0 12 337.981 409 Tm
+(n)Tj
+9 0 0 9 344.213 406 Tm
+(m)Tj
+/F8 1 Tf
+0.75 0 TD
+0.016 Tc
+(-1)Tj
+/F4 1 Tf
+12 0 0 12 358.749 409 Tm
+0.01 Tc
+(  )Tj
+/F8 1 Tf
+0.519 0 TD
+(+)Tj
+/F4 1 Tf
+0.586 0 TD
+0.018 Tc
+(  n)Tj
+9 0 0 9 384.473 406 Tm
+(m)Tj
+/F8 1 Tf
+0.75 0 TD
+0.032 Tc
+(-2)Tj
+12 0 0 12 399 397 Tm
+0 Tc
+0.042 Tw
+[(  .)-7750(\(17\))]TJ
+-23.5 -3.417 TD
+-0.005 Tc
+0 Tw
+(Substituting these expressions into \(16\) yields)Tj
+/F6 1 Tf
+10 0 2.126 10 189 312 Tm
+(d)Tj
+/F8 1 Tf
+12 0 0 12 193.94 312 Tm
+0.002 Tc
+0.001 Tw
+(   <   )Tj
+ET
+q
+219 296 202 54 re
+W n
+219 316 203 -1 re
+f
+Q
+BT
+12 0 0 12 220 305 Tm
+(\()Tj
+/F4 1 Tf
+0.344 0 TD
+(q)Tj
+9 0 0 9 230.333 302 Tm
+(m)Tj
+12 0 0 12 237.049 305 Tm
+(n)Tj
+9 0 0 9 243.252 302 Tm
+(m)Tj
+/F8 1 Tf
+0.746 0 TD
+0.014 Tc
+(-1)Tj
+12 0 0 12 257.717 305 Tm
+0.013 Tc
+0 Tw
+[(  +)12(  )]TJ
+/F4 1 Tf
+1.617 0 TD
+(n)Tj
+9 0 0 9 283.319 302 Tm
+(m)Tj
+/F8 1 Tf
+0.746 0 TD
+0.014 Tc
+(-2)Tj
+12 0 0 12 297.784 305 Tm
+0.011 Tc
+(\)\()Tj
+/F4 1 Tf
+0.688 0 TD
+(q)Tj
+9 0 0 9 312.247 302 Tm
+(m)Tj
+12 0 0 12 318.964 305 Tm
+(d)Tj
+9 0 0 9 325.166 302 Tm
+(m)Tj
+/F8 1 Tf
+0.746 0 TD
+0.014 Tc
+(-1)Tj
+12 0 0 12 339.631 305 Tm
+0.013 Tc
+[(  +)12(  )]TJ
+/F4 1 Tf
+1.617 0 TD
+(d)Tj
+9 0 0 9 365.233 302 Tm
+(m)Tj
+/F8 1 Tf
+0.746 0 TD
+0.014 Tc
+(-2)Tj
+12 0 0 12 379.698 305 Tm
+0.011 Tc
+[(  -)10(  )]TJ
+/F4 1 Tf
+1.378 0 TD
+(d)Tj
+9 0 0 9 402.434 302 Tm
+(m)Tj
+/F8 1 Tf
+0.746 0 TD
+0.014 Tc
+(-1)Tj
+12 0 0 12 416.899 305 Tm
+(\))Tj
+/F4 1 Tf
+-11.992 1.583 TD
+(n)Tj
+9 0 0 9 279.253 321 Tm
+(m)Tj
+/F8 1 Tf
+0.752 0 TD
+0.018 Tc
+(-1)Tj
+/F4 1 Tf
+12 0 0 12 293.837 324 Tm
+(d)Tj
+9 0 0 9 300.09 321 Tm
+(m)Tj
+/F8 1 Tf
+0.752 0 TD
+(-2)Tj
+12 0 0 12 314.674 336 Tm
+0.011 Tc
+(  )Tj
+0.521 -1 TD
+0.002 Tc
+0.015 Tw
+(-  )Tj
+/F4 1 Tf
+0.868 0 TD
+(n)Tj
+9 0 0 9 337.596 321 Tm
+(m)Tj
+/F8 1 Tf
+0.752 0 TD
+0.018 Tc
+(-2)Tj
+/F4 1 Tf
+12 0 0 12 352.179 324 Tm
+(d)Tj
+9 0 0 9 358.433 321 Tm
+(m)Tj
+/F8 1 Tf
+0.752 0 TD
+0.035 Tc
+(-1)Tj
+12 0 0 12 421 312 Tm
+0 Tc
+0.083 Tw
+[( .)-6167(\(18\))]TJ
+-25.333 -3.5 TD
+-0.001 Tc
+0 Tw
+(Using \(7\) and the expressions for )Tj
+/F4 1 Tf
+13.508 0 TD
+(n)Tj
+9 0 0 9 285.102 268 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 291.6 270 Tm
+( and )Tj
+/F4 1 Tf
+1.937 0 TD
+(d)Tj
+9 0 0 9 320.85 268 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 327.348 270 Tm
+( in \(6\) yields)Tj
+/F6 1 Tf
+10 0 2.126 10 252 227 Tm
+(d)Tj
+/F8 1 Tf
+12 0 0 12 256.94 227 Tm
+0.002 Tc
+0.001 Tw
+(   <   )Tj
+ET
+q
+282 211 72 39 re
+W n
+282 231 73 -1 re
+f
+Q
+BT
+/F4 1 Tf
+12 0 0 12 283 220 Tm
+(n)Tj
+9 0 0 9 289.177 217 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 295.867 220 Tm
+(\()Tj
+/F4 1 Tf
+0.343 0 TD
+(d)Tj
+9 0 0 9 306.159 217 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 312.848 220 Tm
+0.01 Tc
+0 Tw
+[(  -)9(  )]TJ
+/F4 1 Tf
+1.372 0 TD
+(d)Tj
+9 0 0 9 335.493 217 Tm
+(m)Tj
+/F8 1 Tf
+0.743 0 TD
+0.012 Tc
+(-1)Tj
+12 0 0 12 349.901 220 Tm
+(\))Tj
+-2.908 1.333 TD
+(1)Tj
+3.25 -0.75 TD
+0 Tc
+0.083 Tw
+[( .)-11750(\(19\))]TJ
+-19.75 -3.417 TD
+-0.003 Tc
+(Therefore,)Tj
+/F6 1 Tf
+10 0 2.126 10 274 157 Tm
+(d)Tj
+/F8 1 Tf
+12 0 0 12 278.94 157 Tm
+0.002 Tc
+0.001 Tw
+(   <   )Tj
+ET
+q
+304 141 27 39 re
+W n
+304 161 28 -1 re
+f
+Q
+BT
+/F4 1 Tf
+12 0 0 12 305 150 Tm
+(n)Tj
+9 0 0 9 311.241 147 Tm
+(m)Tj
+12 0 0 12 318 150 Tm
+(d)Tj
+9 0 0 9 324.241 147 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 315 166 Tm
+(1)Tj
+15.583 -0.75 TD
+0 Tc
+(\(20\))Tj
+-32.083 -3.417 TD
+-0.009 Tc
+0 Tw
+(is sufficient to guarantee the success of the continued fraction algorithm.)Tj
+ET
+endstream
+endobj
+24 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F4 5 0 R
+/F6 15 0 R
+/F8 6 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+26 0 obj
+<<
+/Length 6971
+>>
+stream
+BT
+/F8 1 Tf
+12 0 0 12 303 39 Tm
+0 g
+/GS1 gs
+(7)Tj
+ET
+0 G
+0 J 0 j 0.6 w 10 M []0 d
+1 i 
+117 708.8 m
+155.657 708.8 l
+S
+BT
+12 0 0 12 117 710 Tm
+0 Tw
+(Case 4: )Tj
+ET
+155.666 708.8 m
+164.329 708.8 l
+S
+BT
+/F4 1 Tf
+12 0 0 12 155.666 710 Tm
+(m)Tj
+ET
+164.331 708.8 m
+208.657 708.8 l
+S
+BT
+/F8 1 Tf
+12 0 0 12 164.331 710 Tm
+( odd and )Tj
+ET
+208.662 708.8 m
+217.325 708.8 l
+S
+BT
+/F4 1 Tf
+12 0 0 12 208.662 710 Tm
+(m)Tj
+ET
+217.326 708.8 m
+235.912 708.8 l
+S
+BT
+/F8 1 Tf
+12 0 0 12 217.326 710 Tm
+( )Tj
+/F6 1 Tf
+0.25 0 TD
+(\263)Tj
+/F8 1 Tf
+0.549 0 TD
+( 3)Tj
+-9.16 -2.333 TD
+-0.008 Tc
+(Performing a similar analysis to the one done in case 3 yields)Tj
+/F6 1 Tf
+10 0 2.126 10 252 639 Tm
+(d)Tj
+/F8 1 Tf
+12 0 0 12 256.94 639 Tm
+0.002 Tc
+0.001 Tw
+(   <   )Tj
+ET
+282 643 73 -1 re
+f
+BT
+/F4 1 Tf
+12 0 0 12 283 632 Tm
+(n)Tj
+9 0 0 9 289.189 629 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 295.892 632 Tm
+(\()Tj
+/F4 1 Tf
+0.344 0 TD
+(d)Tj
+9 0 0 9 306.204 629 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 312.906 632 Tm
+0.012 Tc
+0 Tw
+[(  +)11(  )]TJ
+/F4 1 Tf
+1.613 0 TD
+(d)Tj
+9 0 0 9 338.454 629 Tm
+(m)Tj
+/F8 1 Tf
+0.745 0 TD
+0.013 Tc
+(-1)Tj
+12 0 0 12 352.889 632 Tm
+(\))Tj
+-3.157 1.333 TD
+(1)Tj
+3.5 -0.75 TD
+0 Tc
+0.083 Tw
+[( .)-11500(\(21\))]TJ
+-20 -3.5 TD
+0.003 Tc
+(Because )Tj
+/F4 1 Tf
+3.641 0 TD
+(d)Tj
+9 0 0 9 166.787 595 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 173.391 597 Tm
+0.001 Tc
+0.007 Tw
+[( = )]TJ
+/F4 1 Tf
+1.081 0 TD
+(q)Tj
+9 0 0 9 192.467 595 Tm
+(m)Tj
+12 0 0 12 199.071 597 Tm
+(d)Tj
+9 0 0 9 205.169 595 Tm
+(m)Tj
+/F8 1 Tf
+0.734 0 TD
+0.007 Tc
+(-1)Tj
+12 0 0 12 219.391 597 Tm
+0.001 Tc
+[( + )]TJ
+/F4 1 Tf
+1.081 0 TD
+(d)Tj
+9 0 0 9 238.468 595 Tm
+(m)Tj
+/F8 1 Tf
+0.734 0 TD
+0.007 Tc
+(-2)Tj
+12 0 0 12 252.69 597 Tm
+0.001 Tc
+0.008 Tw
+[(  and  )]TJ
+/F4 1 Tf
+2.484 0 TD
+(q)Tj
+9 0 0 9 288.596 595 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 295.2 597 Tm
+( )Tj
+/F6 1 Tf
+0.264 0 TD
+(\263)Tj
+/F8 1 Tf
+0.55 0 TD
+0.013 Tw
+[( 2, we have  )]TJ
+/F4 1 Tf
+5.134 0 TD
+(d)Tj
+9 0 0 9 372.681 595 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 379.285 597 Tm
+0.007 Tw
+[( + )]TJ
+/F4 1 Tf
+1.081 0 TD
+(d)Tj
+9 0 0 9 398.361 595 Tm
+(m)Tj
+/F8 1 Tf
+0.734 0 TD
+0.007 Tc
+(-1)Tj
+12 0 0 12 412.584 597 Tm
+( )Tj
+/F6 1 Tf
+0.269 0 TD
+(\243)Tj
+/F8 1 Tf
+0.551 0 TD
+0.002 Tc
+0.017 Tw
+[( \(3/2\))]TJ
+/F4 1 Tf
+2.222 0 TD
+(d)Tj
+9 0 0 9 455.188 595 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 461.792 597 Tm
+0.025 Tw
+[(.  Therefore,)]TJ
+/F6 1 Tf
+10 0 2.126 10 270 554 Tm
+(d)Tj
+/F8 1 Tf
+12 0 0 12 274.94 554 Tm
+0.001 Tw
+(   <   )Tj
+ET
+q
+300 529 35 48 re
+W n
+300 558 36 -1 re
+f
+Q
+301 545 7 -1 re
+f
+BT
+9 0 0 9 302 535 Tm
+(2)Tj
+0 1.444 TD
+(3)Tj
+5 0 0 5 308 542 Tm
+( )Tj
+/F4 1 Tf
+12 0 0 12 309.25 542 Tm
+(n)Tj
+9 0 0 9 315.423 539 Tm
+(m)Tj
+12 0 0 12 322.108 542 Tm
+(d)Tj
+9 0 0 9 328.282 539 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 315 563 Tm
+(1)Tj
+15.583 -0.75 TD
+0 Tc
+(\(22\))Tj
+-32.083 -4.167 TD
+-0.009 Tc
+0 Tw
+(is sufficient to guarantee the success of the continued fraction algorithm.)Tj
+-2.25 -3.5 TD
+-0.007 Tc
+(Taking into account the results of all four cases,)Tj
+/F6 1 Tf
+10 0 2.126 10 270 419 Tm
+(d)Tj
+/F8 1 Tf
+12 0 0 12 274.94 419 Tm
+0.002 Tc
+0.001 Tw
+(   <   )Tj
+ET
+q
+300 394 35 48 re
+W n
+300 423 36 -1 re
+f
+Q
+301 410 7 -1 re
+f
+BT
+9 0 0 9 302 400 Tm
+(2)Tj
+0 1.444 TD
+(3)Tj
+5 0 0 5 308 407 Tm
+( )Tj
+/F4 1 Tf
+12 0 0 12 309.25 407 Tm
+(n)Tj
+9 0 0 9 315.423 404 Tm
+(m)Tj
+12 0 0 12 322.108 407 Tm
+(d)Tj
+9 0 0 9 328.282 404 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 315 428 Tm
+(1)Tj
+15.583 -0.75 TD
+0 Tc
+(\(23\))Tj
+-34.333 -4.25 TD
+-0.009 Tc
+0 Tw
+(is sufficient to guarantee the success of the continued fraction algorithm.  Recall that )Tj
+/F4 1 Tf
+33.342 0 TD
+(n)Tj
+9 0 0 9 495.958 366 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 502.304 368 Tm
+-0.013 Tc
+( and)Tj
+/F4 1 Tf
+-34.359 -1.083 TD
+(d)Tj
+9 0 0 9 95.901 353 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 102.292 355 Tm
+-0.007 Tc
+( are the numerator and denominator of )Tj
+/F4 1 Tf
+15.376 0 TD
+(f)Tj
+/F8 1 Tf
+0.273 0 TD
+(.)Tj
+-16.674 -2.417 TD
+0.009 Tc
+0.094 Tw
+[(Let us now consider the execution time of this algorithm.  Let )]TJ
+/F4 1 Tf
+26.682 0 TD
+(x)Tj
+/F8 1 Tf
+0.474 0 TD
+0.003 Tc
+0.032 Tw
+[( = )]TJ
+/F4 1 Tf
+1.137 0 TD
+0.038 Tc
+(max)Tj
+/F8 1 Tf
+1.78 0 TD
+(\()Tj
+/F4 1 Tf
+0.356 0 TD
+(n)Tj
+9 0 0 9 461.56 324 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 468.503 326 Tm
+0.003 Tc
+(, )Tj
+/F4 1 Tf
+0.534 0 TD
+(d)Tj
+9 0 0 9 481.326 324 Tm
+(m)Tj
+/F8 1 Tf
+12 0 0 12 488.268 326 Tm
+0.007 Tc
+0.069 Tw
+[(\).  The)]TJ
+-33.189 -1.083 TD
+0.001 Tc
+0.008 Tw
+(number of quotients in the continued fraction expansion of )Tj
+/F4 1 Tf
+23.875 0 TD
+(f)Tj
+/F8 1 Tf
+0.278 0 TD
+0.005 Tw
+( can be shown to be )Tj
+/F4 1 Tf
+8.21 0 TD
+(O)Tj
+/F8 1 Tf
+0.804 0 TD
+-0.009 Tc
+(\(log)Tj
+/F4 1 Tf
+1.75 0 TD
+(x)Tj
+/F8 1 Tf
+0.469 0 TD
+0.032 Tc
+(\).)Tj
+-35.385 -1.083 TD
+0.011 Tc
+0.106 Tw
+(For each quotient, a guess of )Tj
+/F4 1 Tf
+12.703 0 TD
+(f)Tj
+/F8 1 Tf
+0.301 0 TD
+0.12 Tw
+[( is generated and tested.  The calculations required to)]TJ
+-13.004 -1.083 TD
+0.009 Tc
+0.09 Tw
+(generate each guess of )Tj
+/F4 1 Tf
+9.841 0 TD
+(f)Tj
+/F8 1 Tf
+0.295 0 TD
+0.008 Tc
+0.085 Tw
+[( is polynomial in log)]TJ
+/F4 1 Tf
+8.947 0 TD
+(x)Tj
+/F8 1 Tf
+0.489 0 TD
+0.014 Tc
+0.141 Tw
+[(.  Therefore, assuming that the test of)]TJ
+-19.573 -1.083 TD
+0.005 Tc
+0.044 Tw
+(whether the guess of )Tj
+/F4 1 Tf
+8.772 0 TD
+(f)Tj
+/F8 1 Tf
+0.287 0 TD
+0.004 Tc
+0.043 Tw
+[( is correct is polynomial in log)]TJ
+/F4 1 Tf
+12.775 0 TD
+(x)Tj
+/F8 1 Tf
+0.454 0 TD
+0.041 Tw
+(, the continued fraction algorithm)Tj
+-22.287 -1.083 TD
+-0.013 Tc
+0 Tw
+(execution time is polynomial in log)Tj
+/F4 1 Tf
+13.917 0 TD
+(x)Tj
+/F8 1 Tf
+0.48 0 TD
+(.)Tj
+/F2 1 Tf
+-14.397 -3.583 TD
+0.002 Tc
+0.016 Tw
+(4. Continued Fraction Algorithm Applied to RSA)Tj
+/F8 1 Tf
+0 -2.417 TD
+-0.01 Tc
+0 Tw
+(The following relationship between the public exponent )Tj
+/F4 1 Tf
+22.101 0 TD
+(e)Tj
+/F8 1 Tf
+0.433 0 TD
+-0.009 Tc
+( and the secret exponent )Tj
+/F4 1 Tf
+9.679 0 TD
+(d)Tj
+/F8 1 Tf
+0.488 0 TD
+-0.01 Tc
+( is given)Tj
+-32.702 -1 TD
+-0.012 Tc
+(in reference [5]:)Tj
+/F4 1 Tf
+11.583 -2.417 TD
+0 Tc
+(ed)Tj
+/F8 1 Tf
+0.944 0 TD
+(   )Tj
+/F6 1 Tf
+10 0 0 10 249.329 148 Tm
+(\272)Tj
+/F8 1 Tf
+12 0 0 12 254.819 148 Tm
+0.001 Tw
+(   1  \(mod )Tj
+/F4 1 Tf
+4.119 0 TD
+(LCM)Tj
+/F8 1 Tf
+2.056 0 TD
+(\()Tj
+/F4 1 Tf
+0.424 0 TD
+(p)Tj
+/F8 1 Tf
+0.511 0 TD
+0.002 Tc
+(-1, )Tj
+/F4 1 Tf
+1.363 0 TD
+(q)Tj
+/F8 1 Tf
+0.511 0 TD
+0.011 Tc
+(-1\)\))Tj
+11.615 0 TD
+0 Tc
+(\(24\))Tj
+-34.333 -2.333 TD
+0.011 Tc
+0.111 Tw
+(This relationship is necessary for exponentiation with the public exponent and secret)Tj
+0 -1.083 TD
+-0.006 Tc
+0 Tw
+(exponent to be inverses of each other.  From \(24\), there must exist an integer )Tj
+/F4 1 Tf
+30.576 0 TD
+(K)Tj
+/F8 1 Tf
+0.657 0 TD
+( such that)Tj
+ET
+endstream
+endobj
+27 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F2 4 0 R
+/F4 5 0 R
+/F6 15 0 R
+/F8 6 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+29 0 obj
+<<
+/Length 11156
+>>
+stream
+BT
+/F8 1 Tf
+12 0 0 12 303 39 Tm
+0 g
+/GS1 gs
+(8)Tj
+/F4 1 Tf
+-6.167 55.667 TD
+0.025 Tc
+(ed)Tj
+/F8 1 Tf
+0.993 0 TD
+0.018 Tc
+0 Tw
+[(   =)16(   )]TJ
+/F4 1 Tf
+2.171 0 TD
+0.004 Tc
+(K )Tj
+/F6 1 Tf
+0.965 0 TD
+0.002 Tc
+(\327 )Tj
+/F4 1 Tf
+0.526 0 TD
+0.036 Tc
+(LCM)Tj
+/F8 1 Tf
+2.163 0 TD
+(\()Tj
+/F4 1 Tf
+0.432 0 TD
+(p)Tj
+/F8 1 Tf
+0.516 0 TD
+0.003 Tc
+(-1, )Tj
+/F4 1 Tf
+1.376 0 TD
+(q)Tj
+/F8 1 Tf
+0.516 0 TD
+0.001 Tc
+0.024 Tw
+[(-1\)  +  1.)-9498(\(25\))]TJ
+-21.242 -2.5 TD
+0 Tc
+0.003 Tw
+(If we let )Tj
+/F4 1 Tf
+3.593 0 TD
+(G)Tj
+/F8 1 Tf
+0.722 0 TD
+0 Tw
+( = )Tj
+/F4 1 Tf
+1.064 0 TD
+0.002 Tc
+(GCD)Tj
+/F8 1 Tf
+2.117 0 TD
+(\()Tj
+/F4 1 Tf
+0.42 0 TD
+(p)Tj
+/F8 1 Tf
+0.495 0 TD
+-0.003 Tc
+(-1, )Tj
+/F4 1 Tf
+1.321 0 TD
+(q)Tj
+/F8 1 Tf
+0.495 0 TD
+(-1\) and use the fact that )Tj
+/F4 1 Tf
+9.576 0 TD
+-0.006 Tc
+(LCM)Tj
+/F8 1 Tf
+2.037 0 TD
+(\()Tj
+/F4 1 Tf
+0.409 0 TD
+(p)Tj
+/F8 1 Tf
+0.511 0 TD
+0.002 Tc
+(-1, )Tj
+/F4 1 Tf
+1.362 0 TD
+(q)Tj
+/F8 1 Tf
+0.511 0 TD
+0.021 Tw
+(-1\) = \()Tj
+/F4 1 Tf
+2.7 0 TD
+(p)Tj
+/F8 1 Tf
+0.5 0 TD
+(-1\)\()Tj
+/F4 1 Tf
+1.505 0 TD
+(q)Tj
+/F8 1 Tf
+0.5 0 TD
+(-1\)/)Tj
+/F4 1 Tf
+1.45 0 TD
+(G)Tj
+/F8 1 Tf
+0.722 0 TD
+0.001 Tc
+0.004 Tw
+(, we get)Tj
+/F4 1 Tf
+-19.261 -3.5 TD
+0 Tc
+(ed)Tj
+/F8 1 Tf
+0.944 0 TD
+-0.001 Tc
+0 Tw
+(   =   )Tj
+ET
+q
+1 i 
+279 619 10 38 re
+W n
+279 638 11 -1 re
+f
+Q
+BT
+/F4 1 Tf
+12 0 0 12 280 627 Tm
+(G)Tj
+0 1.333 TD
+(K)Tj
+/F8 1 Tf
+6 0 0 6 289 635 Tm
+( )Tj
+12 0 0 12 290.639 635 Tm
+(\()Tj
+/F4 1 Tf
+0.447 0 TD
+(p)Tj
+/F8 1 Tf
+0.509 0 TD
+0.007 Tc
+(-1\)\()Tj
+/F4 1 Tf
+1.525 0 TD
+(q)Tj
+/F8 1 Tf
+0.509 0 TD
+0.001 Tc
+0.013 Tw
+[(-1\)  +  1.)-11081(\(26\))]TJ
+-19.71 -3.5 TD
+-0.002 Tc
+0 Tw
+(It is possible for )Tj
+/F4 1 Tf
+6.681 0 TD
+(K)Tj
+/F8 1 Tf
+0.667 0 TD
+( and )Tj
+/F4 1 Tf
+1.932 0 TD
+(G)Tj
+/F8 1 Tf
+0.718 0 TD
+( to have common factors.  Let us define  )Tj
+/F4 1 Tf
+16.26 0 TD
+(k)Tj
+/F8 1 Tf
+0.444 0 TD
+( = )Tj
+/F4 1 Tf
+1.058 0 TD
+(K)Tj
+/F8 1 Tf
+0.667 0 TD
+(/)Tj
+/F4 1 Tf
+0.278 0 TD
+-0.004 Tc
+(GCD)Tj
+/F8 1 Tf
+2.098 0 TD
+(\()Tj
+/F4 1 Tf
+0.333 0 TD
+(K)Tj
+/F8 1 Tf
+0.667 0 TD
+0 Tc
+(, )Tj
+/F4 1 Tf
+0.5 0 TD
+(G)Tj
+/F8 1 Tf
+0.718 0 TD
+-0.002 Tc
+(\)  and )Tj
+/F4 1 Tf
+2.512 0 TD
+(g)Tj
+/F8 1 Tf
+-35.533 -1.083 TD
+0.001 Tc
+(= )Tj
+/F4 1 Tf
+0.825 0 TD
+(G)Tj
+/F8 1 Tf
+0.732 0 TD
+(/)Tj
+/F4 1 Tf
+0.278 0 TD
+0.009 Tc
+(GCD)Tj
+/F8 1 Tf
+2.139 0 TD
+(\()Tj
+/F4 1 Tf
+0.338 0 TD
+(K)Tj
+/F8 1 Tf
+0.676 0 TD
+0.001 Tc
+(, )Tj
+/F4 1 Tf
+0.507 0 TD
+(G)Tj
+/F8 1 Tf
+0.732 0 TD
+0.012 Tw
+[(\).  Then )]TJ
+/F4 1 Tf
+3.434 0 TD
+(k)Tj
+/F8 1 Tf
+0.45 0 TD
+(/)Tj
+/F4 1 Tf
+0.278 0 TD
+(g)Tj
+/F8 1 Tf
+0.507 0 TD
+0.006 Tw
+[( = )]TJ
+/F4 1 Tf
+1.078 0 TD
+(K)Tj
+/F8 1 Tf
+0.676 0 TD
+(/)Tj
+/F4 1 Tf
+0.278 0 TD
+(G)Tj
+/F8 1 Tf
+0.732 0 TD
+0.012 Tw
+(, and )Tj
+/F4 1 Tf
+2.224 0 TD
+0.009 Tc
+(GCD)Tj
+/F8 1 Tf
+2.139 0 TD
+(\()Tj
+/F4 1 Tf
+0.338 0 TD
+(k)Tj
+/F8 1 Tf
+0.45 0 TD
+0.001 Tc
+(, )Tj
+/F4 1 Tf
+0.507 0 TD
+(g)Tj
+/F8 1 Tf
+0.507 0 TD
+0.014 Tw
+[(\) = 1.  We now have)]TJ
+/F4 1 Tf
+-7.073 -3.5 TD
+0 Tc
+(ed)Tj
+/F8 1 Tf
+0.944 0 TD
+-0.001 Tc
+0 Tw
+(   =   )Tj
+ET
+q
+1 i 
+279 522 10 38 re
+W n
+279 541 11 -1 re
+f
+Q
+BT
+/F4 1 Tf
+12 0 0 12 280 530 Tm
+(g)Tj
+0 1.333 TD
+(k)Tj
+/F8 1 Tf
+6 0 0 6 289 538 Tm
+( )Tj
+12 0 0 12 290.639 538 Tm
+(\()Tj
+/F4 1 Tf
+0.447 0 TD
+(p)Tj
+/F8 1 Tf
+0.509 0 TD
+0.007 Tc
+(-1\)\()Tj
+/F4 1 Tf
+1.525 0 TD
+(q)Tj
+/F8 1 Tf
+0.509 0 TD
+0.001 Tc
+0.013 Tw
+[(-1\)  +  1.)-11081(\(27\))]TJ
+-19.71 -3.5 TD
+-0.006 Tc
+0 Tw
+(Dividing through by )Tj
+/F4 1 Tf
+8.296 0 TD
+-0.007 Tc
+(dpq)Tj
+/F8 1 Tf
+1.478 0 TD
+-0.006 Tc
+( in \(27\) gives)Tj
+ET
+1 i 
+184 455 14 -1 re
+f
+BT
+/F4 1 Tf
+12 0 0 12 185 444 Tm
+0 Tc
+(pq)Tj
+0.25 1.333 TD
+(e)Tj
+/F8 1 Tf
+5 0 0 5 198 452 Tm
+( )Tj
+12 0 0 12 199 451 Tm
+0.002 Tc
+0.001 Tw
+(   =   )Tj
+ET
+224 455 14 -1 re
+f
+BT
+/F4 1 Tf
+12 0 0 12 225 444 Tm
+0 Tc
+(dg)Tj
+0.25 1.333 TD
+(k)Tj
+/F8 1 Tf
+5 0 0 5 238 452 Tm
+( )Tj
+12 0 0 12 239 451 Tm
+0.002 Tw
+(\(1 - )Tj
+/F6 1 Tf
+10 0 2.126 10 259.051 451 Tm
+(d)Tj
+/F8 1 Tf
+12 0 0 12 265 451 Tm
+0.003 Tc
+(\),       where   )Tj
+/F6 1 Tf
+10 0 2.126 10 331.998 451 Tm
+(d)Tj
+/F8 1 Tf
+12 0 0 12 336.989 451 Tm
+0.001 Tw
+(   =   )Tj
+ET
+q
+362 436 63 54 re
+W n
+362 455 64 -1 re
+f
+Q
+BT
+/F4 1 Tf
+12 0 0 12 388 444 Tm
+0 Tc
+(pq)Tj
+-1.917 2 TD
+(p)Tj
+/F8 1 Tf
+0.5 0 TD
+0.001 Tc
+0.002 Tw
+( + )Tj
+/F4 1 Tf
+1.069 0 TD
+(q)Tj
+/F8 1 Tf
+0.5 0 TD
+0 Tc
+( - 1 - )Tj
+ET
+416 471 8 -1 re
+f
+BT
+/F4 1 Tf
+12 0 0 12 417 460 Tm
+(k)Tj
+0 1.333 TD
+(g)Tj
+/F8 1 Tf
+0.667 -2.083 TD
+0.083 Tw
+[( .)-5833(\(28\))]TJ
+-27.917 -3.417 TD
+0.002 Tw
+(Note that )Tj
+/F4 1 Tf
+3.949 0 TD
+(e)Tj
+/F8 1 Tf
+0.444 0 TD
+(/)Tj
+/F4 1 Tf
+0.278 0 TD
+(pq)Tj
+/F8 1 Tf
+1 0 TD
+( consists entirely of public information and is a close underestimate of )Tj
+/F4 1 Tf
+28.364 0 TD
+(k)Tj
+/F8 1 Tf
+0.444 0 TD
+(/)Tj
+/F4 1 Tf
+0.278 0 TD
+(dg)Tj
+/F8 1 Tf
+1 0 TD
+(.)Tj
+-35.757 -1 TD
+0.003 Tc
+0.029 Tw
+(Before invoking the continued fraction algorithm, we must remember that this algorithm)Tj
+0 -1.083 TD
+0 Tc
+0 Tw
+(always finds fractions in lowest terms.  From \(25\), we see that )Tj
+/F4 1 Tf
+25.149 0 TD
+(GCD)Tj
+/F8 1 Tf
+2.111 0 TD
+(\()Tj
+/F4 1 Tf
+0.333 0 TD
+(K)Tj
+/F8 1 Tf
+0.667 0 TD
+(, )Tj
+/F4 1 Tf
+0.5 0 TD
+(d)Tj
+/F8 1 Tf
+0.574 0 TD
+(\) = 1.  Because )Tj
+/F4 1 Tf
+6.224 0 TD
+(k)Tj
+/F8 1 Tf
+-35.557 -1.083 TD
+0.017 Tc
+(divides )Tj
+/F4 1 Tf
+3.436 0 TD
+(K)Tj
+/F8 1 Tf
+0.73 0 TD
+0.01 Tc
+0.095 Tw
+(, we have )Tj
+/F4 1 Tf
+4.437 0 TD
+0.066 Tc
+(GCD)Tj
+/F8 1 Tf
+2.31 0 TD
+(\()Tj
+/F4 1 Tf
+0.364 0 TD
+(k)Tj
+/F8 1 Tf
+0.486 0 TD
+0.004 Tc
+(, )Tj
+/F4 1 Tf
+0.547 0 TD
+(d)Tj
+/F8 1 Tf
+0.547 0 TD
+0.007 Tc
+0.075 Tw
+[(\) = 1.  Also, )]TJ
+/F4 1 Tf
+5.511 0 TD
+0.066 Tc
+(GCD)Tj
+/F8 1 Tf
+2.31 0 TD
+(\()Tj
+/F4 1 Tf
+0.364 0 TD
+(k)Tj
+/F8 1 Tf
+0.486 0 TD
+0.004 Tc
+(, )Tj
+/F4 1 Tf
+0.547 0 TD
+(g)Tj
+/F8 1 Tf
+0.547 0 TD
+0.013 Tc
+0.127 Tw
+[(\) = 1 by definition.  Therefore,)]TJ
+/F4 1 Tf
+-22.625 -1.083 TD
+0 Tc
+(GCD)Tj
+/F8 1 Tf
+2.111 0 TD
+(\()Tj
+/F4 1 Tf
+0.333 0 TD
+(k)Tj
+/F8 1 Tf
+0.444 0 TD
+(, )Tj
+/F4 1 Tf
+0.5 0 TD
+(dg)Tj
+/F8 1 Tf
+1 0 TD
+0.002 Tw
+(\) = 1, and the continued fraction algorithm can be used to find )Tj
+/F4 1 Tf
+25.105 0 TD
+(k)Tj
+/F8 1 Tf
+0.444 0 TD
+0 Tw
+( and )Tj
+/F4 1 Tf
+1.944 0 TD
+(dg)Tj
+/F8 1 Tf
+1 0 TD
+0.002 Tw
+( as long)Tj
+-32.881 -1 TD
+(as )Tj
+/F6 1 Tf
+10 0 2.126 10 102.997 347 Tm
+(d)Tj
+/F8 1 Tf
+12 0 0 12 107.937 347 Tm
+-0.001 Tc
+0 Tw
+( is small enough.)Tj
+-1.495 -2.333 TD
+-0.005 Tc
+(Using the expression for )Tj
+/F6 1 Tf
+10 0 2.126 10 209.255 319 Tm
+(d)Tj
+/F8 1 Tf
+12 0 0 12 214.138 319 Tm
+-0.004 Tc
+( in \(28\) and the restriction on )Tj
+/F6 1 Tf
+10 0 2.126 10 355.463 319 Tm
+(d)Tj
+/F8 1 Tf
+12 0 0 12 360.345 319 Tm
+-0.005 Tc
+( in \(23\), it can be shown that)Tj
+/F4 1 Tf
+-7.945 -3.583 TD
+0 Tc
+(kdg)Tj
+/F8 1 Tf
+1.444 0 TD
+-0.001 Tc
+(   <   )Tj
+ET
+307 280 39 -1 re
+f
+308 267 7 -1 re
+f
+BT
+9 0 0 9 309 257 Tm
+(2)Tj
+0 1.444 TD
+(3)Tj
+5 0 0 5 315 264 Tm
+( )Tj
+12 0 0 12 316.192 264 Tm
+(\()Tj
+/F4 1 Tf
+0.401 0 TD
+(p)Tj
+/F8 1 Tf
+5 0 0 5 326.938 264 Tm
+( )Tj
+12 0 0 12 328.189 264 Tm
+(+)Tj
+5 0 0 5 334.887 264 Tm
+( )Tj
+/F4 1 Tf
+12 0 0 12 336.137 264 Tm
+(q)Tj
+/F8 1 Tf
+0.495 0 TD
+(\))Tj
+/F4 1 Tf
+-1.84 1.75 TD
+0 Tc
+(pq)Tj
+/F8 1 Tf
+15.167 -0.75 TD
+(\(29\))Tj
+-34.333 -4.25 TD
+0.001 Tc
+0.008 Tw
+(is sufficient to allow )Tj
+/F4 1 Tf
+8.496 0 TD
+(k)Tj
+/F8 1 Tf
+0.444 0 TD
+0.002 Tc
+0.003 Tw
+( and )Tj
+/F4 1 Tf
+1.956 0 TD
+(dg)Tj
+/F8 1 Tf
+1.006 0 TD
+0.001 Tc
+0.005 Tw
+( to be found.  Note that \(-1 - )Tj
+/F4 1 Tf
+11.568 0 TD
+(g)Tj
+/F8 1 Tf
+0.5 0 TD
+(/)Tj
+/F4 1 Tf
+0.278 0 TD
+(k)Tj
+/F8 1 Tf
+0.444 0 TD
+0.007 Tw
+(\) in the expression for )Tj
+/F6 1 Tf
+10 0 2.126 10 495.267 225 Tm
+(d)Tj
+/F8 1 Tf
+12 0 0 12 500.206 225 Tm
+0.008 Tw
+[( was)]TJ
+-34.184 -1.083 TD
+0.002 Tc
+0.018 Tw
+(dropped because it is small compared to \()Tj
+/F4 1 Tf
+16.917 0 TD
+(p)Tj
+/F8 1 Tf
+0.52 0 TD
+(+)Tj
+/F4 1 Tf
+0.587 0 TD
+(q)Tj
+/F8 1 Tf
+0.52 0 TD
+0.005 Tc
+0.051 Tw
+[(\).  This does not affect the validity of \(29\))]TJ
+-18.545 -1.083 TD
+-0.005 Tc
+0 Tw
+(because \(-1 - )Tj
+/F4 1 Tf
+5.34 0 TD
+(g)Tj
+/F8 1 Tf
+0.493 0 TD
+(/)Tj
+/F4 1 Tf
+0.278 0 TD
+(k)Tj
+/F8 1 Tf
+0.438 0 TD
+(\) serves to reduce the size of )Tj
+/F6 1 Tf
+10 0 2.126 10 306.29 199 Tm
+(d)Tj
+/F8 1 Tf
+12 0 0 12 311.162 199 Tm
+(.)Tj
+-18.43 -2.417 TD
+0.001 Tc
+0.007 Tw
+(We will now consider how one could test whether a guess of )Tj
+/F4 1 Tf
+24.675 0 TD
+(k)Tj
+/F8 1 Tf
+0.444 0 TD
+0.003 Tw
+( and )Tj
+/F4 1 Tf
+1.954 0 TD
+0.003 Tc
+(dg)Tj
+/F8 1 Tf
+1.005 0 TD
+0.001 Tc
+0.005 Tw
+( is correct.  In order)Tj
+-28.078 -1.083 TD
+0.007 Tc
+0.073 Tw
+(to simplify this test, we will assume that )Tj
+/F4 1 Tf
+17.255 0 TD
+0.026 Tc
+(ed)Tj
+/F8 1 Tf
+0.996 0 TD
+0.003 Tc
+0.025 Tw
+[( > )]TJ
+/F4 1 Tf
+1.122 0 TD
+0.027 Tc
+(pq)Tj
+/F8 1 Tf
+1.055 0 TD
+0.007 Tc
+0.074 Tw
+[(.  This is not a particularly restrictive)]TJ
+-20.428 -1.083 TD
+0.021 Tc
+0.207 Tw
+(assumption because when either )Tj
+/F4 1 Tf
+14.638 0 TD
+(e)Tj
+/F8 1 Tf
+0.494 0 TD
+0.006 Tc
+0.062 Tw
+[( or )]TJ
+/F4 1 Tf
+1.482 0 TD
+(d)Tj
+/F8 1 Tf
+0.556 0 TD
+0.014 Tc
+0.142 Tw
+[( is fixed, the expected value of the other is)]TJ
+-17.17 -1.083 TD
+-0.008 Tc
+(approximately )Tj
+/F4 1 Tf
+5.92 0 TD
+-0.009 Tc
+(pq)Tj
+/F8 1 Tf
+0.982 0 TD
+(/)Tj
+/F4 1 Tf
+0.273 0 TD
+(G)Tj
+/F8 1 Tf
+0.709 0 TD
+-0.006 Tc
+0 Tw
+(  \(recall that )Tj
+/F4 1 Tf
+4.964 0 TD
+(G)Tj
+/F8 1 Tf
+0.709 0 TD
+( = )Tj
+/F4 1 Tf
+1.045 0 TD
+-0.012 Tc
+(GCD)Tj
+/F8 1 Tf
+2.074 0 TD
+(\()Tj
+/F4 1 Tf
+0.406 0 TD
+(p)Tj
+/F8 1 Tf
+0.507 0 TD
+0.001 Tc
+(-1, )Tj
+/F4 1 Tf
+1.351 0 TD
+(q)Tj
+/F8 1 Tf
+0.507 0 TD
+0.002 Tc
+0.016 Tw
+[(-1\)\).  Unless )]TJ
+/F4 1 Tf
+5.294 0 TD
+(G)Tj
+/F8 1 Tf
+0.732 0 TD
+0.001 Tc
+0.015 Tw
+[( is chosen to be large, it is)]TJ
+-25.474 -1.083 TD
+0.003 Tc
+0.025 Tw
+(very likely that )Tj
+/F4 1 Tf
+6.427 0 TD
+0.009 Tc
+(ed)Tj
+/F8 1 Tf
+0.962 0 TD
+0.001 Tc
+0.009 Tw
+[( > )]TJ
+/F4 1 Tf
+1.085 0 TD
+0.01 Tc
+(pq)Tj
+/F8 1 Tf
+1.019 0 TD
+0.003 Tc
+0.026 Tw
+[(.  From equation \(27\), a consequence of )]TJ
+/F4 1 Tf
+16.475 0 TD
+0.009 Tc
+(ed)Tj
+/F8 1 Tf
+0.962 0 TD
+0.001 Tc
+0.009 Tw
+[( > )]TJ
+/F4 1 Tf
+1.085 0 TD
+0.01 Tc
+(pq)Tj
+/F8 1 Tf
+1.019 0 TD
+0.001 Tc
+0.015 Tw
+[( is that )]TJ
+/F4 1 Tf
+2.973 0 TD
+(k)Tj
+/F8 1 Tf
+0.453 0 TD
+0.009 Tw
+[( > )]TJ
+/F4 1 Tf
+1.085 0 TD
+(g)Tj
+/F8 1 Tf
+0.51 0 TD
+0.002 Tc
+0.015 Tw
+[(.  By)]TJ
+-34.054 -1 TD
+-0.008 Tc
+0 Tw
+(rewriting equation \(27\) as)Tj
+/F4 1 Tf
+13.083 -2.417 TD
+-0.004 Tc
+(edg)Tj
+/F8 1 Tf
+1.433 0 TD
+-0.002 Tc
+(   =   )Tj
+/F4 1 Tf
+2.048 0 TD
+(k)Tj
+/F8 1 Tf
+0.444 0 TD
+(\()Tj
+/F4 1 Tf
+0.409 0 TD
+(p)Tj
+/F8 1 Tf
+0.5 0 TD
+0.002 Tc
+(-1\)\()Tj
+/F4 1 Tf
+1.505 0 TD
+(q)Tj
+/F8 1 Tf
+0.5 0 TD
+0 Tc
+0.004 Tw
+(-1\) + )Tj
+/F4 1 Tf
+2.239 0 TD
+(g)Tj
+/F8 1 Tf
+12.172 0 TD
+(\(30\))Tj
+ET
+endstream
+endobj
+30 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F4 5 0 R
+/F6 15 0 R
+/F8 6 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+32 0 obj
+<<
+/Length 7440
+>>
+stream
+BT
+/F8 1 Tf
+12 0 0 12 303 39 Tm
+0 g
+/GS1 gs
+(9)Tj
+-17.75 54.75 TD
+-0.009 Tc
+0 Tw
+(we see that dividing )Tj
+/F4 1 Tf
+8.097 0 TD
+-0.01 Tc
+(edg)Tj
+/F8 1 Tf
+1.413 0 TD
+-0.008 Tc
+( by )Tj
+/F4 1 Tf
+1.467 0 TD
+(k)Tj
+/F8 1 Tf
+0.434 0 TD
+( yields a quotient of \()Tj
+/F4 1 Tf
+8.421 0 TD
+(p)Tj
+/F8 1 Tf
+0.494 0 TD
+-0.005 Tc
+(-1\)\()Tj
+/F4 1 Tf
+1.479 0 TD
+(q)Tj
+/F8 1 Tf
+0.494 0 TD
+(-1\) and a remainder of )Tj
+/F4 1 Tf
+9.071 0 TD
+(g)Tj
+/F8 1 Tf
+0.494 0 TD
+( as long as)Tj
+/F4 1 Tf
+-31.864 -1.083 TD
+(k)Tj
+/F8 1 Tf
+0.47 0 TD
+0.003 Tc
+0.027 Tw
+[( > )]TJ
+/F4 1 Tf
+1.127 0 TD
+(g)Tj
+/F8 1 Tf
+0.53 0 TD
+0.007 Tc
+0.067 Tw
+[(.  This provides a guess of \()]TJ
+/F4 1 Tf
+11.79 0 TD
+(p)Tj
+/F8 1 Tf
+0.528 0 TD
+0.021 Tc
+(-1\)\()Tj
+/F4 1 Tf
+1.582 0 TD
+(q)Tj
+/F8 1 Tf
+0.528 0 TD
+0.006 Tc
+0.056 Tw
+(-1\) and of )Tj
+/F4 1 Tf
+4.425 0 TD
+(g)Tj
+/F8 1 Tf
+0.528 0 TD
+0.049 Tw
+[(.  If the guess of \()]TJ
+/F4 1 Tf
+7.494 0 TD
+(p)Tj
+/F8 1 Tf
+0.515 0 TD
+0.011 Tc
+(-1\)\()Tj
+/F4 1 Tf
+1.543 0 TD
+(q)Tj
+/F8 1 Tf
+0.515 0 TD
+0.004 Tc
+0.041 Tw
+(-1\) is zero,)Tj
+-31.572 -1.083 TD
+0.001 Tc
+(then )Tj
+/F4 1 Tf
+1.982 0 TD
+(k)Tj
+/F8 1 Tf
+0.444 0 TD
+0.003 Tw
+( and )Tj
+/F4 1 Tf
+1.954 0 TD
+0.003 Tc
+(dg)Tj
+/F8 1 Tf
+1.005 0 TD
+0.001 Tc
+0.006 Tw
+[( are wrong.  This case must be filtered out at this point or else the remainder)]TJ
+-5.385 -1.083 TD
+-0.004 Tc
+0 Tw
+(of this test will succeed in factoring )Tj
+/F4 1 Tf
+14.371 0 TD
+-0.005 Tc
+(pq)Tj
+/F8 1 Tf
+0.989 0 TD
+-0.004 Tc
+( into 1 and )Tj
+/F4 1 Tf
+4.451 0 TD
+-0.005 Tc
+(pq)Tj
+/F8 1 Tf
+0.989 0 TD
+-0.004 Tc
+(.  The guess of \()Tj
+/F4 1 Tf
+6.449 0 TD
+(p)Tj
+/F8 1 Tf
+0.51 0 TD
+0.008 Tc
+(-1\)\()Tj
+/F4 1 Tf
+1.529 0 TD
+(q)Tj
+/F8 1 Tf
+0.51 0 TD
+0.003 Tc
+0.027 Tw
+(-1\) can be used)Tj
+-29.799 -1.083 TD
+-0.008 Tc
+0 Tw
+(to create a guess of \()Tj
+/F4 1 Tf
+8.167 0 TD
+(p)Tj
+/F8 1 Tf
+0.49 0 TD
+(+)Tj
+/F4 1 Tf
+0.553 0 TD
+(q)Tj
+/F8 1 Tf
+0.49 0 TD
+(\)/2 using the following identity:)Tj
+ET
+q
+1 i 
+234 586 90 38 re
+W n
+234 605 91 -1 re
+f
+Q
+BT
+12 0 0 12 276 594 Tm
+(2)Tj
+/F4 1 Tf
+-3.417 1.333 TD
+0 Tc
+(pq)Tj
+/F8 1 Tf
+1 0 TD
+[( - )83(\()]TJ
+/F4 1 Tf
+1.167 0 TD
+(p)Tj
+/F8 1 Tf
+0.5 0 TD
+0.002 Tc
+(-1\)\()Tj
+/F4 1 Tf
+1.505 0 TD
+(q)Tj
+/F8 1 Tf
+0.5 0 TD
+0 Tc
+0.005 Tw
+(-1\) + 1)Tj
+2.745 -0.75 TD
+0.002 Tc
+0.001 Tw
+(   =   )Tj
+ET
+1 i 
+349 605 23 -1 re
+f
+BT
+12 0 0 12 357 594 Tm
+(2)Tj
+/F4 1 Tf
+-0.583 1.333 TD
+(p)Tj
+/F8 1 Tf
+5 0 0 5 355.924 610 Tm
+( )Tj
+12 0 0 12 357.174 610 Tm
+(+)Tj
+5 0 0 5 363.858 610 Tm
+( )Tj
+/F4 1 Tf
+12 0 0 12 365.108 610 Tm
+(q)Tj
+/F8 1 Tf
+0.574 -0.667 TD
+( )Tj
+0.25 -0.083 TD
+0 Tc
+0.083 Tw
+[( .)-10000(\(31\))]TJ
+-23.75 -3.417 TD
+-0.001 Tc
+0 Tw
+(If the guess of \()Tj
+/F4 1 Tf
+6.333 0 TD
+(p)Tj
+/F8 1 Tf
+0.5 0 TD
+(+)Tj
+/F4 1 Tf
+0.564 0 TD
+(q)Tj
+/F8 1 Tf
+0.5 0 TD
+-0.002 Tc
+(\)/2 is not an integer, then the guess of )Tj
+/F4 1 Tf
+15.205 0 TD
+(k)Tj
+/F8 1 Tf
+0.444 0 TD
+( and )Tj
+/F4 1 Tf
+1.935 0 TD
+(dg)Tj
+/F8 1 Tf
+0.995 0 TD
+( is wrong.  The guess of)Tj
+-26.477 -1.167 TD
+(\()Tj
+/F4 1 Tf
+0.417 0 TD
+(p)Tj
+/F8 1 Tf
+0.492 0 TD
+(+)Tj
+/F4 1 Tf
+0.555 0 TD
+(q)Tj
+/F8 1 Tf
+0.492 0 TD
+-0.006 Tc
+(\)/2 can be used to create a guess of \(\()Tj
+/F4 1 Tf
+14.71 0 TD
+(p)Tj
+/F8 1 Tf
+0.491 0 TD
+(-)Tj
+/F4 1 Tf
+0.327 0 TD
+(q)Tj
+/F8 1 Tf
+0.491 0 TD
+(\)/2\))Tj
+9 0 0 9 322.735 550 Tm
+(2)Tj
+12 0 0 12 327.155 546 Tm
+-0.007 Tc
+( using the following identity:)Tj
+24 0 0 24 229 499 Tm
+(\()Tj
+ET
+238 504 21 -1 re
+f
+BT
+12 0 0 12 245 493 Tm
+(2)Tj
+/F4 1 Tf
+-0.583 1.333 TD
+(p)Tj
+/F8 1 Tf
+0.583 0 TD
+(+)Tj
+/F4 1 Tf
+0.667 0 TD
+(q)Tj
+/F8 1 Tf
+24 0 0 24 260 499 Tm
+(\))Tj
+9 0 0 9 267 513 Tm
+(2)Tj
+12 0 0 12 271.5 501 Tm
+0.002 Tc
+0.001 Tw
+(   -   )Tj
+/F4 1 Tf
+1.851 0 TD
+0.005 Tc
+(pq)Tj
+/F8 1 Tf
+1.01 0 TD
+0.002 Tc
+(     =     )Tj
+24 0 0 24 342 499 Tm
+(\()Tj
+ET
+351 504 18 -1 re
+f
+BT
+12 0 0 12 357 493 Tm
+(2)Tj
+/F4 1 Tf
+-0.5 1.333 TD
+(p)Tj
+/F8 1 Tf
+0.583 0 TD
+(-)Tj
+/F4 1 Tf
+0.417 0 TD
+(q)Tj
+/F8 1 Tf
+24 0 0 24 370 499 Tm
+(\))Tj
+9 0 0 9 377 513 Tm
+(2)Tj
+12 0 0 12 382 500 Tm
+0 Tc
+0.083 Tw
+[( .)-9417(\(32\))]TJ
+-24.333 -3.5 TD
+-0.001 Tc
+0 Tw
+(If the guess of \(\()Tj
+/F4 1 Tf
+6.667 0 TD
+(p)Tj
+/F8 1 Tf
+0.504 0 TD
+(-)Tj
+/F4 1 Tf
+0.333 0 TD
+(q)Tj
+/F8 1 Tf
+0.504 0 TD
+0.003 Tc
+(\)/2\))Tj
+9 0 0 9 203.578 462 Tm
+(2)Tj
+12 0 0 12 208.078 458 Tm
+0.001 Tc
+0.011 Tw
+[( is a perfect square, then the original guess of )]TJ
+/F4 1 Tf
+18.517 0 TD
+(k)Tj
+/F8 1 Tf
+0.444 0 TD
+0.006 Tw
+[( and )]TJ
+/F4 1 Tf
+1.961 0 TD
+0.004 Tc
+(dg)Tj
+/F8 1 Tf
+1.009 0 TD
+0.001 Tc
+0.012 Tw
+[( is correct.)]TJ
+-31.77 -1.083 TD
+0.002 Tc
+0.014 Tw
+(The secret exponent )Tj
+/F4 1 Tf
+8.378 0 TD
+(d)Tj
+/F8 1 Tf
+0.504 0 TD
+0.001 Tc
+0.011 Tw
+[( can be found by dividing )]TJ
+/F4 1 Tf
+10.593 0 TD
+0.004 Tc
+(dg)Tj
+/F8 1 Tf
+1.009 0 TD
+0.002 Tc
+0.004 Tw
+( by )Tj
+/F4 1 Tf
+1.514 0 TD
+(g)Tj
+/F8 1 Tf
+0.504 0 TD
+0.001 Tc
+0.008 Tw
+[(.  Recall that )]TJ
+/F4 1 Tf
+5.352 0 TD
+(g)Tj
+/F8 1 Tf
+0.504 0 TD
+0.015 Tw
+[( was the remainder)]TJ
+-28.359 -1.083 TD
+-0.006 Tc
+(when )Tj
+/F4 1 Tf
+2.384 0 TD
+(edg)Tj
+/F8 1 Tf
+1.425 0 TD
+0 Tw
+( was divided by )Tj
+/F4 1 Tf
+6.469 0 TD
+(k)Tj
+/F8 1 Tf
+0.438 0 TD
+(.  We can also recover )Tj
+/F4 1 Tf
+9.015 0 TD
+(p)Tj
+/F8 1 Tf
+0.493 0 TD
+( and )Tj
+/F4 1 Tf
+1.918 0 TD
+(q)Tj
+/F8 1 Tf
+0.493 0 TD
+( easily from \()Tj
+/F4 1 Tf
+5.364 0 TD
+(p)Tj
+/F8 1 Tf
+0.5 0 TD
+(+)Tj
+/F4 1 Tf
+0.564 0 TD
+(q)Tj
+/F8 1 Tf
+0.5 0 TD
+-0.003 Tc
+(\)/2 and \()Tj
+/F4 1 Tf
+3.436 0 TD
+(p)Tj
+/F8 1 Tf
+0.511 0 TD
+(-)Tj
+/F4 1 Tf
+0.34 0 TD
+(q)Tj
+/F8 1 Tf
+0.511 0 TD
+0.01 Tc
+(\)/2.)Tj
+-34.361 -2.333 TD
+0.003 Tc
+0.034 Tw
+(If nothing special is done to combat this continued fraction attack on RSA, then one can)Tj
+0 -1.083 TD
+-0.002 Tc
+(expect )Tj
+/F4 1 Tf
+2.846 0 TD
+(g)Tj
+/F8 1 Tf
+0.5 0 TD
+0 Tw
+( to be small, and )Tj
+/F4 1 Tf
+6.797 0 TD
+(k)Tj
+/F8 1 Tf
+0.444 0 TD
+(  < )Tj
+/F4 1 Tf
+1.307 0 TD
+(dg)Tj
+/F8 1 Tf
+0.995 0 TD
+(.  Under these conditions, we can see from \(29\) that secret)Tj
+-12.889 -1 TD
+(exponents with up to approximately one-quarter as many bits as the modulus can be found)Tj
+T*
+0.004 Tc
+0.041 Tw
+[(in polynomial time.  This attack cannot be extended to the normal case where the secret)]TJ
+T*
+0 Tc
+0 Tw
+(exponent is approximately the same size as the modulus.  This is because this attack relies)Tj
+T*
+-0.006 Tc
+(on the public exponent providing information to help factor the modulus and, in the normal)Tj
+T*
+-0.007 Tc
+(case, the public exponent can be chosen almost independently of the modulus.)Tj
+/F2 1 Tf
+0 -3.583 TD
+0.001 Tc
+0.009 Tw
+(5. An Example)Tj
+/F8 1 Tf
+0 -2.333 TD
+0.003 Tc
+0.029 Tw
+(In this section, the continued fraction algorithm will be applied to a small RSA key pair.)Tj
+0 -1 TD
+-0.003 Tc
+0 Tw
+(For this example,)Tj
+/F4 1 Tf
+12.333 -2.417 TD
+0.003 Tc
+(pq)Tj
+/F8 1 Tf
+1.006 0 TD
+0.001 Tc
+0.003 Tw
+( = 8927    and    )Tj
+/F4 1 Tf
+6.548 0 TD
+(e)Tj
+/F8 1 Tf
+0.444 0 TD
+0.007 Tw
+[( = 2621.)]TJ
+-20.331 -2.417 TD
+-0.008 Tc
+0 Tw
+(A continued fraction expansion will be performed on )Tj
+/F4 1 Tf
+21.064 0 TD
+(e)Tj
+/F8 1 Tf
+0.435 0 TD
+(/)Tj
+/F4 1 Tf
+0.272 0 TD
+-0.01 Tc
+(pq)Tj
+/F8 1 Tf
+0.98 0 TD
+-0.009 Tc
+( = 2621/8927:)Tj
+ET
+endstream
+endobj
+33 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F2 4 0 R
+/F4 5 0 R
+/F8 6 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+35 0 obj
+<<
+/Length 10391
+>>
+stream
+BT
+/F8 1 Tf
+12 0 0 12 300 39 Tm
+0 g
+/GS1 gs
+0 Tc
+(10)Tj
+-17.25 55.917 TD
+-0.02 Tc
+0 Tw
+(Calculated Quantity)Tj
+11.583 0 TD
+-0.008 Tc
+(How it is Derived)Tj
+/F4 1 Tf
+12 0 TD
+(i)Tj
+/F8 1 Tf
+0.278 0 TD
+-0.002 Tc
+( = 0)Tj
+/F4 1 Tf
+4.222 0 TD
+(i)Tj
+/F8 1 Tf
+0.278 0 TD
+( = 1)Tj
+/F4 1 Tf
+4.222 0 TD
+(i)Tj
+/F8 1 Tf
+0.278 0 TD
+( = 2)Tj
+ET
+1 i 
+189 722 1 -15 re
+f
+360 722 1 -15 re
+f
+414 722 1 -15 re
+f
+468 722 1 -15 re
+f
+0 G
+0 J 0 j 0.6 w 10 M []0 d
+90 694.8 m
+144 694.8 l
+S
+BT
+12 0 0 12 90 696 Tm
+0 Tc
+(                  )Tj
+ET
+90 694.8 m
+93 694.8 l
+S
+BT
+12 0 0 12 90 696 Tm
+( )Tj
+ET
+139 694.8 m
+280 694.8 l
+S
+BT
+12 0 0 12 139 696 Tm
+(                                               )Tj
+ET
+139 694.8 m
+142 694.8 l
+S
+BT
+12 0 0 12 139 696 Tm
+( )Tj
+ET
+274 694.8 m
+391 694.8 l
+S
+BT
+12 0 0 12 274 696 Tm
+(                                       )Tj
+ET
+274 694.8 m
+277 694.8 l
+S
+BT
+12 0 0 12 274 696 Tm
+( )Tj
+ET
+387 694.8 m
+447 694.8 l
+S
+BT
+12 0 0 12 387 696 Tm
+(                    )Tj
+ET
+387 694.8 m
+390 694.8 l
+S
+BT
+12 0 0 12 387 696 Tm
+( )Tj
+ET
+441 694.8 m
+501 694.8 l
+S
+BT
+12 0 0 12 441 696 Tm
+(                    )Tj
+ET
+441 694.8 m
+444 694.8 l
+S
+BT
+12 0 0 12 441 696 Tm
+( )Tj
+ET
+495 694.8 m
+528 694.8 l
+S
+BT
+12 0 0 12 495 696 Tm
+(           )Tj
+ET
+495 694.8 m
+498 694.8 l
+S
+BT
+12 0 0 12 495 696 Tm
+( )Tj
+ET
+189 707 1 -14 re
+f
+360 707 1 -14 re
+f
+414 707 1 -14 re
+f
+468 707 1 -14 re
+f
+189 693 1 -14 re
+f
+360 693 1 -14 re
+f
+414 693 1 -14 re
+f
+468 693 1 -14 re
+f
+BT
+/F4 1 Tf
+12 0 0 12 132 667 Tm
+(q)Tj
+9 0 0 9 139.317 665 Tm
+(i)Tj
+/F8 1 Tf
+12 0 0 12 142.368 667 Tm
+-0.004 Tc
+[(')-9460(see \(3\))-7836(0)-4004(3)-4004(2)]TJ
+ET
+189 679 1 -15 re
+f
+360 679 1 -15 re
+f
+414 679 1 -15 re
+f
+468 679 1 -15 re
+f
+189 664 1 -14 re
+f
+360 664 1 -14 re
+f
+414 664 1 -14 re
+f
+468 664 1 -14 re
+f
+BT
+/F4 1 Tf
+12 0 0 12 133 624 Tm
+(r)Tj
+9 0 0 9 139.006 622 Tm
+(i)Tj
+/F8 1 Tf
+12 0 0 12 142.225 624 Tm
+[(')-9472(see \(3\))]TJ
+ET
+q
+374 609 25 38 re
+W n
+374 628 26 -1 re
+f
+Q
+BT
+12 0 0 12 375 617 Tm
+0 Tc
+(8927)Tj
+0 1.333 TD
+(2621)Tj
+ET
+q
+428 609 25 38 re
+W n
+428 628 26 -1 re
+f
+Q
+BT
+12 0 0 12 429 617 Tm
+(2621)Tj
+T*
+(1064)Tj
+ET
+q
+482 609 25 38 re
+W n
+482 628 26 -1 re
+f
+Q
+BT
+12 0 0 12 483 617 Tm
+(1064)Tj
+0.25 1.333 TD
+(493)Tj
+ET
+189 650 1 -41 re
+f
+360 650 1 -41 re
+f
+414 650 1 -41 re
+f
+468 650 1 -41 re
+f
+189 609 1 -14 re
+f
+360 609 1 -14 re
+f
+414 609 1 -14 re
+f
+468 609 1 -14 re
+f
+130 570 15 -1 re
+f
+BT
+/F4 1 Tf
+12 0 0 12 131 559 Tm
+(d)Tj
+9 0 0 9 138.317 556 Tm
+(i)Tj
+/F8 1 Tf
+12 0 0 12 141.368 559 Tm
+(')Tj
+/F4 1 Tf
+-0.864 1.583 TD
+(n)Tj
+9 0 0 9 138.317 575 Tm
+(i)Tj
+/F8 1 Tf
+12 0 0 12 141.368 578 Tm
+(')Tj
+0.303 -0.917 TD
+( )Tj
+9.417 -0.167 TD
+-0.004 Tc
+(see \(6\))Tj
+ET
+q
+383 550 7 38 re
+W n
+383 569 8 -1 re
+f
+Q
+BT
+12 0 0 12 384 558 Tm
+(1)Tj
+0 1.333 TD
+(0)Tj
+ET
+q
+437 550 7 38 re
+W n
+437 569 8 -1 re
+f
+Q
+BT
+12 0 0 12 438 558 Tm
+(3)Tj
+T*
+(1)Tj
+ET
+q
+491 550 7 38 re
+W n
+491 569 8 -1 re
+f
+Q
+BT
+12 0 0 12 492 558 Tm
+(7)Tj
+T*
+(2)Tj
+ET
+189 595 1 -45 re
+f
+360 595 1 -45 re
+f
+414 595 1 -45 re
+f
+468 595 1 -45 re
+f
+BT
+12 0 0 12 90 539 Tm
+0.01 Tc
+(= )Tj
+/F6 1 Tf
+10 0 0 10 101.22 539 Tm
+(\341)Tj
+/F8 1 Tf
+12 0 0 12 104.998 539 Tm
+( )Tj
+/F4 1 Tf
+0.287 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 115.336 537 Tm
+(0)Tj
+12 0 0 12 120.505 539 Tm
+0.008 Tc
+(', )Tj
+/F4 1 Tf
+0.781 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 136.768 537 Tm
+(1)Tj
+12 0 0 12 141.936 539 Tm
+0.01 Tc
+0.103 Tw
+(', ..., )Tj
+/F4 1 Tf
+2.217 0 TD
+(q)Tj
+9 0 0 9 175.431 537 Tm
+(i)Tj
+/F8 1 Tf
+12 0 0 12 178.305 539 Tm
+0.005 Tc
+(' )Tj
+/F6 1 Tf
+10 0 0 10 184.232 539 Tm
+(\361)Tj
+ET
+189 550 1 -17 re
+f
+360 550 1 -17 re
+f
+414 550 1 -17 re
+f
+468 550 1 -17 re
+f
+189 533 1 -14 re
+f
+360 533 1 -14 re
+f
+414 533 1 -14 re
+f
+468 533 1 -14 re
+f
+BT
+/F8 1 Tf
+12 0 0 12 107 490 Tm
+-0.002 Tc
+0 Tw
+(guess of )Tj
+/F4 1 Tf
+3.538 0 TD
+(k)Tj
+/F8 1 Tf
+0.444 0 TD
+(/)Tj
+/F4 1 Tf
+0.278 0 TD
+-0.005 Tc
+(dg)Tj
+/F8 1 Tf
+2.49 0 TD
+( )Tj
+/F6 1 Tf
+10 0 0 10 191.3 491 Tm
+(\341)Tj
+/F8 1 Tf
+12 0 0 12 194.919 490 Tm
+( )Tj
+/F4 1 Tf
+0.275 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 204.82 488 Tm
+(0)Tj
+12 0 0 12 209.769 490 Tm
+0.005 Tc
+(', )Tj
+/F4 1 Tf
+0.748 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 225.347 488 Tm
+(1)Tj
+12 0 0 12 230.297 490 Tm
+0.007 Tc
+0.069 Tw
+(', ..., )Tj
+/F4 1 Tf
+2.123 0 TD
+(q)Tj
+9 0 0 9 262.377 488 Tm
+0.031 Tc
+(i-)Tj
+/F8 1 Tf
+0.672 0 TD
+(1)Tj
+12 0 0 12 273.375 490 Tm
+0.005 Tc
+(', )Tj
+/F4 1 Tf
+0.748 0 TD
+(q)Tj
+9 0 0 9 288.953 488 Tm
+(i)Tj
+/F8 1 Tf
+12 0 0 12 291.705 490 Tm
+0.011 Tc
+('+1 )Tj
+/F6 1 Tf
+10 0 0 10 311.427 491 Tm
+(\361)Tj
+/F8 1 Tf
+12 0 0 12 315.046 490 Tm
+0.053 Tc
+0 Tw
+( \()Tj
+/F4 1 Tf
+0.641 0 TD
+(i)Tj
+/F8 1 Tf
+0.306 0 TD
+0.017 Tc
+0.164 Tw
+[( even\))]TJ
+ET
+q
+383 478 7 38 re
+W n
+383 497 8 -1 re
+f
+Q
+BT
+12 0 0 12 384 486 Tm
+(1)Tj
+0 1.333 TD
+(1)Tj
+ET
+q
+437 478 7 38 re
+W n
+437 497 8 -1 re
+f
+Q
+BT
+12 0 0 12 438 486 Tm
+(3)Tj
+T*
+(1)Tj
+ET
+q
+488 478 13 38 re
+W n
+488 497 14 -1 re
+f
+Q
+BT
+12 0 0 12 489 486 Tm
+0 Tc
+(10)Tj
+0.25 1.333 TD
+(3)Tj
+ET
+189 519 1 -41 re
+f
+360 519 1 -41 re
+f
+414 519 1 -41 re
+f
+468 519 1 -41 re
+f
+BT
+12 0 0 12 188 467 Tm
+( )Tj
+/F6 1 Tf
+10 0 0 10 191.229 467 Tm
+(\341)Tj
+/F8 1 Tf
+12 0 0 12 194.77 467 Tm
+( )Tj
+/F4 1 Tf
+0.269 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 204.458 465 Tm
+(0)Tj
+12 0 0 12 209.3 467 Tm
+0.004 Tc
+(', )Tj
+/F4 1 Tf
+0.732 0 TD
+(q)Tj
+/F8 1 Tf
+9 0 0 9 224.542 465 Tm
+(1)Tj
+12 0 0 12 229.385 467 Tm
+0.005 Tc
+0.053 Tw
+(', ..., )Tj
+/F4 1 Tf
+2.077 0 TD
+(q)Tj
+9 0 0 9 260.771 465 Tm
+(i)Tj
+/F8 1 Tf
+12 0 0 12 263.464 467 Tm
+0.003 Tc
+(' )Tj
+/F6 1 Tf
+10 0 0 10 269.018 467 Tm
+(\361)Tj
+/F8 1 Tf
+12 0 0 12 272.559 467 Tm
+0.021 Tc
+0 Tw
+(                \()Tj
+/F4 1 Tf
+4.663 0 TD
+(i)Tj
+/F8 1 Tf
+0.299 0 TD
+0.011 Tc
+0.114 Tw
+[( odd\))]TJ
+ET
+189 478 1 -19 re
+f
+360 478 1 -19 re
+f
+414 478 1 -19 re
+f
+468 478 1 -19 re
+f
+189 459 1 -14 re
+f
+360 459 1 -14 re
+f
+414 459 1 -14 re
+f
+468 459 1 -14 re
+f
+BT
+12 0 0 12 109 430 Tm
+0 Tc
+0 Tw
+(guess of )Tj
+/F4 1 Tf
+3.555 0 TD
+[(edg)-7501(e)]TJ
+/F8 1 Tf
+9.451 0 TD
+( )Tj
+/F6 1 Tf
+0.285 0 TD
+(\327)Tj
+/F8 1 Tf
+0.285 0 TD
+( )Tj
+/F4 1 Tf
+0.285 0 TD
+0.14 Tc
+(dg)Tj
+/F8 1 Tf
+8.306 0 TD
+0 Tc
+[(2621)-2500(7863)-2250(26210)]TJ
+ET
+189 445 1 -19 re
+f
+360 445 1 -19 re
+f
+414 445 1 -19 re
+f
+468 445 1 -19 re
+f
+189 426 1 -14 re
+f
+360 426 1 -14 re
+f
+414 426 1 -14 re
+f
+468 426 1 -14 re
+f
+BT
+12 0 0 12 93 397 Tm
+0.001 Tc
+0.01 Tw
+(guess of \()Tj
+/F4 1 Tf
+4 0 TD
+(p)Tj
+/F8 1 Tf
+0.5 0 TD
+0 Tc
+(-1\)\()Tj
+/F4 1 Tf
+1.499 0 TD
+(q)Tj
+/F8 1 Tf
+0.5 0 TD
+(-1\))Tj
+/F6 1 Tf
+7.084 -0.083 TD
+(\353)Tj
+/F4 1 Tf
+0.384 0.083 TD
+-0.003 Tc
+(edg)Tj
+/F8 1 Tf
+1.436 0 TD
+(/)Tj
+/F4 1 Tf
+0.278 0 TD
+(k)Tj
+/F6 1 Tf
+0.444 -0.083 TD
+(\373)Tj
+/F8 1 Tf
+7.375 0.083 TD
+0 Tc
+[(2621)-2500(7863)-2500(8736)]TJ
+ET
+189 412 1 -19 re
+f
+360 412 1 -19 re
+f
+414 412 1 -19 re
+f
+468 412 1 -19 re
+f
+189 393 1 -14 re
+f
+360 393 1 -14 re
+f
+414 393 1 -14 re
+f
+468 393 1 -14 re
+f
+BT
+12 0 0 12 114 367 Tm
+0.001 Tc
+0.009 Tw
+(guess of )Tj
+/F4 1 Tf
+3.58 0 TD
+-0.009 Tc
+[(g)-7179(edg)]TJ
+/F8 1 Tf
+9.085 0 TD
+0 Tw
+( mod )Tj
+/F4 1 Tf
+2.233 0 TD
+(k)Tj
+/F8 1 Tf
+7.601 0 TD
+4 Tc
+(002)Tj
+ET
+189 379 1 -15 re
+f
+360 379 1 -15 re
+f
+414 379 1 -15 re
+f
+468 379 1 -15 re
+f
+189 364 1 -14 re
+f
+360 364 1 -14 re
+f
+414 364 1 -14 re
+f
+468 364 1 -14 re
+f
+BT
+12 0 0 12 99 338 Tm
+0.001 Tc
+0.01 Tw
+(guess of \()Tj
+/F4 1 Tf
+4 0 TD
+(p)Tj
+/F8 1 Tf
+0.5 0 TD
+(+)Tj
+/F4 1 Tf
+0.564 0 TD
+(q)Tj
+/F8 1 Tf
+0.5 0 TD
+-0.003 Tc
+-0.001 Tw
+[(\)/2)-6328(see \(31\))]TJ
+17.019 0 TD
+0.019 Tc
+[(3153.5)-1898(532.5)-2814(9)19(6)]TJ
+ET
+189 350 1 -15 re
+f
+360 350 1 -15 re
+f
+414 350 1 -15 re
+f
+468 350 1 -15 re
+f
+BT
+12 0 0 12 374 326 Tm
+-0.011 Tc
+[(\(quit\))-2343(\(quit\))]TJ
+ET
+189 335 1 -12 re
+f
+360 335 1 -12 re
+f
+414 335 1 -12 re
+f
+468 335 1 -12 re
+f
+189 323 1 -14 re
+f
+360 323 1 -14 re
+f
+414 323 1 -14 re
+f
+468 323 1 -14 re
+f
+BT
+12 0 0 12 94 296 Tm
+0.001 Tc
+0.01 Tw
+(guess of \(\()Tj
+/F4 1 Tf
+4.333 0 TD
+(p)Tj
+/F8 1 Tf
+0.5 0 TD
+(-)Tj
+/F4 1 Tf
+0.333 0 TD
+(q)Tj
+/F8 1 Tf
+0.5 0 TD
+0.002 Tc
+(\)/2\))Tj
+9 0 0 9 179.41 300 Tm
+(2)Tj
+12 0 0 12 255 296 Tm
+-0.001 Tc
+0.023 Tw
+[(see )26(\(32\))-14833(289 = 17)]TJ
+9 0 0 9 514.437 300 Tm
+(2)Tj
+ET
+189 309 1 -16 re
+f
+360 309 1 -16 re
+f
+414 309 1 -16 re
+f
+468 309 1 -16 re
+f
+189 293 1 -14 re
+f
+360 293 1 -14 re
+f
+414 293 1 -14 re
+f
+468 293 1 -14 re
+f
+BT
+/F4 1 Tf
+12 0 0 12 136 267 Tm
+10.083 Tc
+[(dd)10091(g)]TJ
+/F8 1 Tf
+11.568 0 TD
+(/)Tj
+/F4 1 Tf
+0.274 0 TD
+(g)Tj
+/F8 1 Tf
+17.825 0 TD
+(5)Tj
+ET
+189 279 1 -15 re
+f
+360 279 1 -15 re
+f
+414 279 1 -15 re
+f
+468 279 1 -15 re
+f
+189 264 1 -14 re
+f
+360 264 1 -14 re
+f
+414 264 1 -14 re
+f
+468 264 1 -14 re
+f
+BT
+12 0 0 12 90 211 Tm
+-0.011 Tc
+0 Tw
+(The continued fraction attack on RSA for this example yields)Tj
+/F4 1 Tf
+8 -2.417 TD
+(d)Tj
+/F8 1 Tf
+0.512 0 TD
+0.001 Tc
+0.01 Tw
+[( = 5,    )]TJ
+/F4 1 Tf
+2.881 0 TD
+(p)Tj
+/F8 1 Tf
+0.512 0 TD
+0.013 Tw
+[( = 113,    )]TJ
+/F4 1 Tf
+3.904 0 TD
+(q)Tj
+/F8 1 Tf
+0.512 0 TD
+0.011 Tw
+[( = 79,    )]TJ
+/F4 1 Tf
+3.392 0 TD
+(k)Tj
+/F8 1 Tf
+0.455 0 TD
+[( = 3,    and    )]TJ
+/F4 1 Tf
+5.382 0 TD
+(g)Tj
+/F8 1 Tf
+0.512 0 TD
+0.002 Tc
+0.018 Tw
+[( = 2.)]TJ
+-26.061 -2.417 TD
+-0.007 Tc
+0 Tw
+(One can verify that equation \(27\) is satisfied for these values in order to see that )Tj
+/F4 1 Tf
+31.643 0 TD
+(d)Tj
+/F8 1 Tf
+0.49 0 TD
+-0.008 Tc
+( = 5 is the)Tj
+-32.133 -1.083 TD
+0.018 Tc
+0.18 Tw
+(secret exponent corresponding to )Tj
+/F4 1 Tf
+14.813 0 TD
+(e)Tj
+/F8 1 Tf
+0.487 0 TD
+0.012 Tc
+0.125 Tw
+[( = 2621.  One can also verify that the sufficient)]TJ
+-15.301 -1 TD
+-0.006 Tc
+0 Tw
+(condition for the success of this algorithm \(equation \(29\)\) is satisfied.)Tj
+0 -2.333 TD
+-0.003 Tc
+(This example illustrates the details of the continued fraction attack on RSA, but it is useful)Tj
+0 -1 TD
+-0.004 Tc
+(to consider a more realistic case.   Suppose that a 1024-bit modulus is used for RSA.  Then)Tj
+ET
+endstream
+endobj
+36 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F4 5 0 R
+/F6 15 0 R
+/F8 6 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+38 0 obj
+<<
+/Length 8704
+>>
+stream
+BT
+/F8 1 Tf
+12 0 0 12 300 39 Tm
+0 g
+/GS1 gs
+0 Tc
+(11)Tj
+/F4 1 Tf
+-17.5 55.833 TD
+(p)Tj
+/F8 1 Tf
+0.525 0 TD
+0.004 Tc
+0.039 Tw
+[( and )]TJ
+/F4 1 Tf
+2.043 0 TD
+(q)Tj
+/F8 1 Tf
+0.525 0 TD
+0.008 Tc
+0.084 Tw
+[( are approximately 2)]TJ
+9 0 0 9 231.12 713 Tm
+0.025 Tc
+(512)Tj
+12 0 0 12 245.304 709 Tm
+0.006 Tc
+0.055 Tw
+[(.  Suppose that )]TJ
+/F4 1 Tf
+6.451 0 TD
+(g)Tj
+/F8 1 Tf
+0.525 0 TD
+0.004 Tc
+0.043 Tw
+[( = 2, and that )]TJ
+/F4 1 Tf
+5.788 0 TD
+(e)Tj
+/F8 1 Tf
+0.467 0 TD
+( )Tj
+/F6 1 Tf
+10 0 0 10 407.236 709 Tm
+(\273)Tj
+/F8 1 Tf
+12 0 0 12 413.005 709 Tm
+( )Tj
+/F4 1 Tf
+0.263 0 TD
+0.025 Tc
+(pq)Tj
+/F8 1 Tf
+1.051 0 TD
+0.004 Tc
+0.041 Tw
+[( so that )]TJ
+/F4 1 Tf
+3.298 0 TD
+(k)Tj
+/F8 1 Tf
+0.467 0 TD
+( )Tj
+/F6 1 Tf
+10 0 0 10 477.099 709 Tm
+(\273)Tj
+/F8 1 Tf
+12 0 0 12 482.868 709 Tm
+( )Tj
+/F4 1 Tf
+0.263 0 TD
+0.025 Tc
+(dg)Tj
+/F8 1 Tf
+1.051 0 TD
+0.007 Tc
+0.067 Tw
+[( \(see)]TJ
+-34.053 -1 TD
+0.005 Tc
+0.047 Tw
+[(equation \(28\)\).  Then using equation \(29\), we see that the continued fraction attack will)]TJ
+0 -1.167 TD
+-0.004 Tc
+0 Tw
+(find secret exponents up to a size of approximately 2)Tj
+9 0 0 9 340.773 687 Tm
+-0.006 Tc
+(255)Tj
+12 0 0 12 354.12 683 Tm
+(.)Tj
+/F2 1 Tf
+-22.01 -3.583 TD
+0.002 Tc
+0.024 Tw
+(6. Combatting the Continued Fraction Attack on RSA)Tj
+/F8 1 Tf
+0 -2.333 TD
+0 Tc
+0.002 Tw
+(There are two ways of reducing the maximum size of secret exponent which can be found)Tj
+0 -1 TD
+-0.002 Tc
+0 Tw
+(using the continued fraction attack on RSA.  From equation \(29\), we can see that these are)Tj
+0 -1.083 TD
+-0.01 Tc
+(to make )Tj
+/F4 1 Tf
+3.364 0 TD
+(k)Tj
+/F8 1 Tf
+0.434 0 TD
+-0.009 Tc
+( larger and to make )Tj
+/F4 1 Tf
+7.785 0 TD
+(g)Tj
+/F8 1 Tf
+0.488 0 TD
+( larger.)Tj
+-12.072 -2.417 TD
+0 Tc
+0.003 Tw
+(In order to make )Tj
+/F4 1 Tf
+6.901 0 TD
+(k)Tj
+/F8 1 Tf
+0.444 0 TD
+( larger, one must make the public exponent )Tj
+/F4 1 Tf
+17.56 0 TD
+(e)Tj
+/F8 1 Tf
+0.444 0 TD
+0.004 Tw
+( larger \(see equation \(27\)\).)Tj
+-25.35 -1.167 TD
+-0.006 Tc
+0 Tw
+(This can be done by adding a multiple of )Tj
+/F4 1 Tf
+16.399 0 TD
+-0.01 Tc
+(LCM)Tj
+/F8 1 Tf
+2.027 0 TD
+(\()Tj
+/F4 1 Tf
+0.408 0 TD
+(p)Tj
+/F8 1 Tf
+0.533 0 TD
+0.006 Tc
+(-1, )Tj
+/F4 1 Tf
+1.421 0 TD
+(q)Tj
+/F8 1 Tf
+0.533 0 TD
+0.059 Tw
+(-1\) to )Tj
+/F4 1 Tf
+2.605 0 TD
+(e)Tj
+/F8 1 Tf
+0.473 0 TD
+0.007 Tc
+0.072 Tw
+[(.  Suppose that )]TJ
+/F4 1 Tf
+6.544 0 TD
+(e)Tj
+/F8 1 Tf
+0.473 0 TD
+0.035 Tc
+0 Tw
+[(  >)32( \()]TJ
+/F4 1 Tf
+1.835 0 TD
+0.046 Tc
+(pq)Tj
+/F8 1 Tf
+1.091 0 TD
+(\))Tj
+9 0 0 9 506.455 548 Tm
+0.038 Tc
+(1.5)Tj
+12 0 0 12 518.73 544 Tm
+(.)Tj
+-35.728 -1.167 TD
+0.001 Tc
+0.011 Tw
+(This implies that )Tj
+/F4 1 Tf
+7.026 0 TD
+(k)Tj
+/F8 1 Tf
+0.444 0 TD
+(/)Tj
+/F4 1 Tf
+0.278 0 TD
+0.004 Tc
+(dg)Tj
+/F8 1 Tf
+1.008 0 TD
+0.002 Tc
+0.003 Tw
+( > \()Tj
+/F4 1 Tf
+1.494 0 TD
+0.018 Tc
+(pq)Tj
+/F8 1 Tf
+1.036 0 TD
+(\))Tj
+9 0 0 9 229.57 534 Tm
+0.015 Tc
+(0.5)Tj
+12 0 0 12 241.222 530 Tm
+0.005 Tc
+0.051 Tw
+[( \(see equation \(28\)\).  Substituting )]TJ
+/F4 1 Tf
+14.127 0 TD
+(k)Tj
+/F8 1 Tf
+0.46 0 TD
+0.002 Tc
+0.016 Tw
+[( = )]TJ
+/F4 1 Tf
+1.102 0 TD
+0.018 Tc
+(dg)Tj
+/F8 1 Tf
+1.036 0 TD
+(\()Tj
+/F4 1 Tf
+0.423 0 TD
+0.022 Tc
+(pq)Tj
+/F8 1 Tf
+1.043 0 TD
+(\))Tj
+9 0 0 9 463.687 534 Tm
+0.018 Tc
+(0.5)Tj
+12 0 0 12 475.422 530 Tm
+0.006 Tc
+0.055 Tw
+[( into \(29\))]TJ
+-32.119 -1.167 TD
+-0.001 Tc
+0 Tw
+(leads to )Tj
+/F4 1 Tf
+3.323 0 TD
+(d)Tj
+/F8 1 Tf
+0.5 0 TD
+( < 1.  Therefore, if )Tj
+/F4 1 Tf
+7.596 0 TD
+(e)Tj
+/F8 1 Tf
+0.444 0 TD
+0 Tc
+( > \()Tj
+/F4 1 Tf
+1.469 0 TD
+-0.002 Tc
+(pq)Tj
+/F8 1 Tf
+0.996 0 TD
+(\))Tj
+9 0 0 9 265.947 520 Tm
+0 Tc
+(1.5)Tj
+12 0 0 12 277.197 516 Tm
+-0.002 Tc
+(, the continued fraction algorithm is not guaranteed)Tj
+-15.6 -1.083 TD
+-0.007 Tc
+(to work for any size of secret exponent.  Increasing the size of )Tj
+/F4 1 Tf
+24.678 0 TD
+(e)Tj
+/F8 1 Tf
+0.437 0 TD
+( has the disadvantage that it)Tj
+-25.114 -1 TD
+-0.006 Tc
+(increases the execution time of public key encryption.  But, this may be acceptable in some)Tj
+T*
+0.012 Tc
+(systems.)Tj
+0 -2.417 TD
+0.01 Tc
+0.094 Tw
+(In order to make )Tj
+/F4 1 Tf
+7.428 0 TD
+(g)Tj
+/F8 1 Tf
+0.539 0 TD
+0.008 Tc
+0.084 Tw
+[( larger, )]TJ
+/F4 1 Tf
+3.324 0 TD
+(p)Tj
+/F8 1 Tf
+0.539 0 TD
+0.006 Tc
+0.061 Tw
+[( and )]TJ
+/F4 1 Tf
+2.096 0 TD
+(q)Tj
+/F8 1 Tf
+0.539 0 TD
+0.01 Tc
+0.095 Tw
+[( must be chosen such that )]TJ
+/F4 1 Tf
+11.323 0 TD
+0.055 Tc
+(GCD)Tj
+/F8 1 Tf
+2.277 0 TD
+(\()Tj
+/F4 1 Tf
+0.435 0 TD
+(p)Tj
+/F8 1 Tf
+0.542 0 TD
+0.008 Tc
+(-1, )Tj
+/F4 1 Tf
+1.446 0 TD
+(q)Tj
+/F8 1 Tf
+0.542 0 TD
+0.012 Tc
+0.122 Tw
+(-1\) is large.)Tj
+-31.031 -1.083 TD
+0.01 Tc
+0.098 Tw
+(However, we will see later that there are ways to find )Tj
+/F4 1 Tf
+23.23 0 TD
+(g)Tj
+/F8 1 Tf
+0.538 0 TD
+0.007 Tc
+0.074 Tw
+[( or factors of )]TJ
+/F4 1 Tf
+5.792 0 TD
+(g)Tj
+/F8 1 Tf
+0.538 0 TD
+0.013 Tc
+0.125 Tw
+[( under certain)]TJ
+-30.097 -1 TD
+0 Tc
+(conditions.)Tj
+/F2 1 Tf
+0 -3.583 TD
+0.002 Tc
+0.018 Tw
+(7. Improvements to the Attack on RSA)Tj
+/F8 1 Tf
+0 -2.333 TD
+0.001 Tc
+0.009 Tw
+(In this section, four possible improvements to the attack on short secret exponents will be)Tj
+0 -1 TD
+0.005 Tw
+(discussed.  The first improvement is to allow the continued fraction algorithm to continue)Tj
+0 -1.083 TD
+-0.008 Tc
+0 Tw
+(searching for )Tj
+/F4 1 Tf
+5.384 0 TD
+(d)Tj
+/F8 1 Tf
+0.49 0 TD
+( slightly beyond the limit of equation \(29\).  The algorithm is only guaranteed)Tj
+-5.874 -1 TD
+-0.006 Tc
+(to work up to this limit, but it may work slightly beyond the limit.  This may add a bit or so)Tj
+T*
+-0.008 Tc
+(to the size of secret exponent that can be found.)Tj
+0 -2.417 TD
+0.011 Tc
+0.104 Tw
+(The second improvement is based upon the observation that the denominator of )Tj
+/F4 1 Tf
+34.176 0 TD
+(e)Tj
+/F8 1 Tf
+0.473 0 TD
+(/)Tj
+/F4 1 Tf
+0.296 0 TD
+0.064 Tc
+(pq)Tj
+/F8 1 Tf
+-34.945 -1.083 TD
+0.007 Tc
+0.066 Tw
+(\(which is the underestimate of )Tj
+/F4 1 Tf
+12.894 0 TD
+(k)Tj
+/F8 1 Tf
+0.463 0 TD
+(/)Tj
+/F4 1 Tf
+0.29 0 TD
+0.022 Tc
+(dg)Tj
+/F8 1 Tf
+1.043 0 TD
+0.006 Tc
+0.059 Tw
+(\) is simply an overestimate of \()Tj
+/F4 1 Tf
+13.059 0 TD
+(p)Tj
+/F8 1 Tf
+0.531 0 TD
+0.023 Tc
+(-1\)\()Tj
+/F4 1 Tf
+1.591 0 TD
+(q)Tj
+/F8 1 Tf
+0.531 0 TD
+0.008 Tc
+0.075 Tw
+[(-1\).  A closer)]TJ
+-30.402 -1.083 TD
+-0.012 Tc
+0 Tw
+(overestimate of \()Tj
+/F4 1 Tf
+6.667 0 TD
+(p)Tj
+/F8 1 Tf
+0.5 0 TD
+0 Tc
+(-1\)\()Tj
+/F4 1 Tf
+1.499 0 TD
+(q)Tj
+/F8 1 Tf
+0.5 0 TD
+(-1\) is)Tj
+/F6 1 Tf
+6.168 -2.083 TD
+(\353)Tj
+/F8 1 Tf
+0.402 0.167 TD
+(\()Tj
+ET
+1 i 
+283 229 3 -1 re
+f
+284 229 m
+285 229 l
+286 226 l
+286 225 l
+285 225 l
+284 228 l
+f
+288 238 m
+289 238 l
+289 237 l
+286 225 l
+285 225 l
+285 226 l
+f
+288 238 12 -1 re
+f
+BT
+/F4 1 Tf
+12 0 0 12 289 228 Tm
+(pq)Tj
+/F8 1 Tf
+1.167 -0.083 TD
+( - 1\))Tj
+9 0 0 9 323.468 231 Tm
+(2)Tj
+/F6 1 Tf
+12 0 0 12 328.499 225 Tm
+(\373)Tj
+0.429 -0.083 TD
+(.)Tj
+/F8 1 Tf
+-20.304 -2.5 TD
+-0.007 Tc
+(Using this estimate, equation \(29\) becomes)Tj
+/F4 1 Tf
+12.833 -4.083 TD
+0 Tc
+(kdg)Tj
+/F8 1 Tf
+1.444 0 TD
+-0.001 Tc
+(   <   )Tj
+ET
+286 149 8 -1 re
+f
+BT
+12 0 0 12 287 138 Tm
+(3)Tj
+0 1.333 TD
+(2)Tj
+7 0 0 7 294 146 Tm
+( )Tj
+30 0 0 30 295 143 Tm
+(\()Tj
+7 0 0 7 305.217 146 Tm
+( )Tj
+ET
+306 149 39 -1 re
+f
+307 137 3 -1 re
+f
+308 137 m
+309 137 l
+310 134 l
+310 133 l
+309 133 l
+308 136 l
+f
+312 146 m
+313 146 l
+313 145 l
+310 133 l
+309 133 l
+309 134 l
+f
+312 146 8 -1 re
+f
+BT
+12 0 0 12 322 135 Tm
+0 Tc
+( - )Tj
+ET
+332 137 3 -1 re
+f
+333 137 m
+334 137 l
+335 134 l
+335 133 l
+334 133 l
+333 136 l
+f
+337 146 m
+338 146 l
+338 145 l
+335 133 l
+334 133 l
+334 134 l
+f
+337 146 7 -1 re
+f
+308 156 3 -1 re
+f
+309 156 m
+310 156 l
+311 153 l
+311 152 l
+310 152 l
+309 155 l
+f
+313 165 m
+314 165 l
+314 164 l
+311 152 l
+310 152 l
+310 153 l
+f
+313 165 12 -1 re
+f
+BT
+12 0 0 12 327 154 Tm
+( - 1)Tj
+7 0 0 7 345 146 Tm
+( )Tj
+30 0 0 30 346 143 Tm
+(\))Tj
+9 0 0 9 355 161 Tm
+(2)Tj
+/F4 1 Tf
+12 0 0 12 313 136 Tm
+(p)Tj
+0.083 1.583 TD
+(pq)Tj
+2 -1.583 TD
+(q)Tj
+/F8 1 Tf
+1.833 0.75 TD
+( )Tj
+0.292 -0.667 TD
+(.)Tj
+-22.792 -2.917 TD
+0.003 Tw
+(This increases the size of secret exponent that can be found.  The amount of improvement)Tj
+0 -1.083 TD
+-0.002 Tc
+0 Tw
+(increases as )Tj
+/F6 1 Tf
+10 0 0 10 149.655 89 Tm
+(\357)Tj
+/F4 1 Tf
+12 0 0 12 154.594 89 Tm
+(p)Tj
+/F8 1 Tf
+0.5 0 TD
+-0.001 Tc
+( - )Tj
+/F4 1 Tf
+0.829 0 TD
+(q)Tj
+/F6 1 Tf
+10 0 0 10 176.538 89 Tm
+(\357)Tj
+/F8 1 Tf
+12 0 0 12 181.477 89 Tm
+-0.002 Tc
+( decreases.)Tj
+ET
+endstream
+endobj
+39 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F2 4 0 R
+/F4 5 0 R
+/F6 15 0 R
+/F8 6 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+43 0 obj
+<<
+/Length 8689
+>>
+stream
+BT
+/F8 1 Tf
+12 0 0 12 300 39 Tm
+0 g
+/GS1 gs
+0 Tc
+(12)Tj
+-17.5 56 TD
+-0.005 Tc
+0 Tw
+(The third improvement to the continued fraction attack on RSA is to perform the algorithm)Tj
+0 -1.083 TD
+0.002 Tc
+0.021 Tw
+(on many guesses of )Tj
+/F4 1 Tf
+8.233 0 TD
+(k)Tj
+/F8 1 Tf
+0.451 0 TD
+(/)Tj
+/F4 1 Tf
+0.282 0 TD
+0.008 Tc
+(dg)Tj
+/F8 1 Tf
+1.015 0 TD
+0.002 Tc
+[(.  One might start at some initial guess and then try successively)]TJ
+-9.982 -1.083 TD
+0.015 Tw
+[(larger guesses.  In this way, one would be performing a linear search for )]TJ
+/F4 1 Tf
+29.495 0 TD
+(k)Tj
+/F8 1 Tf
+0.449 0 TD
+(/)Tj
+/F4 1 Tf
+0.278 0 TD
+0.006 Tc
+(dg)Tj
+/F8 1 Tf
+1.011 0 TD
+0.001 Tc
+0.013 Tw
+[(.  For secret)]TJ
+-31.233 -1 TD
+0.004 Tc
+0.044 Tw
+[(exponents up to the limit of equation \(29\), the algorithm takes polynomial time.  As the)]TJ
+T*
+0 Tc
+0.005 Tw
+(secret exponent increases in size beyond this limit, the number of times that the algorithm)Tj
+T*
+-0.008 Tc
+0 Tw
+(must be performed increases exponentially.)Tj
+0 -2.417 TD
+0.001 Tc
+0.004 Tw
+(The fourth improvement is to attempt to find )Tj
+/F4 1 Tf
+18.228 0 TD
+(g)Tj
+/F8 1 Tf
+0.5 0 TD
+0 Tc
+( or factors of )Tj
+/F4 1 Tf
+5.405 0 TD
+(g)Tj
+/F8 1 Tf
+0.5 0 TD
+(.  Suppose that )Tj
+/F4 1 Tf
+6.159 0 TD
+(t)Tj
+/F8 1 Tf
+0.278 0 TD
+( is known to)Tj
+-31.071 -1.083 TD
+-0.005 Tc
+0 Tw
+(be a factor of )Tj
+/F4 1 Tf
+5.482 0 TD
+(g)Tj
+/F8 1 Tf
+0.494 0 TD
+(.  Then one could use)Tj
+/F4 1 Tf
+3.108 -3.667 TD
+(t)Tj
+/F8 1 Tf
+24 0 0 24 204 561 Tm
+(\()Tj
+5 0 0 5 211.788 564 Tm
+( )Tj
+ET
+1 i 
+213 567 14 -1 re
+f
+BT
+/F4 1 Tf
+12 0 0 12 214 556 Tm
+0 Tc
+(pq)Tj
+0.25 1.333 TD
+(e)Tj
+/F8 1 Tf
+5 0 0 5 227 564 Tm
+( )Tj
+24 0 0 24 228.25 561 Tm
+(\))Tj
+12 0 0 12 236 563 Tm
+-0.007 Tc
+(     as an underestimate of     )Tj
+ET
+q
+371 533 34 54 re
+W n
+371 568 35 -1 re
+f
+Q
+BT
+/F4 1 Tf
+12 0 0 12 372 548 Tm
+(d)Tj
+/F8 1 Tf
+5 0 0 5 377.823 548 Tm
+( )Tj
+24 0 0 24 379.074 546 Tm
+(\()Tj
+5 0 0 5 386.829 548 Tm
+( )Tj
+ET
+388 551 8 -1 re
+f
+BT
+/F4 1 Tf
+12 0 0 12 390 541 Tm
+(t)Tj
+-0.083 1.25 TD
+(g)Tj
+/F8 1 Tf
+5 0 0 5 396 548 Tm
+( )Tj
+24 0 0 24 397.25 546 Tm
+(\))Tj
+/F4 1 Tf
+12 0 0 12 385 573 Tm
+(k)Tj
+/F8 1 Tf
+1.667 -0.833 TD
+0.083 Tc
+( .)Tj
+-26.25 -4.583 TD
+-0.005 Tc
+(In this case, equation \(29\) becomes)Tj
+/F4 1 Tf
+13.25 -3.417 TD
+0.056 Tc
+(kd)Tj
+/F8 1 Tf
+5 0 0 5 260.823 467 Tm
+( )Tj
+24 0 0 24 262.074 465 Tm
+(\()Tj
+5 0 0 5 269.829 467 Tm
+( )Tj
+ET
+271 470 8 -1 re
+f
+BT
+/F4 1 Tf
+12 0 0 12 273 460 Tm
+(t)Tj
+-0.083 1.25 TD
+(g)Tj
+/F8 1 Tf
+5 0 0 5 279 467 Tm
+( )Tj
+24 0 0 24 280.25 465 Tm
+(\))Tj
+12 0 0 12 288.242 467 Tm
+0 Tc
+(   <   )Tj
+ET
+313 470 39 -1 re
+f
+314 457 7 -1 re
+f
+BT
+9 0 0 9 315 447 Tm
+(2)Tj
+0 1.444 TD
+(3)Tj
+5 0 0 5 321 454 Tm
+( )Tj
+12 0 0 12 322.25 454 Tm
+(\()Tj
+/F4 1 Tf
+0.326 0 TD
+(p)Tj
+/F8 1 Tf
+0.57 0 TD
+(+)Tj
+/F4 1 Tf
+0.667 0 TD
+(q)Tj
+/F8 1 Tf
+0.5 0 TD
+(\))Tj
+/F4 1 Tf
+-1.75 1.75 TD
+(pq)Tj
+/F8 1 Tf
+2.167 -0.667 TD
+( )Tj
+0.25 -2.167 TD
+( )Tj
+0.292 2 TD
+(.)Tj
+-22.375 -4.417 TD
+0.001 Tc
+0.005 Tw
+(This increases the size of )Tj
+/F4 1 Tf
+10.348 0 TD
+(d)Tj
+/F8 1 Tf
+0.5 0 TD
+0 Tc
+( that can be found by a factor of )Tj
+/F4 1 Tf
+13.079 0 TD
+(t)Tj
+/F8 1 Tf
+0.278 0 TD
+0.001 Tc
+0.004 Tw
+(.  We now need a way to find)Tj
+-24.206 -1.083 TD
+-0.001 Tc
+0 Tw
+(factors of )Tj
+/F4 1 Tf
+4.041 0 TD
+(g)Tj
+/F8 1 Tf
+0.5 0 TD
+(.  Because )Tj
+/F4 1 Tf
+4.319 0 TD
+(g)Tj
+/F8 1 Tf
+0.5 0 TD
+( divides )Tj
+/F4 1 Tf
+3.378 0 TD
+-0.002 Tc
+(GCD)Tj
+/F8 1 Tf
+2.104 0 TD
+(\()Tj
+/F4 1 Tf
+0.408 0 TD
+(p)Tj
+/F8 1 Tf
+0.523 0 TD
+0.004 Tc
+(-1, )Tj
+/F4 1 Tf
+1.393 0 TD
+(q)Tj
+/F8 1 Tf
+0.523 0 TD
+0.005 Tc
+(-1\), )Tj
+/F4 1 Tf
+1.741 0 TD
+(g)Tj
+/F8 1 Tf
+0.523 0 TD
+0.055 Tw
+[( divides both )]TJ
+/F4 1 Tf
+5.662 0 TD
+(p)Tj
+/F8 1 Tf
+0.523 0 TD
+0.046 Tw
+(-1 and )Tj
+/F4 1 Tf
+2.903 0 TD
+(q)Tj
+/F8 1 Tf
+0.523 0 TD
+0.063 Tw
+[(-1.  This means)]TJ
+-29.561 -1.083 TD
+-0.007 Tc
+(that )Tj
+/F4 1 Tf
+1.716 0 TD
+(g)Tj
+/F8 1 Tf
+0.49 0 TD
+0 Tw
+( also divides )Tj
+/F4 1 Tf
+5.149 0 TD
+-0.01 Tc
+(pq)Tj
+/F8 1 Tf
+0.981 0 TD
+-0.009 Tc
+(-1 because)Tj
+/F4 1 Tf
+2.33 -2.417 TD
+0.002 Tc
+(pq)Tj
+/F8 1 Tf
+1.005 0 TD
+0.001 Tc
+0.002 Tw
+(-1   =   \()Tj
+/F4 1 Tf
+3.328 0 TD
+(p)Tj
+/F8 1 Tf
+0.5 0 TD
+0.002 Tc
+(-1\)\()Tj
+/F4 1 Tf
+1.506 0 TD
+(q)Tj
+/F8 1 Tf
+0.5 0 TD
+0 Tc
+0.005 Tw
+(-1\) + \()Tj
+/F4 1 Tf
+2.661 0 TD
+(p)Tj
+/F8 1 Tf
+0.511 0 TD
+0.002 Tc
+0.02 Tw
+(-1\) + \()Tj
+/F4 1 Tf
+2.617 0 TD
+(q)Tj
+/F8 1 Tf
+0.511 0 TD
+0.01 Tc
+(-1\).)Tj
+-23.805 -2.417 TD
+0.001 Tc
+0.012 Tw
+(One may be able to find factors of )Tj
+/F4 1 Tf
+14.077 0 TD
+(g)Tj
+/F8 1 Tf
+0.505 0 TD
+[( by factoring )]TJ
+/F4 1 Tf
+5.412 0 TD
+0.005 Tc
+(pq)Tj
+/F8 1 Tf
+1.01 0 TD
+0.002 Tc
+0.003 Tw
+( - 1.  If )Tj
+/F4 1 Tf
+3.028 0 TD
+(g)Tj
+/F8 1 Tf
+0.505 0 TD
+0.001 Tc
+0.011 Tw
+[( is chosen to be large and all)]TJ
+-24.538 -1.083 TD
+0 Tc
+0.005 Tw
+(of the prime factors of )Tj
+/F4 1 Tf
+9.225 0 TD
+(g)Tj
+/F8 1 Tf
+0.5 0 TD
+( are large, then it may be difficult to find factors of )Tj
+/F4 1 Tf
+20.654 0 TD
+(g)Tj
+/F8 1 Tf
+0.5 0 TD
+0.001 Tc
+( by factoring)Tj
+/F4 1 Tf
+-30.878 -1.083 TD
+0 Tc
+(pq)Tj
+/F8 1 Tf
+1 0 TD
+0 Tw
+(-1.  However, if )Tj
+/F4 1 Tf
+6.609 0 TD
+(g)Tj
+/F8 1 Tf
+0.5 0 TD
+( is so large that \()Tj
+/F4 1 Tf
+6.724 0 TD
+(p)Tj
+/F8 1 Tf
+0.5 0 TD
+-0.002 Tc
+(-1\)/)Tj
+/F4 1 Tf
+1.435 0 TD
+(g)Tj
+/F8 1 Tf
+0.5 0 TD
+( and \()Tj
+/F4 1 Tf
+2.263 0 TD
+(q)Tj
+/F8 1 Tf
+0.5 0 TD
+(-1\)/)Tj
+/F4 1 Tf
+1.435 0 TD
+(g)Tj
+/F8 1 Tf
+0.5 0 TD
+( are small, then one could find )Tj
+/F4 1 Tf
+12.31 0 TD
+(g)Tj
+/F8 1 Tf
+0.5 0 TD
+-0.004 Tc
+( by)Tj
+-34.777 -1.083 TD
+-0.005 Tc
+(searching through possible values of \()Tj
+/F4 1 Tf
+15.083 0 TD
+(p)Tj
+/F8 1 Tf
+0.5 0 TD
+0 Tc
+(-1\)/)Tj
+/F4 1 Tf
+1.444 0 TD
+(g)Tj
+/F8 1 Tf
+0.5 0 TD
+( and \()Tj
+/F4 1 Tf
+2.277 0 TD
+(q)Tj
+/F8 1 Tf
+0.5 0 TD
+(-1\)/)Tj
+/F4 1 Tf
+1.444 0 TD
+(g)Tj
+/F8 1 Tf
+0.5 0 TD
+(.)Tj
+/F2 1 Tf
+-22.249 -3.583 TD
+0.003 Tc
+0.032 Tw
+(8. Open Problems)Tj
+/F8 1 Tf
+0 -2.333 TD
+0.019 Tc
+0.194 Tw
+(The main motivation for using short secret exponents is to reduce the secret key)Tj
+0 -1 TD
+-0.004 Tc
+0 Tw
+(exponentiation time.  A useful technique for reducing the secret key exponentiation time is)Tj
+0 -1.083 TD
+0 Tc
+0.002 Tw
+(to take advantage of the knowledge of )Tj
+/F4 1 Tf
+15.543 0 TD
+(p)Tj
+/F8 1 Tf
+0.5 0 TD
+0 Tw
+( and )Tj
+/F4 1 Tf
+1.944 0 TD
+(q)Tj
+/F8 1 Tf
+0.5 0 TD
+0.002 Tw
+( \(rather than just the product )Tj
+/F4 1 Tf
+11.624 0 TD
+(pq)Tj
+/F8 1 Tf
+1 0 TD
+(\) [4].  Using)Tj
+-31.111 -1 TD
+0.008 Tc
+0.075 Tw
+[(this technique, two half-sized exponentiations are performed.  The first exponentiation)]TJ
+0 -1.083 TD
+-0.005 Tc
+0 Tw
+(gives the result modulo )Tj
+/F4 1 Tf
+9.496 0 TD
+(p)Tj
+/F8 1 Tf
+0.494 0 TD
+( using exponent )Tj
+/F4 1 Tf
+6.503 0 TD
+(d)Tj
+9 0 0 9 293.845 166 Tm
+(p)Tj
+/F8 1 Tf
+0.494 0 TD
+( )Tj
+12 0 0 12 300.54 168 Tm
+(= )Tj
+/F4 1 Tf
+0.804 0 TD
+(d)Tj
+/F8 1 Tf
+0.494 0 TD
+( mod \()Tj
+/F4 1 Tf
+2.657 0 TD
+(p)Tj
+/F8 1 Tf
+0.5 0 TD
+0.001 Tc
+0.009 Tw
+(-1\), and the second gives the result)Tj
+-22 -1.083 TD
+0.006 Tc
+(modulo )Tj
+/F4 1 Tf
+3.411 0 TD
+(q)Tj
+/F8 1 Tf
+0.516 0 TD
+0.045 Tw
+[( using exponent )]TJ
+/F4 1 Tf
+6.791 0 TD
+(d)Tj
+9 0 0 9 224.809 153 Tm
+(q)Tj
+/F8 1 Tf
+0.516 0 TD
+( )Tj
+12 0 0 12 231.772 155 Tm
+0.002 Tc
+(= )Tj
+/F4 1 Tf
+0.84 0 TD
+(d)Tj
+/F8 1 Tf
+0.516 0 TD
+0.032 Tw
+[( mod \()]TJ
+/F4 1 Tf
+2.694 0 TD
+(q)Tj
+/F8 1 Tf
+0.516 0 TD
+0.004 Tc
+0.041 Tw
+[( - 1\).  These two results can be combined easily)]TJ
+-16.38 -1.083 TD
+0.005 Tc
+0.053 Tw
+(using the Chinese Remainder Theorem to obtain the final result modulo )Tj
+/F4 1 Tf
+29.928 0 TD
+0.017 Tc
+(pq)Tj
+/F8 1 Tf
+1.033 0 TD
+0.004 Tc
+0.039 Tw
+[(.  One could)]TJ
+-30.961 -1.083 TD
+-0.003 Tc
+0 Tw
+(reduce the secret key exponentiation time further by choosing )Tj
+/F4 1 Tf
+24.788 0 TD
+(d)Tj
+/F8 1 Tf
+0.5 0 TD
+( so that )Tj
+/F4 1 Tf
+3.117 0 TD
+(d)Tj
+9 0 0 9 436.853 127 Tm
+(p)Tj
+/F8 1 Tf
+12 0 0 12 441.353 129 Tm
+( and )Tj
+/F4 1 Tf
+1.93 0 TD
+(d)Tj
+9 0 0 9 470.513 127 Tm
+(q)Tj
+/F8 1 Tf
+12 0 0 12 475.013 129 Tm
+( are short.)Tj
+-32.084 -1.083 TD
+-0.007 Tc
+(An interesting open problem is whether there is an attack on RSA when )Tj
+/F4 1 Tf
+28.474 0 TD
+(d)Tj
+9 0 0 9 437.585 114 Tm
+(p)Tj
+/F8 1 Tf
+12 0 0 12 442.007 116 Tm
+( and )Tj
+/F4 1 Tf
+1.911 0 TD
+(d)Tj
+9 0 0 9 470.834 114 Tm
+(q)Tj
+/F8 1 Tf
+12 0 0 12 475.257 116 Tm
+( are short,)Tj
+-32.105 -1 TD
+-0.004 Tc
+(but not equal.)Tj
+ET
+endstream
+endobj
+44 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F2 4 0 R
+/F4 5 0 R
+/F8 6 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+46 0 obj
+<<
+/Length 5757
+>>
+stream
+BT
+/F8 1 Tf
+12 0 0 12 300 39 Tm
+0 g
+/GS1 gs
+0 Tc
+(13)Tj
+-17.5 56 TD
+0.003 Tc
+0.028 Tw
+[(There is another open problem related to the size of the public exponent.  Recall that the)]TJ
+0 -1 TD
+-0.005 Tc
+0 Tw
+(attack described in this paper is defeated if the public exponent is chosen to be at least 50%)Tj
+0 -1.083 TD
+(longer than the modulus )Tj
+/F4 1 Tf
+9.819 0 TD
+(pq)Tj
+/F8 1 Tf
+0.987 0 TD
+(.  For some systems, this may be a small price to pay in order to)Tj
+-10.806 -1 TD
+0 Tc
+0.005 Tw
+(have fast secret key exponentiations.  An interesting question is whether there is an attack)Tj
+T*
+0.01 Tc
+0.095 Tw
+(on RSA when the secret exponent is short, and the public exponent is larger than the)Tj
+T*
+0.008 Tc
+(modulus.)Tj
+/F2 1 Tf
+0 -3.583 TD
+0.003 Tc
+0.025 Tw
+(9. Conclusion)Tj
+/F8 1 Tf
+0 -2.333 TD
+0.016 Tc
+0.155 Tw
+(The continued fraction algorithm can be used to find sufficiently short RSA secret)Tj
+0 -1.083 TD
+0.002 Tc
+0.022 Tw
+[(exponents in polynomial time.  For a typical case where )]TJ
+/F4 1 Tf
+22.975 0 TD
+(e)Tj
+/F8 1 Tf
+0.451 0 TD
+0.001 Tc
+0.007 Tw
+[( < )]TJ
+/F4 1 Tf
+1.08 0 TD
+0.007 Tc
+(pq)Tj
+/F8 1 Tf
+1.015 0 TD
+0.001 Tc
+(, )Tj
+/F4 1 Tf
+0.507 0 TD
+0.01 Tc
+(GCD)Tj
+/F8 1 Tf
+2.142 0 TD
+(\()Tj
+/F4 1 Tf
+0.414 0 TD
+(p)Tj
+/F8 1 Tf
+0.524 0 TD
+0.005 Tc
+(-1, )Tj
+/F4 1 Tf
+1.396 0 TD
+(q)Tj
+/F8 1 Tf
+0.524 0 TD
+0.007 Tc
+0.07 Tw
+(-1\) is small,)Tj
+-31.027 -1.083 TD
+0.004 Tc
+(and )Tj
+/F4 1 Tf
+1.743 0 TD
+(p)Tj
+/F8 1 Tf
+0.514 0 TD
+0.002 Tc
+0.023 Tw
+[( and )]TJ
+/F4 1 Tf
+2 0 TD
+(q)Tj
+/F8 1 Tf
+0.514 0 TD
+0.005 Tc
+0.045 Tw
+[( have approximately the same number of bits, this algorithm will find secret)]TJ
+-4.772 -1 TD
+-0.007 Tc
+0 Tw
+(exponents with up to approximately one-quarter as many bits as the modulus.)Tj
+0 -2.5 TD
+0.003 Tc
+0.031 Tw
+[(There are ways to combat the continued fraction attack on RSA.  If )]TJ
+/F4 1 Tf
+27.711 0 TD
+(e)Tj
+/F8 1 Tf
+0.454 0 TD
+0.001 Tc
+0.014 Tw
+[( > \()]TJ
+/F4 1 Tf
+1.502 0 TD
+0.031 Tc
+(pq)Tj
+/F8 1 Tf
+1.062 0 TD
+(\))Tj
+9 0 0 9 462.989 515 Tm
+0.026 Tc
+(1.5)Tj
+12 0 0 12 474.934 511 Tm
+0.008 Tc
+0.079 Tw
+(, then the)Tj
+-32.078 -1 TD
+0.007 Tc
+0.065 Tw
+(continued fraction algorithm is not guaranteed to work for any size of secret exponent.)Tj
+0 -1.083 TD
+0.004 Tc
+0.035 Tw
+(Also, one might choose )Tj
+/F4 1 Tf
+9.919 0 TD
+0.016 Tc
+(GCD)Tj
+/F8 1 Tf
+2.16 0 TD
+(\()Tj
+/F4 1 Tf
+0.421 0 TD
+(p)Tj
+/F8 1 Tf
+0.528 0 TD
+0.005 Tc
+(-1, )Tj
+/F4 1 Tf
+1.409 0 TD
+(q)Tj
+/F8 1 Tf
+0.528 0 TD
+0.008 Tc
+0.081 Tw
+(-1\) to be large because the size of secret exponent)Tj
+-14.965 -1.083 TD
+0.007 Tc
+0.074 Tw
+(which can be found is inversely proportional to )Tj
+/F4 1 Tf
+20.107 0 TD
+0.035 Tc
+(GCD)Tj
+/F8 1 Tf
+2.215 0 TD
+(\()Tj
+/F4 1 Tf
+0.429 0 TD
+(p)Tj
+/F8 1 Tf
+0.551 0 TD
+0.01 Tc
+(-1, )Tj
+/F4 1 Tf
+1.469 0 TD
+(q)Tj
+/F8 1 Tf
+0.551 0 TD
+0.019 Tc
+0.19 Tw
+[(-1\).  However, choosing)]TJ
+/F4 1 Tf
+-25.321 -1.083 TD
+0.016 Tc
+(GCD)Tj
+/F8 1 Tf
+2.16 0 TD
+(\()Tj
+/F4 1 Tf
+0.423 0 TD
+(p)Tj
+/F8 1 Tf
+0.495 0 TD
+-0.003 Tc
+(-1, )Tj
+/F4 1 Tf
+1.32 0 TD
+(q)Tj
+/F8 1 Tf
+0.495 0 TD
+-0.004 Tc
+0 Tw
+(-1\) to be large may cause other problems.)Tj
+-4.894 -2.333 TD
+0.011 Tc
+0.114 Tw
+(A number of improvements to the continued fraction attack on RSA were discussed.)Tj
+0 -1 TD
+-0.007 Tc
+0 Tw
+(However, they only add a few more bits to the maximum size of secret exponent which can)Tj
+T*
+0.014 Tc
+0.143 Tw
+[(be found in polynomial time.  As the secret exponent increases in size beyond this)]TJ
+T*
+-0.01 Tc
+0 Tw
+(maximum, the time required to find the secret exponent increases exponentially.)Tj
+0 -2.333 TD
+0.022 Tc
+0.216 Tw
+(This attack cannot be extended to the normal case where the secret exponent is)Tj
+0 -1 TD
+-0.008 Tc
+0 Tw
+(approximately the same size as the modulus.)Tj
+/F2 1 Tf
+0 -7.083 TD
+-0.009 Tc
+(References)Tj
+/F8 1 Tf
+0 -2.417 TD
+0.002 Tc
+0.024 Tw
+[([1])-1082(Hastad, J., "On Using RSA with Low Exponent in a Public Key Network", )]TJ
+/F4 1 Tf
+32.906 0 TD
+0.008 Tc
+(Lecture)Tj
+-30.656 -1.083 TD
+0.005 Tc
+0.05 Tw
+(Notes in Computer Science : Advances in Cryptology - CRYPTO '85 Proceedings)Tj
+/F8 1 Tf
+33.5 0 TD
+(,)Tj
+-33.5 -1 TD
+0.002 Tc
+0.018 Tw
+(Springer-Verlag, pp. 403-408.)Tj
+-2.25 -1.25 TD
+0.028 Tc
+0.276 Tw
+[([)28(2)28(])-1056(Knuth, D.E., )]TJ
+/F4 1 Tf
+8.494 0 TD
+0.03 Tc
+0.304 Tw
+[(Art of Computer Programming  Volume 2 / Seminumerical)]TJ
+-6.244 -1.083 TD
+0.003 Tc
+(Algorithms)Tj
+/F8 1 Tf
+4.472 0 TD
+0.001 Tc
+0.012 Tw
+(, Addison Wesley, 1969.)Tj
+-6.722 -1.25 TD
+0.004 Tc
+0.041 Tw
+[([3])-1080(Pollard, J.M., "Theorems on factorization and primality testing", )]TJ
+/F4 1 Tf
+28.909 0 TD
+0.007 Tc
+0.065 Tw
+(Proc. Cambridge)Tj
+-26.659 -1.083 TD
+0.006 Tc
+0.064 Tw
+(Philos. Soc.)Tj
+/F8 1 Tf
+4.89 0 TD
+0.004 Tc
+0.043 Tw
+(, vol. 76, 1974, pp. 521-528.)Tj
+-7.14 -1.167 TD
+0.006 Tc
+0.059 Tw
+[([)6(4)6(])-1078(Quisquater, J.J. and C. Couvreur, "Fast Decipherment Algorithm for RSA Public-)]TJ
+2.25 -1.083 TD
+0.012 Tc
+0.114 Tw
+(Key Cryptosystem", )Tj
+/F4 1 Tf
+8.828 0 TD
+0.014 Tc
+0.139 Tw
+(Electronics Letters)Tj
+/F8 1 Tf
+7.987 0 TD
+0.007 Tc
+0.072 Tw
+(, vol. 18, no. 21, October 1982, pp. 905-)Tj
+-16.816 -1 TD
+0.028 Tc
+(907.)Tj
+-2.25 -1.167 TD
+0.02 Tc
+0.202 Tw
+[([)20(5)20(])-1064(Rivest, R.L., A. Shamir, and L. Adleman, "A Method for Obtaining Digital)]TJ
+2.25 -1.083 TD
+0.005 Tc
+0.05 Tw
+(Signatures and Public-Key Cryptosystems", )Tj
+/F4 1 Tf
+18.236 0 TD
+(Communications of the ACM)Tj
+/F8 1 Tf
+11.91 0 TD
+0.003 Tc
+0.028 Tw
+(, vol. 21,)Tj
+-30.146 -1 TD
+0.005 Tc
+0.047 Tw
+(no. 2, February 1978, pp. 158-164.)Tj
+ET
+endstream
+endobj
+47 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F2 4 0 R
+/F4 5 0 R
+/F8 6 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+49 0 obj
+<<
+/Length 429
+>>
+stream
+BT
+/F8 1 Tf
+12 0 0 12 300 39 Tm
+0 g
+/GS1 gs
+0 Tc
+(14)Tj
+-17.5 55.917 TD
+0.015 Tc
+0.153 Tw
+[([)15(6)15(])-1069(Williams, H.C., "A )]TJ
+/F4 1 Tf
+10.933 0 TD
+(p)Tj
+/F8 1 Tf
+0.547 0 TD
+0.152 Tw
+(+1 Method of Factoring", )Tj
+/F4 1 Tf
+11.487 0 TD
+0.024 Tc
+0.239 Tw
+(Mathematics of Computation)Tj
+/F8 1 Tf
+12.765 0 TD
+(,)Tj
+-33.482 -1 TD
+0.005 Tc
+0.051 Tw
+(vol. 39, no. 159, July 1982, pp. 225-234.)Tj
+ET
+endstream
+endobj
+50 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/F4 5 0 R
+/F8 6 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+51 0 obj
+<<
+/Type /Halftone
+/HalftoneType 1
+/HalftoneName (Default)
+/Frequency 60
+/Angle 45
+/SpotFunction /Round
+>>
+endobj
+7 0 obj
+<<
+/Type /ExtGState
+/SA false
+/OP false
+/HT /Default
+>>
+endobj
+4 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/Name /F2
+/Encoding /MacRomanEncoding
+/BaseFont /Times-Bold
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/Name /F4
+/Encoding /MacRomanEncoding
+/BaseFont /Times-Italic
+>>
+endobj
+15 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/Name /F6
+/Encoding 52 0 R
+/BaseFont /Symbol
+>>
+endobj
+6 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/Name /F8
+/Encoding /MacRomanEncoding
+/BaseFont /Times-Roman
+>>
+endobj
+52 0 obj
+<<
+/Type /Encoding
+/Differences [ 240/apple
+]
+>>
+endobj
+1 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 3 0 R
+/Contents 2 0 R
+>>
+endobj
+9 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 11 0 R
+/Contents 10 0 R
+>>
+endobj
+12 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 14 0 R
+/Contents 13 0 R
+>>
+endobj
+16 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 18 0 R
+/Contents 17 0 R
+>>
+endobj
+19 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 21 0 R
+/Contents 20 0 R
+>>
+endobj
+22 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 24 0 R
+/Contents 23 0 R
+>>
+endobj
+25 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 27 0 R
+/Contents 26 0 R
+>>
+endobj
+28 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 30 0 R
+/Contents 29 0 R
+>>
+endobj
+31 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 33 0 R
+/Contents 32 0 R
+>>
+endobj
+34 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 36 0 R
+/Contents 35 0 R
+>>
+endobj
+37 0 obj
+<<
+/Type /Page
+/Parent 41 0 R
+/Resources 39 0 R
+/Contents 38 0 R
+>>
+endobj
+42 0 obj
+<<
+/Type /Page
+/Parent 41 0 R
+/Resources 44 0 R
+/Contents 43 0 R
+>>
+endobj
+45 0 obj
+<<
+/Type /Page
+/Parent 41 0 R
+/Resources 47 0 R
+/Contents 46 0 R
+>>
+endobj
+48 0 obj
+<<
+/Type /Page
+/Parent 41 0 R
+/Resources 50 0 R
+/Contents 49 0 R
+>>
+endobj
+8 0 obj
+<<
+/Type /Pages
+/Kids [1 0 R 9 0 R 12 0 R 16 0 R 19 0 R 22 0 R 25 0 R 28 0 R 31 0 R 34 0 R]
+/Count 10
+/Parent 40 0 R
+>>
+endobj
+41 0 obj
+<<
+/Type /Pages
+/Kids [37 0 R 42 0 R 45 0 R 48 0 R]
+/Count 4
+/Parent 40 0 R
+>>
+endobj
+40 0 obj
+<<
+/Type /Pages
+/Kids [8 0 R 41 0 R ]
+/Count 14
+/MediaBox [0 0 612 792]
+>>
+endobj
+53 0 obj
+<<
+/Type /Catalog
+/Pages 40 0 R
+>>
+endobj
+54 0 obj
+<<
+/CreationDate (D:19970606102837)
+/Producer (Acrobat Distiller 3.0 for Windows)
+>>
+endobj
+xref
+0 55
+0000000000 65535 f
+0000119251 00000 n
+0000000017 00000 n
+0000004852 00000 n
+0000118718 00000 n
+0000118836 00000 n
+0000119060 00000 n
+0000118639 00000 n
+0000120525 00000 n
+0000119339 00000 n
+0000004979 00000 n
+0000013163 00000 n
+0000119429 00000 n
+0000013291 00000 n
+0000025333 00000 n
+0000118956 00000 n
+0000119520 00000 n
+0000025462 00000 n
+0000035965 00000 n
+0000119611 00000 n
+0000036105 00000 n
+0000047238 00000 n
+0000119702 00000 n
+0000047367 00000 n
+0000057328 00000 n
+0000119793 00000 n
+0000057457 00000 n
+0000064487 00000 n
+0000119884 00000 n
+0000064627 00000 n
+0000075843 00000 n
+0000119975 00000 n
+0000075972 00000 n
+0000083471 00000 n
+0000120066 00000 n
+0000083599 00000 n
+0000094050 00000 n
+0000120157 00000 n
+0000094179 00000 n
+0000102942 00000 n
+0000120771 00000 n
+0000120668 00000 n
+0000120249 00000 n
+0000103082 00000 n
+0000111830 00000 n
+0000120341 00000 n
+0000111958 00000 n
+0000117774 00000 n
+0000120433 00000 n
+0000117902 00000 n
+0000118389 00000 n
+0000118506 00000 n
+0000119179 00000 n
+0000120870 00000 n
+0000120927 00000 n
+trailer
+<<
+/Size 55
+/Root 53 0 R
+/Info 54 0 R
+/ID [<e401c3e6df60c32d8724e953523c46e6><e401c3e6df60c32d8724e953523c46e6>]
+>>
+startxref
+121034
+%%EOF
